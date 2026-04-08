@@ -6,6 +6,7 @@ import {  Route, Routes } from 'react-router-dom';
 import Login from './login.jsx';  
 import Home from './home.jsx';
 import Details from './details.jsx';
+import WishList from './wishlist.jsx';
 function App() {
  
 
@@ -16,7 +17,7 @@ function App() {
 <Routes>
   <Route path='/' element={<Home/>} />
   <Route path='/details' element={<Details/>} />
-  {/* <Route path='/wishList' element={<WishList/>} /> */}
+  <Route path='/wishList' element={<WishList/>} />
   <Route path='/Login' element={<Login/>} />
 </Routes>
     </div>

@@ -19,24 +19,22 @@ const getStoredUser = JSON.parse(localStorage.getItem('user'));
         <h1 className='login-head'>Login</h1>
         <div className='login-inputs'>
             <label htmlFor="email">Email</label>
-            <input type="text" placeholder='Enter your email' value={email} onChange={(e)=>setEmail(e.target.value)} required />
+            <input type="email" placeholder='Enter your email' value={email} onChange={(e)=>setEmail(e.target.value)} required />
             <label htmlFor="password">Password</label>
             <input type="password" placeholder='Enter your password' value={password} onChange={(e)=>setPassword(e.target.value)}  required/>
            </div>
-            <Button variant='outlined'onClick={(e)=>{
+            <Button type='submit' variant='outlined'onClick={(e)=>{
             e.preventDefault();
             if(email === getStoredUser.email  && password === getStoredUser.password){
-                alert('Login Successful')
+              login(email); 
+              alert('Login Successful')
+              navigate('/'); 
               
-                navigate('/'); 
-                login(email); 
-               
                 
-                
-            }else{
-                alert('invalid INPUT')
-                setEmail("")
-                setPassword('')
+            } else if(getStoredUser.email === '' || getStoredUser.password === ' '){
+                alert('Please fill in all fields');
+            } else {
+                alert('Invalid email or password')
             }
         }}  style={{ backgroundColor: '#a00000', color: '#fff'  , border: 'none'}}>Login</Button>
         </form>

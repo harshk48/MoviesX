@@ -22,6 +22,15 @@
 width: 100%;
 
 }
+.headerlist {
+  text-decoration: none;
+  color: #a00000;
+  font-weight: 500;
+}
+.headerlist:hover {
+  
+  color: #f46a6a;
+}
 .header ul {
   list-style: none;
   display: flex;
@@ -95,18 +104,21 @@ Button{
   background-color: #a00000;
   color: #fff;
   cursor: pointer;
+  list-style: none;
  
 }
 Button:hover{
-background-color: #762828;
+background-color: #b02828;
+ color: #ffffff;
  
-  border: 1px solid #ccc;
 }
 Button:focus{
   outline: none;
+  color: #ffffff;
 }
 Button:active{
   background-color: #ba00004e;
+  color: #ffffff;
   
 }
 .detail-card{
@@ -128,16 +140,26 @@ margin-top: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
  
 }
+.movie-card:hover{
+  box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+   transition: all 0.3s ease;
+  transform: scale(1.04);
+}
 .movies-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  
  
 }
 .cards{
+ 
+
   text-decoration: none;
   color: #a00000;
+  padding: 5px;
+
 }
 .ListItem{
   color: #a00000;
@@ -171,4 +193,31 @@ input[type="text"]:focus{
   outline: none;
  
   border: 1px solid #000;
+}
+/*details-page-css*/
+.movie-title{
+  font-size: xx-large;
+  color: #b5b5b5;
+  background-color: #ffffff;
+  font-weight: bold;
+  padding: 8px;
+}
+.wishlist{
+  display: flex;
+
+  align-items: center;
+  gap: 20px;
+}
+.wishlistbtn {
+
+align-items: center;
+display: flex;
+justify-content: center;
+gap: 4px;
+  cursor: pointer;
+}
+.wishlistbtn:hover{
+
+  color: #da0202;
+  cursor: pointer;
 }

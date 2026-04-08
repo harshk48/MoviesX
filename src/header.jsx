@@ -1,4 +1,5 @@
 import React from 'react'
+import './App.css'
 import { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -74,11 +75,11 @@ const Header = () => {
         ) : (
           <>
             <ul>
-              <li>
-                <Link style={{ textDecoration: 'none', color: '#a00000' }}  to={'/'}>Home</Link>
+              <li  className='headerlist'>
+                <Link  to={'/'}>Home</Link>
               </li>
-              <li>
-                <Link style={{ textDecoration: 'none', color: '#a00000' }} to={'/details'}>Details</Link>
+              <li className='headerlist'>
+                <Link  to={'/details'}>Details</Link>
               </li>
             </ul>
             <div className='header__right'>
