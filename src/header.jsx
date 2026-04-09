@@ -62,7 +62,7 @@ const Header = () => {
               onClick={handleDrawerToggle}
               sx={{ ml: 'auto' }}
             >
-              <MenuIcon />
+              <MenuIcon className='menu-btn' />
             </IconButton>
             <Drawer
               anchor="right"
@@ -99,6 +99,7 @@ const Header = () => {
           </>
         )}
       </nav>
+     
     </div>
   )
 }

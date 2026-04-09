@@ -1,11 +1,14 @@
-import React from 'react'
+import React  from 'react'
 import Movies from './movies.jsx';
-const home = () => {
+const Home = () => {
+
+ 
   return (
     <div>
-        <Movies/>
+      
+        <Movies />
     </div>
   )
 }
 
-export default home
+export default Home

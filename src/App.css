@@ -10,6 +10,9 @@
   font-size: larger;
 
 }
+.menu-btn{
+  color: #a00000;
+}
 .header{
   display: flex;
   justify-content: space-between;
@@ -20,6 +23,7 @@
   background-color: #fff;
   list-style: none;
 width: 100%;
+font-size: larger;
 
 }
 .headerlist {
@@ -56,6 +60,37 @@ width: 100%;
   color: var(--text);
   font-weight: 500;
 }
+
+.search-bar{
+  display: flex;
+  padding: 10px;
+  margin: auto;
+  justify-content: flex-start;
+  margin-left: 45px;
+  width: auto;
+  
+}
+.search-bar input{
+  padding: 10px;
+  border-radius: 0px;
+min-width: 35%;
+  border: 1px solid #a91e1e;
+}
+
+.search-bar input:focus{
+  outline: none;
+  border: 1px solid #db1e1e;
+  color: #db1e1e;
+}
+.search-bar button{
+    padding: 10px;
+    border-radius: 0px 5px 5px 0px;
+    border: none;
+    background-color: #a00000;
+    color: #fff;
+    cursor: pointer;
+  }
+
 .card{
   display: flex;
 flex-wrap: wrap;
@@ -123,9 +158,14 @@ Button:active{
 }
 .detail-card{
   display: flex;
-  flex-direction: column;
-text-align: center;
+  flex-direction: row;
 margin-top: 15px;
+}
+.movie-card .details-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 .header-item{
   text-decoration: none;
@@ -140,6 +180,21 @@ margin-top: 15px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
  
 }
+.detail-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  gap: 10px;
+  padding: 20px;
+  width: auto;
+  max-width: 50%;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+ 
+}
+
 .movie-card:hover{
   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
    transition: all 0.3s ease;
@@ -154,8 +209,6 @@ margin-top: 15px;
  
 }
 .cards{
- 
-
   text-decoration: none;
   color: #a00000;
   padding: 5px;
@@ -220,4 +273,14 @@ gap: 4px;
 
   color: #da0202;
   cursor: pointer;
+}
+.load{
+  font-size: x-large;
+  color: #a00000;
+}
+.rating{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
 }
