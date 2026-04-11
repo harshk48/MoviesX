@@ -111,17 +111,24 @@ gap: 20px;
   margin-top: 20px;
   justify-content: center;
 }
-form{
+.login-form{
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  align-items: center;
   gap: 12px;
-  width: 40%;
+  width: 50%;
   margin: auto;
   padding: 18px;
   margin-top: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.search-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
 }
 input{
   padding: 10px;

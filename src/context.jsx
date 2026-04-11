@@ -7,8 +7,13 @@ const ContextProvider = ({children}) => {
   const [user, setUser] = useState("");
   const [movieDetails, setMovieDetails] = useState([]);
   const [wishList, setWishList] = useState([]);
-  const login = (email) => setUser(email);
-  const logout = () => setUser(null);
+  const login = (email) =>{
+    setUser(email);
+  }
+  const logout = () => {
+    localStorage.removeItem("user");
+    setUser("");
+  }
 
   return (
   

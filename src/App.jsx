@@ -7,6 +7,7 @@ import Login from './login.jsx';
 import Home from './home.jsx';
 import Details from './details.jsx';
 import WishList from './wishlist.jsx';
+import Register from './register.jsx';
 function App() {
  
 
@@ -19,6 +20,7 @@ function App() {
   <Route path='/details' element={<Details/>} />
   <Route path='/wishList' element={<WishList/>} />
   <Route path='/Login' element={<Login/>} />
+  <Route path='/Register' element={<Register/>} />
 </Routes>
     </div>
 

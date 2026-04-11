@@ -38,18 +38,21 @@ const handleAddToWishlist = (index) => (e) => {
   setWishList([...wishList, selectedMovie]);
   navigate(`/wishList`);
 };
-const handleSearch = () => {
+const handleSearch = (e) => {
+  e.preventDefault();
   const filteredMovies = data.Search.filter(movie => 
     movie.Title.toLowerCase().includes(search.toLowerCase())
   );
-  setFilteredData([ ...data.Search , filteredMovies ]);
-  if (filteredMovies.length === 0) {
-   setFilteredData("");
-   setSearch("");
-   
-  }
+  setFilteredData([  filteredMovies ]);
   setData({ Search: filteredMovies });
   console.log(search);
+  if (filteredMovies.length === 0  || search === "") {
+   setFilteredData([]);  
+   setData({ Search: [] });
+   Movies();
+   return;
+
+  }
 }
 
 useEffect(() => {
@@ -59,14 +62,17 @@ Movies();
  
   return (
     <>
-    <div className='search-bar'>
-        <input type='text' placeholder='Search movies...' value={search}  onChange={(e) => setSearch(e.target.value)}/>
-        <button className='search-btn'  onClick={handleSearch}>Search</button>
+    <div className='search-container'>
+      <form onSubmit={ handleSearch} className='search-bar'>
+        <input type='search' placeholder='Search movies...' value={search}   onChange={(e) => setSearch(e.target.value)}/>
+        <button className='search-btn'  type='submit'>Search</button>
+        
+      </form>
 
       </div>
 
    <div className='movies-container'>
-      { filteredData ?  data.Search?.map((movie , index) => (
+      { filteredData  ?  data.Search?.map((movie , index) => (
         <Link to={`./details?${movie.imdbID}`} onClick={movieDetailsHandle(movie.imdbID)} className='cards'>
           <div key={index} className='movie-card'>
             <img src={movie.Poster} alt={movie.Title} />

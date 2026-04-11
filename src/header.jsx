@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import './App.css'
 import { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
@@ -16,6 +16,7 @@ const Header = () => {
   const isMobile = useMediaQuery('(max-width:600px)');
   const [drawerOpen, setDrawerOpen] = useState(false);
  const { user, logout } = useAuth();
+ const { login } = useAuth();
   const handleLogout = () => {
     logout();
     
@@ -49,6 +50,15 @@ const Header = () => {
       )}
     </List>
   );
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const { email } = JSON.parse(storedUser);
+      login(email);
+    }
+  }, [login]);
+
   return (
     <div>
       <nav className='header'>
@@ -92,7 +102,7 @@ const Header = () => {
                 <Button variant="contained" color="error" onClick={handleLogout}>Logout</Button>
               ) : (
                 <Button variant="contained" color="error">
-                  <Link style={{ textDecoration: 'none' ,color:'inherit' }} to='/Login'>Login</Link>
+                  <Link style={{ textDecoration: 'none' ,color:'inherit' }} to='/Login' >Login</Link>
                 </Button>
               )}
             </div>

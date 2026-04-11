@@ -24,7 +24,7 @@ useEffect(() => {
       <h1 className='movie-title'>{movieDetails?.Title}</h1>
 
       {details.length === 0  ? (
-        <p className='load'>Loading...</p>
+        <p className='load'> Please select a movie to view details</p>
       ) : (
       <div className='cards'>    
         <div key={details.imdbID} className='detail-card'>
