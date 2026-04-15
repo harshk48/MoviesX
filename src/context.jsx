@@ -1,9 +1,11 @@
 import React from 'react'
-import { createContext , useState  , useContext} from 'react'; 
+import { createContext , useState  , useContext} from 'react';
+ 
 const AuthContext = createContext();
 
 export const  useAuth = () => useContext(AuthContext);
 const ContextProvider = ({children}) => {
+ 
   const [user, setUser] = useState("");
   const [movieDetails, setMovieDetails] = useState([]);
   const [wishList, setWishList] = useState([]);
@@ -11,8 +13,11 @@ const ContextProvider = ({children}) => {
     setUser(email);
   }
   const logout = () => {
+    
     localStorage.removeItem("user");
     setUser("");
+    
+    
   }
 
   return (

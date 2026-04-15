@@ -11,18 +11,23 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const setLocalStored = localStorage.setItem('user', JSON.stringify({ email, password }));
   const getStoredUser = JSON.parse(localStorage.getItem('user'));
+   const storedData = JSON.parse(localStorage.getItem('Register'));
 const handleLogin = (e) => {
     e.preventDefault();
-    
-    setLocalStored;
+   setLocalStored
+    const user = storedData.find(
+      (u) => u.username === getStoredUser.email && u.password === getStoredUser.password
+);
    
-            if(email === getStoredUser.email  && password === getStoredUser.password )   {
+            if(user)   {
               login(email); 
               alert('Login Successful')
               navigate('/'); 
+              getStoredUser
             }else {
-                alert('Invalid email or password')
+              alert('Invalid email or password')
             }
+           
           }
 
 

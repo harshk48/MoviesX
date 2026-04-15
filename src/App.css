@@ -1,3 +1,5 @@
+
+
 *{
   margin: 0;
   padding: 0;
@@ -9,6 +11,17 @@
   font-weight: bold;
   font-size: larger;
 
+}
+ .heading{
+   background-color: #ebebeb;
+  padding: 10px;
+ color: #a00000; 
+ margin: 5px auto;
+}
+.main-container .heading{
+  background-color: #ebebeb;
+  padding: 10px;
+ color: #a00000;
 }
 .menu-btn{
   color: #a00000;
@@ -207,6 +220,12 @@ margin-top: 15px;
    transition: all 0.3s ease;
   transform: scale(1.04);
 }
+
+.series-card:hover{
+   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+   transition: all 0.3s ease;
+  transform: scale(1.04);
+}
 .movies-container{
   display: flex;
   flex-wrap: wrap;
@@ -215,10 +234,34 @@ margin-top: 15px;
   
  
 }
+.series-container{
+  display: flex;
+  flex-wrap: wrap;
+ align-items: center; 
+ justify-content: center;
+ margin: auto;
+ text-align: center;
+ gap: 20px;
+  justify-content: space-evenly;
+  
+ overflow-x: hidden;
+}
+
+
+.main-container h1{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2px;
+  margin: 0px 35px;
+  gap: 20px;  
+}
 .cards{
   text-decoration: none;
   color: #a00000;
   padding: 5px;
+  display: flex;
 
 }
 .ListItem{
@@ -290,4 +333,11 @@ gap: 4px;
   align-items: center;
   gap: 8px;
   margin-top: 5px;
+}
+.page-container{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+
 }

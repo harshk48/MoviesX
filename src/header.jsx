@@ -1,8 +1,8 @@
-import React, { use, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Button, IconButton, Drawer } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import List from '@mui/material/List';
@@ -17,8 +17,10 @@ const Header = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
  const { user, logout } = useAuth();
  const { login } = useAuth();
+
   const handleLogout = () => {
     logout();
+
     
   };
     const handleDrawerToggle = () => {

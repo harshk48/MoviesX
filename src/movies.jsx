@@ -6,57 +6,109 @@ import { useContext } from 'react';
 import { AuthContext } from './context.jsx';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
+
 const Movies = () => {
+
+
+
+
+
+
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
   const navigate = useNavigate();
 const [data, setData] = useState([]);
-const [search, setSearch] = useState([]);
+const [VisibleMovies ,setVisibleMovies] = useState([])
+const [search, setSearch] = useState("");
 const [filteredData, setFilteredData] = useState([]);
  const {setMovieDetails  } = useContext(AuthContext )
  const {wishList  ,  setWishList } = useContext(AuthContext);
  const  {user } = useAuth();
 
-const Movies = async  () => {
-const response = await axios(`${API_URL}?s=movie&plot=full&page=3&apikey=${API_KEY}`);
-const data = await response.data;
-setData(data);
-console.log(data);
-}
+const Movies = async () => {
+  try {
+    const totalPages = 10; // 1 → 100
+
+    const requests = [];
+
+    for (let i = 1; i <= totalPages; i++) {
+      requests.push(
+        axios(`${API_URL}?s=${search == "" ? "movie" : search}&page=${i}&apikey=${API_KEY}`)  
+      );
+    }
+
+    const responses = await Promise.all(requests);
+
+    // Merge all objects into one array
+    const mergedArray = responses.reduce((acc, curr) => {
+      if (curr.data.Search) {
+        return [...acc, ...curr.data.Search];
+      }
+      return acc;
+    }, []);
+ setData(mergedArray);
+setVisibleMovies(mergedArray.slice(0, 10));
+console.log(VisibleMovies)
+    console.log(mergedArray);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//  const settings = {
+//    
+//   };
 
 const movieDetailsHandle = (id) => () => {
-const selectedMovie = data.Search.find(movie => movie.imdbID === id);
+const selectedMovie = data.find(movie => movie.imdbID === id);
   setMovieDetails(selectedMovie);
 };
 const handleAddToWishlist = (index) => (e) => {
   e.preventDefault();
-  const selectedMovie = data.Search[index];
-  if (wishList.find(item => item.imdbID === selectedMovie.imdbID)) {
-    alert("Already in wishlist");
+  const selectedMovie = data[index];
+  console.log(selectedMovie)
+ const stored =
+    JSON.parse(localStorage.getItem("wishlist")) || [];
+  const exists = stored.some(
+    (item) => item.imdbID === selectedMovie.imdbID
+  );
+ if (exists) {
+    alert("Already in wishlist ❌");
     return;
   }
+
+  // if (wishList.find(item => item.imdbID === selectedMovie.imdbID)) {
+  //   alert("Already in wishlist");
+  //   return;
+  // }
   setWishList([...wishList, selectedMovie]);
-  navigate(`/wishList`);
+    localStorage.setItem("wishlist", JSON.stringify([...wishList, selectedMovie]));
+  alert('added in wishlist')
+  // navigate(`/wishList`);
 };
 const handleSearch = (e) => {
   e.preventDefault();
-  const filteredMovies = data.Search.filter(movie => 
+  const filteredMovies = data.filter(movie => 
     movie.Title.toLowerCase().includes(search.toLowerCase())
   );
-  setFilteredData([  filteredMovies ]);
-  setData({ Search: filteredMovies });
+  setFilteredData(filteredMovies );
+  // setData([ filteredMovies ]);
   console.log(search);
   if (filteredMovies.length === 0  || search === "") {
-   setFilteredData([]);  
-   setData({ Search: [] });
+   setFilteredData([]);
+   navigate('/')  
+   
    Movies();
    return;
 
   }
 }
-
+const moviesToShow =
+  search === "" ? VisibleMovies : filteredData;
 useEffect(() => {
 Movies();
+
 }, [])
 
  
@@ -70,9 +122,10 @@ Movies();
       </form>
 
       </div>
-
+<div className='main-container'>
+     <h1 className='heading'>Recommended Movies</h1>
    <div className='movies-container'>
-      { filteredData  ?  data.Search?.map((movie , index) => (
+      { moviesToShow.map((movie , index) => (
         <Link to={`./details?${movie.imdbID}`} onClick={movieDetailsHandle(movie.imdbID)} className='cards'>
           <div key={index} className='movie-card'>
             <img src={movie.Poster} alt={movie.Title} />
@@ -83,13 +136,16 @@ Movies();
              <span>Add to wishlist</span> <FavoriteIcon style={{ marginRight: 8 }}  />  
           </ >
           : null}
+        
 </div>
           </div>
         </Link>
-      )) : <h2>No movies found</h2>}
-
+      ))  }
+     
+</div>
     </div>
  </> )
+
 }
 
 export default Movies

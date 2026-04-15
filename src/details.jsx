@@ -13,6 +13,7 @@ const DetailApi = async () => {
   const data = await response.json();
   setDetails(data);
   console.log(data);
+
 }
 useEffect(() => {
   DetailApi();
@@ -23,7 +24,7 @@ useEffect(() => {
     <div >
       <h1 className='movie-title'>{movieDetails?.Title}</h1>
 
-      {details.length === 0  ? (
+      {details.length === 0   ? (
         <p className='load'> Please select a movie to view details</p>
       ) : (
       <div className='cards'>    
