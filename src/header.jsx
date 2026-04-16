@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import './App.css'
 import { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
-import { Link, Navigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button, IconButton, Drawer } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import List from '@mui/material/List';
@@ -19,9 +19,8 @@ const Header = () => {
  const { login } = useAuth();
 
   const handleLogout = () => {
-    logout();
-
-    
+    logout()
+   
   };
     const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -62,9 +61,9 @@ const Header = () => {
   }, [login]);
 
   return (
-    <div>
+    <div className='header-main'>
       <nav className='header'>
-        <h1 className='logo'>MoviesX</h1>
+       <div> <h1 className='logo'>MoviesX</h1></div>
         {isMobile ? (
           <>
             <IconButton
@@ -86,6 +85,7 @@ const Header = () => {
           </>
         ) : (
           <>
+          <div className='list-container'>
             <ul>
               <li  className='headerlist'>
                 <Link  to={'/'}>Home</Link>
@@ -94,6 +94,7 @@ const Header = () => {
                 <Link  to={'/details'}>Details</Link>
               </li>
             </ul>
+           </div>
             <div className='header__right'>
               {user ? (
                 <Button variant="outlined" color="error" startIcon={<FavoriteIcon />}>

@@ -6,24 +6,19 @@ import { useContext } from 'react';
 import { AuthContext } from './context.jsx';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import CircularProgress from '@mui/material/CircularProgress'; 
 
 const Movies = () => {
-
-
-
-
-
-
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
-  const navigate = useNavigate();
+const navigate = useNavigate();
 const [data, setData] = useState([]);
 const [VisibleMovies ,setVisibleMovies] = useState([])
 const [search, setSearch] = useState("");
 const [filteredData, setFilteredData] = useState([]);
  const {setMovieDetails  } = useContext(AuthContext )
  const {wishList  ,  setWishList } = useContext(AuthContext);
+ const [loading , setLoading] = useState(true)
  const  {user } = useAuth();
 
 const Movies = async () => {
@@ -77,11 +72,6 @@ const handleAddToWishlist = (index) => (e) => {
     alert("Already in wishlist ❌");
     return;
   }
-
-  // if (wishList.find(item => item.imdbID === selectedMovie.imdbID)) {
-  //   alert("Already in wishlist");
-  //   return;
-  // }
   setWishList([...wishList, selectedMovie]);
     localStorage.setItem("wishlist", JSON.stringify([...wishList, selectedMovie]));
   alert('added in wishlist')
@@ -120,10 +110,10 @@ Movies();
         <button className='search-btn'  type='submit'>Search</button>
         
       </form>
-
       </div>
-<div className='main-container'>
-     <h1 className='heading'>Recommended Movies</h1>
+<div className='movie-container'>
+ { moviesToShow.length == 0 ?  <CircularProgress color="inherit" aria-label="Loading…" />
+      : <h1 className='heading'>Recommended Movies</h1> }
    <div className='movies-container'>
       { moviesToShow.map((movie , index) => (
         <Link to={`./details?${movie.imdbID}`} onClick={movieDetailsHandle(movie.imdbID)} className='cards'>

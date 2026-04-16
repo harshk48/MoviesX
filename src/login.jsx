@@ -4,6 +4,9 @@ import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './context.jsx'; // Assuming you have a context file for authentication
 import { useState  } from 'react';
+import TextField from '@mui/material/TextField';
+import Alert from '@mui/material/Alert';
+import CheckIcon from '@mui/icons-material/Check';
 const Login = () => {
     const { login  } = useAuth();
     const navigate = useNavigate();
@@ -18,35 +21,32 @@ const handleLogin = (e) => {
     const user = storedData.find(
       (u) => u.username === getStoredUser.email && u.password === getStoredUser.password
 );
-   
+
             if(user)   {
-              login(email); 
+              login(email);
               alert('Login Successful')
-              navigate('/'); 
+              navigate('/');
               getStoredUser
             }else {
               alert('Invalid email or password')
             }
-           
+
           }
 
 
   return (
     <div className='login'>
-        
+
         <form action="" method="post"  className='login-form' onSubmit={handleLogin}>
         <h1 className='login-head'>Login</h1>
         <div className='login-inputs'>
-            <label htmlFor="email">Email</label>
-            <input type="email" placeholder='Enter your email' value={email} onChange={(e)=>setEmail(e.target.value)} required />
-            <label htmlFor="password">Password</label>
-            <input type="password" placeholder='Enter your password' value={password} onChange={(e)=>setPassword(e.target.value)}  required/>
-           </div> 
+            <TextField id="standard-basic" label="email" variant="standard" color='error'  value={email} onChange={(e)=>setEmail(e.target.value)} required/>
+             <TextField id="standard-basic" label="Password" variant="standard" color='error'  value={password} onChange={(e)=>setPassword(e.target.value)} required/>
+           </div>
            <div>
-            
             <span>Don't have an account?</span><Link to="/register">Register</Link>
            </div>
-            <Button type='submit' variant='outlined' 
+            <Button type='submit' variant='outlined'
        style={{ backgroundColor: '#a00000', color: '#fff'  , border: 'none'}}>Login</Button>
         </form>
     </div>

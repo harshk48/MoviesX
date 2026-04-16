@@ -3,8 +3,8 @@ import { useContext } from 'react';
 import { AuthContext } from './context';
 
 const WishList = () => {
-const { wishList , setWishList  } = useContext(AuthContext);
-// const getRegisterid = JSON.parse(localStorage.getItem('Register'))
+const { wishList , setWishList   } = useContext(AuthContext);
+
 const storedwishlist = JSON.parse(localStorage.getItem("wishlist"));
 console.log(storedwishlist.length);
 
@@ -23,11 +23,11 @@ const removewishlist = (imdbID) => {
     <div>
       <h1 className='movie-title'>WishLists</h1>
          <div className='cards'>
-{/* { wishList.length == 0  ?<h2>No movies in wishlist</h2> */}
+
 
 {
      storedwishlist.length == 0  ?   <h1>No Wishlist</h1>
-     :             storedwishlist.map((movie , index) => (
+     :  storedwishlist.map((movie , index) => (
   <div key={index} className='movie-card'>
     <img src={movie.Poster} alt={movie.Title} />    
     <h3>{movie.Title}</h3>

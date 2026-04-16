@@ -1,5 +1,7 @@
 import React from 'react'
 import { createContext , useState  , useContext} from 'react';
+import { Navigate } from 'react-router-dom';
+
  
 const AuthContext = createContext();
 
@@ -13,11 +15,8 @@ const ContextProvider = ({children}) => {
     setUser(email);
   }
   const logout = () => {
-    
     localStorage.removeItem("user");
     setUser("");
-    
-    
   }
 
   return (

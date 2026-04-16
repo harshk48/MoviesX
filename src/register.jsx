@@ -1,5 +1,6 @@
 import React ,{useState} from 'react'
 import { Navigate } from 'react-router-dom'
+import TextField from '@mui/material/TextField';
 import './App.css'
 
 const Register = () => {
@@ -51,10 +52,8 @@ const handleRegister = (e) => {
     <div>
       <form action="" method="post" className='login-form' onSubmit={handleRegister}>
     <h1 className='login-head'>Register Your Account</h1>
-    <label htmlFor="email">Username</label>
-    <input type="text" id="email" placeholder='Enter your email' value={username}  onChange={(e)=>setUsername(e.target.value)}/>
-    <label htmlFor="password">Set Password</label>
-    <input type="password" id="password" placeholder='Enter your password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+      <TextField id="standard-basic" label="username" variant="standard" color='error'  value={username} onChange={(e)=>setUsername(e.target.value)} required/>
+     <TextField id="standard-basic" label="Password" variant="standard" color='error'  value={password} onChange={(e)=>setPassword(e.target.value)} required/>  
     <button type='submit'>Register</button>
 </form>
 
