@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import './App.css'
 import { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { Button, IconButton, Drawer } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import List from '@mui/material/List';
@@ -12,7 +12,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import Divider from '@mui/material/Divider';
 import { useAuth } from './context.jsx';
 
-const Header = () => {
+const Header = () => {  
   const isMobile = useMediaQuery('(max-width:600px)');
   const [drawerOpen, setDrawerOpen] = useState(false);
  const { user, logout } = useAuth();
@@ -20,6 +20,9 @@ const Header = () => {
 
   const handleLogout = () => {
     logout()
+    return <Navigate to="/"  />;
+  
+    
    
   };
     const handleDrawerToggle = () => {
@@ -102,7 +105,8 @@ const Header = () => {
                 </Button>
               ) : null}
               {user ? (
-                <Button variant="contained" color="error" onClick={handleLogout}>Logout</Button>
+                <Button variant="contained" color="error" >
+                  <Link style={{ textDecoration: 'none' ,color:'inherit' }}  to='/' onClick={handleLogout}>Logout</Link></Button>
               ) : (
                 <Button variant="contained" color="error">
                   <Link style={{ textDecoration: 'none' ,color:'inherit' }} to='/Login' >Login</Link>

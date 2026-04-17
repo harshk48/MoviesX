@@ -9,7 +9,7 @@ const [data, setData] = useState([]);
 const episodeAPI = async  () => {
   const response = await fetch(`${API_URL}?s=episode&plot=full&page=1&apikey=${API_KEY}`);
   const data = await response.json();
-    setData(data);
+    setData(data.Search);
     console.log(data)
    
 }
@@ -26,7 +26,7 @@ useEffect(()=>{
         <h1 className='heading'>Episode</h1>
     <div className='series-container'>
     {   
-      data.Search?.map((Episode , index)=>(
+      data?.map((Episode , index)=>(
            <Link key={index} to={`./details?${Episode.imdbID}`} onClick={movieDetailsHandle(Episode.imdbID)} className='cards'>
              <div key={index} className='Episode-card'>
                 <img src={Episode.Poster} alt={Episode.Title}/>

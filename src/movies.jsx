@@ -18,7 +18,6 @@ const [search, setSearch] = useState("");
 const [filteredData, setFilteredData] = useState([]);
  const {setMovieDetails  } = useContext(AuthContext )
  const {wishList  ,  setWishList } = useContext(AuthContext);
- const [loading , setLoading] = useState(true)
  const  {user } = useAuth();
 
 const Movies = async () => {
@@ -85,7 +84,7 @@ const handleSearch = (e) => {
   setFilteredData(filteredMovies );
   // setData([ filteredMovies ]);
   console.log(search);
-  if (filteredMovies.length === 0  || search === "") {
+  if (filteredMovies.length == 0  || search === "") {
    setFilteredData([]);
    navigate('/')  
    
@@ -105,18 +104,18 @@ Movies();
   return (
     <>
     <div className='search-container'>
-      <form onSubmit={ handleSearch} className='search-bar'>
+      <form onSubmit={handleSearch} className='search-bar'>
         <input type='search' placeholder='Search movies...' value={search}   onChange={(e) => setSearch(e.target.value)}/>
         <button className='search-btn'  type='submit'>Search</button>
         
       </form>
       </div>
 <div className='movie-container'>
- { moviesToShow.length == 0 ?  <CircularProgress color="inherit" aria-label="Loading…" />
+ { moviesToShow.length == 0 ?  <CircularProgress color="error" aria-label="Loading…" />
       : <h1 className='heading'>Recommended Movies</h1> }
    <div className='movies-container'>
       { moviesToShow.map((movie , index) => (
-        <Link to={`./details?${movie.imdbID}`} onClick={movieDetailsHandle(movie.imdbID)} className='cards'>
+        <Link key={index} to={`./details?${movie.imdbID}`} onClick={movieDetailsHandle(movie.imdbID)} className='cards'>
           <div key={index} className='movie-card'>
             <img src={movie.Poster} alt={movie.Title} />
             <h3>{movie.Title}</h3>

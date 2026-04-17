@@ -7,7 +7,6 @@ const AuthContext = createContext();
 
 export const  useAuth = () => useContext(AuthContext);
 const ContextProvider = ({children}) => {
- 
   const [user, setUser] = useState("");
   const [movieDetails, setMovieDetails] = useState([]);
   const [wishList, setWishList] = useState([]);

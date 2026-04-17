@@ -25,7 +25,7 @@ useEffect(() => {
       {details.length === 0  ? (
         <p className='load'> Please select a movie to view details</p>
       ) : (
-      <div className='cards'>    
+      <div className='details-cards'>    
         <div key={details.imdbID} className='detail-card'>
               <img src={details.Poster} alt={details.Title} />
               <div className='details-info'>
