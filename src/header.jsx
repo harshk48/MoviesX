@@ -36,6 +36,9 @@ const Header = () => {
       <ListItem button component={Link} to="/details" onClick={() => setDrawerOpen(false)}>
         <ListItemText primary="Details"  style={{ textDecoration: 'none', color: '#a00000' }}/>
       </ListItem>
+      <ListItem button component={Link} to="/category" onClick={() => setDrawerOpen(false)}>
+        <ListItemText primary="category"  style={{ textDecoration: 'none', color: '#a00000' }}/>
+      </ListItem>
       <Divider />
       {user ? (
         <>
@@ -92,6 +95,9 @@ const Header = () => {
             <ul>
               <li  className='headerlist'>
                 <Link  to={'/'}>Home</Link>
+              </li>
+               <li  className='headerlist'>
+                <Link  to={'/category'}>category</Link>
               </li>
               <li className='headerlist'>
                 <Link  to={'/details'}>Details</Link>

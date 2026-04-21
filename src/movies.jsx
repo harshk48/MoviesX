@@ -57,15 +57,21 @@ console.log(VisibleMovies)
 const movieDetailsHandle = (id) => () => {
 const selectedMovie = data.find(movie => movie.imdbID === id);
   setMovieDetails(selectedMovie);
+  // navigate('/details')
 };
+const moviesToShow =
+  search == null  ?  filteredData : VisibleMovies; 
+  console.log(moviesToShow.length)
+const stored =
+    JSON.parse(localStorage.getItem("wishlist")) || [];
+
 const handleAddToWishlist = (index) => (e) => {
   e.preventDefault();
   const selectedMovie = data[index];
   console.log(selectedMovie)
  const stored =
     JSON.parse(localStorage.getItem("wishlist")) || [];
-  const exists = stored.some(
-    (item) => item.imdbID === selectedMovie.imdbID
+  const exists = stored.some(((index)=> index.imdbID === index)
   );
  if (exists) {
     alert("Already in wishlist ❌");
@@ -81,20 +87,17 @@ const handleSearch = (e) => {
   const filteredMovies = data.filter(movie => 
     movie.Title.toLowerCase().includes(search.toLowerCase())
   );
-  setFilteredData(filteredMovies );
-  // setData([ filteredMovies ]);
+  if(filteredMovies){
+    setFilteredData(filteredMovies );
+setVisibleMovies([])
+  }
+// setData([ filteredMovies ]);
   console.log(search);
-  if (filteredMovies.length == 0  || search === "") {
-   setFilteredData([]);
-   navigate('/')  
-   
    Movies();
    return;
-
-  }
+  
 }
-const moviesToShow =
-  search === "" ? VisibleMovies : filteredData;
+
 useEffect(() => {
 Movies();
 
@@ -111,18 +114,20 @@ Movies();
       </form>
       </div>
 <div className='movie-container'>
- { moviesToShow.length == 0 ?  <CircularProgress color="error" aria-label="Loading…" />
-      : <h1 className='heading'>Recommended Movies</h1> }
-   <div className='movies-container'>
+ {/* { moviesToShow.length == 0 ?  <CircularProgress color="error" aria-label="Loading…" />
+      :  } */}
+      <h1 className='heading'>Recommended Movies</h1>
       { moviesToShow.map((movie , index) => (
-        <Link key={index} to={`./details?${movie.imdbID}`} onClick={movieDetailsHandle(movie.imdbID)} className='cards'>
+        <Link key={index} to={`/details`}  onClick={movieDetailsHandle(movie.imdbID)} className='cards'>
           <div key={index} className='movie-card'>
+        
             <img src={movie.Poster} alt={movie.Title} />
             <h3>{movie.Title}</h3>
             <h4>{movie.Year}</h4>
+         
 <div  onClick={handleAddToWishlist(index)} className='wishlistbtn'  >
           {user ?  <>
-             <span>Add to wishlist</span> <FavoriteIcon style={{ marginRight: 8 }}  />  
+             <span>{stored.some((index)=> index.imdbID === movie.imdbID) ? "added in wishlist" : "add to wishlist"}</span> <FavoriteIcon style={{ marginRight: 8 }}  />
           </ >
           : null}
         
@@ -132,7 +137,7 @@ Movies();
       ))  }
      
 </div>
-    </div>
+    
  </> )
 
 }
