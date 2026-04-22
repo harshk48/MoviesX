@@ -51,6 +51,8 @@ font-weight: 500;
   padding: 10px;
  color: #a00000; 
  margin: 0px auto;
+ font-size: larger;
+ font-weight: 500;
 }
 .main-container .heading{
   background-color: #ebebeb;
@@ -66,7 +68,7 @@ font-weight: 500;
 justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
-  margin-bottom: 20px;
+
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   background-color: #fff;
   list-style: none;
@@ -124,7 +126,7 @@ font-size: larger;
 }
 .search-bar input{
   padding: 10px;
-  border-radius: 0px;
+  border-radius: 5px 0px 0px 5px;
 min-width: 35%;
   border: 1px solid #a91e1e;
 }
@@ -175,8 +177,9 @@ gap: 20px;
   align-items: center;
   align-items: center;
   gap: 12px;
-  width: 50%;
+  
   margin: auto;
+ width: 80%;
   padding: 18px;
   margin-top: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -210,6 +213,12 @@ Button:hover{
 opacity: 0.8;
 
  
+}
+.register{
+  text-decoration: underline;
+}
+.register:hover{
+  color: #950000;
 }
 Button:focus{
   outline: none;
@@ -336,7 +345,6 @@ Button:active{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
- 
   width: 100%;
 
  
@@ -421,10 +429,12 @@ input[type="text"]:focus{
 }
 /*details-page-css*/
 .movie-title{
-  font-size: xx-large;
+  font-size: xX-large;
+
   color: #b5b5b5;
   background-color: #ffffff;
   font-weight: bold;
+
   padding: 8px;
 }
 .wishlist{

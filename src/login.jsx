@@ -7,6 +7,7 @@ import { useState  } from 'react';
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import CheckIcon from '@mui/icons-material/Check';
+import { toast } from 'react-toastify';
 const Login = () => {
     const { login  } = useAuth();
     const navigate = useNavigate();
@@ -24,11 +25,23 @@ const handleLogin = (e) => {
 
             if(user)   {
               login(email);
-              alert('Login Successful')
+               toast.success("Login Successful", {
+                position: "top-right",
+                autoClose: 1000,
+                hideProgressBar: true,
+              });
+             
               navigate('/');
               getStoredUser
             }else {
-              alert('Invalid email or password')
+              setEmail("")
+              setPassword("")
+               toast.error("Invalid email or password!", {
+                position: "top-right",
+                autoClose: 1000,
+                hideProgressBar: true,
+              });
+             
             }
 
           }
@@ -43,8 +56,8 @@ const handleLogin = (e) => {
             <TextField id="standard-basic" label="email" variant="standard" color='error'  value={email} onChange={(e)=>setEmail(e.target.value)} required/>
              <TextField id="standard-basic" label="Password" variant="standard" color='error'  value={password} onChange={(e)=>setPassword(e.target.value)} required/>
            </div>
-           <div>
-            <span>Don't have an account?</span><Link to="/register">Register</Link>
+           <div >
+            <span>Don't have an account?</span><Link to="/register" className='register'>Register</Link>
            </div>
             <Button type='submit' variant='outlined'
        style={{ backgroundColor: '#a00000', color: '#fff'  , border: 'none'}}>Login</Button>

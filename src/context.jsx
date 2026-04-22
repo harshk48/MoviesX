@@ -10,6 +10,7 @@ const ContextProvider = ({children}) => {
   const [user, setUser] = useState("");
   const [movieDetails, setMovieDetails] = useState([]);
   const [wishList, setWishList] = useState([]);
+   const [loading, setLoading] = useState(true);
   const login = (email) =>{
     setUser(email);
   }
@@ -20,7 +21,7 @@ const ContextProvider = ({children}) => {
 
   return (
   
-          <AuthContext.Provider  value={{ user, setUser , login, logout , movieDetails, setMovieDetails , wishList, setWishList}}>
+          <AuthContext.Provider  value={{ user, setUser , login, logout , movieDetails, setMovieDetails , wishList, setWishList ,setLoading ,loading}}>
         {children}
     </AuthContext.Provider>
         

@@ -1,6 +1,7 @@
 import React ,{useState} from 'react'
 import { Navigate } from 'react-router-dom'
 import TextField from '@mui/material/TextField';
+import { toast } from 'react-toastify';
 import './App.css'
 
 const Register = () => {
@@ -28,7 +29,12 @@ const handleRegister = (e) => {
    const alreadyExists = existingUsers.some((user) => user.username === username);
   
   if (alreadyExists) {
-    alert('User already registered ❌');
+     toast.error("User already registered ❌", {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: true,
+                  });
+    
     setUsername('')
     setPassword('')
     return;

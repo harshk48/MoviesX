@@ -13,7 +13,6 @@ import TheatersIcon from '@mui/icons-material/Theaters';
 
 const Home = () => {
 
-  
   return (
     <div>
 <div className='hero-section'>
@@ -22,8 +21,6 @@ const Home = () => {
 <p>The search is over! Let Plex help you find the perfect movie to watch tonight for free.</p>
 <Button> <Link to={'/category'} className='explore-btn'>EXPLORE </Link></Button>
     </div>
-
-
 
 </div>
 <div className='card'>

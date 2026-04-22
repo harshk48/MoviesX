@@ -3,45 +3,9 @@ import {useEffect, useState ,useContext} from 'react'
 import { AuthContext } from './context';
 import { Link } from 'react-router-dom';
 import "./App.css"
-// import Slider from "react-slick";
+
 
 const Series = () => {
-//  var settings = {
-//     dots: true,
-//     infinite: false,
-//     speed: 500,
-//     slidesToShow: 4,
-//     slidesToScroll: 4,
-//     initialSlide: 0,
-//     responsive: [
-//       {
-//         breakpoint: 1024,
-//         settings: {
-//           slidesToShow: 3,
-//           slidesToScroll: 3,
-//           infinite: true,
-//           dots: true
-//         }
-//       },
-//       {
-//         breakpoint: 600,
-//         settings: {
-//           slidesToShow: 2,
-//           slidesToScroll: 2,
-//           initialSlide: 2
-//         }
-//       },
-//       {
-//         breakpoint: 480,
-//         settings: {
-//           slidesToShow: 1,
-//           slidesToScroll: 1
-//         }
-//       }
-//     ]
-//   };
-
-
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
 const [data, setData] = useState([]);
@@ -51,7 +15,7 @@ const [page ,setPage] = useState(1);
 const seriesAPI = async  () => {
   const response = await fetch(`${API_URL}?s=series&plot=full&page=${page}&apikey=${API_KEY}`);
   const data = await response.json();
-    setData(data.Search);
+  setData(data.Search);
     console.log(data)
 }
 const seriesDetailsHandle = (id) => () => {
@@ -82,33 +46,32 @@ useEffect(()=>{
   return (
   
    <div className='series-main-container'>
-        <h1 className='heading'>Series</h1>
-    <div className='series-container'>
       
-            {/* <Slider {...settings}> */}
+          
 
+          {
+          data.length > 1 ?   <h1 className='heading'>Series</h1> : null  
+          } 
+        <div className='series-container'>
     {   
-       page >= 1 ?  data?.map((series , index)=>(
-            <Link key={index} to={`./details?${series.imdbID}`} onClick={seriesDetailsHandle(series.imdbID)} className='cards'>
+       page >= 1  ?   data?.map((series , index)=>(
+            <Link key={index} to={`/details?${series.imdbID}`} onClick={seriesDetailsHandle(series.imdbID)} className='cards'>
               <div key={index} className='series-card'>
                 <img src={series.Poster} alt={series.Title}/>
                  <h3>{series.Title}</h3>
             <h4>{series.Year}</h4>
             </div></Link>
-        )) : <h1>not found page</h1>
+        )) : <h1>page not found</h1>
     }
-      {/* </Slider> */}
-    </div>
-    <div className='page-container'>
+
+
+  </div>
+     { data.length > 1  ? <div className='page-container'>
 
    <button className='prev' onClick={handlePrev }>prev</button><p>{page}</p><button className='next' onClick={handleNext}>next</button>
+    </div> : null}
+     
     </div>
-<div>
-
-
-
-</div>
-  </div>
   
  
   )

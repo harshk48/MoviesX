@@ -1,17 +1,17 @@
 import React, { useEffect , useState } from 'react'
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from './context.jsx';
 import { useContext } from 'react';
 import { AuthContext } from './context.jsx';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import CircularProgress from '@mui/material/CircularProgress'; 
+import CircularProgress from '@mui/material/CircularProgress';
+import { Navigate } from 'react-router-dom'; 
 
+import { toast } from "react-toastify";
 const Movies = () => {
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
-const navigate = useNavigate();
 const [data, setData] = useState([]);
 const [VisibleMovies ,setVisibleMovies] = useState([])
 const [search, setSearch] = useState("");
@@ -19,7 +19,8 @@ const [filteredData, setFilteredData] = useState([]);
  const {setMovieDetails  } = useContext(AuthContext )
  const {wishList  ,  setWishList } = useContext(AuthContext);
  const  {user } = useAuth();
-
+const navigate = useNavigate()
+const {setLoading} = useContext(AuthContext)
 const Movies = async () => {
   try {
     const totalPages = 10; // 1 → 100
@@ -33,7 +34,7 @@ const Movies = async () => {
     }
 
     const responses = await Promise.all(requests);
-
+    
     // Merge all objects into one array
     const mergedArray = responses.reduce((acc, curr) => {
       if (curr.data.Search) {
@@ -41,23 +42,21 @@ const Movies = async () => {
       }
       return acc;
     }, []);
- setData(mergedArray);
-setVisibleMovies(mergedArray.slice(0, 10));
-console.log(VisibleMovies)
+    setData(mergedArray);
+    setVisibleMovies(mergedArray.slice(0, 10));
+    console.log(VisibleMovies)
     console.log(mergedArray);
+    
   } catch (error) {
     console.error(error);
   }
 };
 
-//  const settings = {
-//    
-//   };
 
 const movieDetailsHandle = (id) => () => {
 const selectedMovie = data.find(movie => movie.imdbID === id);
   setMovieDetails(selectedMovie);
-  // navigate('/details')
+ navigate('/details') 
 };
 const moviesToShow =
   search == null  ?  filteredData : VisibleMovies; 
@@ -69,17 +68,23 @@ const handleAddToWishlist = (index) => (e) => {
   e.preventDefault();
   const selectedMovie = data[index];
   console.log(selectedMovie)
- const stored =
-    JSON.parse(localStorage.getItem("wishlist")) || [];
+ const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
   const exists = stored.some(((index)=> index.imdbID === index)
   );
  if (exists) {
-    alert("Already in wishlist ❌");
+  toast.error("Already in wishlist ❌", {
+  position: "top-right",
+  hideProgressBar: false,
+});
     return;
   }
   setWishList([...wishList, selectedMovie]);
     localStorage.setItem("wishlist", JSON.stringify([...wishList, selectedMovie]));
-  alert('added in wishlist')
+ toast.success("added in wishlist!", {
+  position: "top-right",
+  autoClose: 1000,
+  hideProgressBar: false,
+});
   // navigate(`/wishList`);
 };
 const handleSearch = (e) => {
@@ -90,8 +95,10 @@ const handleSearch = (e) => {
   if(filteredMovies){
     setFilteredData(filteredMovies );
 setVisibleMovies([])
-  }
+
+}
 // setData([ filteredMovies ]);
+setLoading(false); // stop loading
   console.log(search);
    Movies();
    return;
@@ -112,11 +119,12 @@ Movies();
         <button className='search-btn'  type='submit'>Search</button>
         
       </form>
+       
       </div>
 <div className='movie-container'>
- {/* { moviesToShow.length == 0 ?  <CircularProgress color="error" aria-label="Loading…" />
-      :  } */}
-      <h1 className='heading'>Recommended Movies</h1>
+ { moviesToShow.length == 0 ?  <CircularProgress color="error" aria-label="Loading…" />
+      :  <h1 className='heading'>Recommended Movies</h1>}
+      
       { moviesToShow.map((movie , index) => (
         <Link key={index} to={`/details`}  onClick={movieDetailsHandle(movie.imdbID)} className='cards'>
           <div key={index} className='movie-card'>

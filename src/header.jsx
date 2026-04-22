@@ -69,7 +69,7 @@ const Header = () => {
   return (
     <div className='header-main'>
       <nav className='header'>
-       <div> <h1 className='logo'>MoviesX</h1></div>
+       <div> <Link className='logo' to={'/'}>MoviesX</Link></div>
         {isMobile ? (
           <>
             <IconButton

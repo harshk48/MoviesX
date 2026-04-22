@@ -10,6 +10,8 @@ import WishList from './wishlist.jsx';
 import Register from './register.jsx';
 import Home from './home.jsx';
 import { AuthContext } from './context.jsx';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function App() {
  const {user} = useContext(AuthContext)
 
@@ -17,7 +19,9 @@ function App() {
     <>
     <div>
 <Header/>
+ <ToastContainer />
 <Routes>
+  
    <Route path='/' element={<Home/>} />
   <Route path='/category' element={<Category/>} />
   <Route path='/details' element={<Details/>} />
