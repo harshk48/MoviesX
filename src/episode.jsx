@@ -1,9 +1,9 @@
 import React, {useEffect, useState , useContext} from 'react'
 import { Link } from 'react-router-dom';
 import { AuthContext } from './context';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { motion } from 'framer-motion';
+import {boxVariant} from './animation'
+
 const Episode = () => {
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -28,7 +28,10 @@ useEffect(()=>{
     episodeAPI()
 },[])
   return (
-<div className='episode-main-container'>
+<motion.div className='episode-main-container'  variants={boxVariant}
+      initial="hidden"
+      whileInView="visible"
+      transition={{ duration: 0.6 }}>
     { data.length > 1  ? <h1 className='heading'>Episode</h1> : null}   
     <div className='series-container'>
     {   
@@ -43,7 +46,7 @@ useEffect(()=>{
     }
     </div>
 
-    </div>
+    </motion.div>
   )
 }
 

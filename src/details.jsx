@@ -2,6 +2,8 @@ import React, {  useContext , useEffect, useState } from 'react'
 import { AuthContext } from './context'
 import StarIcon from '@mui/icons-material/Star';
 import './App.css'
+import { motion } from 'framer-motion';
+import {boxVariant} from './animation'
 const Details = () => {
   const {movieDetails} = useContext(AuthContext);
   const [details, setDetails] = useState([]);
@@ -19,7 +21,10 @@ useEffect(() => {
 }, [])
 
   return (
-    <div >
+    <motion.div variants={boxVariant}
+      initial="hidden"
+      whileInView="visible"
+      transition={{ duration: 0.6 }}>
       <h1 className='movie-title'>{movieDetails?.Title}</h1>
 
       {details.length === 0  ? (
@@ -48,7 +53,7 @@ useEffect(() => {
           </div>
               </div>
   )}
-    </div>
+    </motion.div>
   )
 }
 

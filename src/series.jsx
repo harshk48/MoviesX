@@ -3,7 +3,8 @@ import {useEffect, useState ,useContext} from 'react'
 import { AuthContext } from './context';
 import { Link } from 'react-router-dom';
 import "./App.css"
-
+import { motion } from 'framer-motion';
+import {boxVariant} from './animation'
 
 const Series = () => {
 const API_URL = import.meta.env.VITE_API_URL;
@@ -33,7 +34,6 @@ const handleNext = async ( ) =>{
   console.log(data)
  
 }
-
 const handlePrev = async ( ) =>{
   setPage(page-1)
   setData(data)
@@ -44,11 +44,11 @@ useEffect(()=>{
     
 }, [page])
   return (
-  
-   <div className='series-main-container'>
-      
-          
 
+   <motion.div className='series-main-container'  variants={boxVariant}
+   initial="hidden"
+      whileInView="visible"
+      transition={{ duration: 0.6 }}>
           {
           data.length > 1 ?   <h1 className='heading'>Series</h1> : null  
           } 
@@ -71,7 +71,7 @@ useEffect(()=>{
    <button className='prev' onClick={handlePrev }>prev</button><p>{page}</p><button className='next' onClick={handleNext}>next</button>
     </div> : null}
      
-    </div>
+    </motion.div>
   
  
   )

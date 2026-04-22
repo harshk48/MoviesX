@@ -7,7 +7,8 @@ import { AuthContext } from './context.jsx';
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Navigate } from 'react-router-dom'; 
-
+import { motion } from 'framer-motion';
+import {boxVariant} from './animation'
 import { toast } from "react-toastify";
 const Movies = () => {
 const API_URL = import.meta.env.VITE_API_URL;
@@ -112,8 +113,11 @@ Movies();
 
  
   return (
-    <>
-    <div className='search-container'>
+    <motion.div variants={boxVariant}
+      initial="hidden"
+      whileInView="visible"
+      transition={{ duration: 0.6 }}>
+    <div className='search-container'  >
       <form onSubmit={handleSearch} className='search-bar'>
         <input type='search' placeholder='Search movies...' value={search}   onChange={(e) => setSearch(e.target.value)}/>
         <button className='search-btn'  type='submit'>Search</button>
@@ -121,7 +125,10 @@ Movies();
       </form>
        
       </div>
-<div className='movie-container'>
+<motion.div  className='movie-container' variants={boxVariant}
+      initial="hidden"
+      whileInView="visible"
+      transition={{ duration: 0.6 }}>
  { moviesToShow.length == 0 ?  <CircularProgress color="error" aria-label="Loading…" />
       :  <h1 className='heading'>Recommended Movies</h1>}
       
@@ -144,9 +151,9 @@ Movies();
         </Link>
       ))  }
      
-</div>
+</motion.div>
     
- </> )
+ </motion.div> )
 
 }
 
