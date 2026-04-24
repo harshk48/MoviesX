@@ -53,6 +53,7 @@ font-weight: 500;
 
  .heading{
    background: transparent;
+   
   padding: 10px;
  color: #a00000; 
  margin: 0px auto;
@@ -77,15 +78,20 @@ justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(to left, rgba(0, 0, 230, 0.374), rgba(255, 0, 0, 0.319));
-    position: sticky;
-  top: 0;
-  z-index: 1000;
+  background: linear-gradient(to left, rgba(0, 0, 230, 0.532), rgba(255, 0, 0, 0.586));
+ 
   list-style: none;
 width: 100%;
-font-size: larger;
+font-size:large;
 
 }
+.header-main{
+   position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+
 .headerlist {
   text-decoration: none;
   color: #a00000;
@@ -150,6 +156,8 @@ min-width: 35%;
 .search-container{
   width: auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin: auto;
 }
 .search-bar button{
