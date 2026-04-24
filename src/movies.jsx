@@ -80,6 +80,7 @@ const handleAddToWishlist = (index) => (e) => {
 });
 return;
 }
+navigate('/')
   setWishList([...wishList, selectedMovie]);
     localStorage.setItem("wishlist", JSON.stringify([...wishList, selectedMovie]));
  toast.success("added in wishlist!", {

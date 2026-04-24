@@ -58,22 +58,22 @@ useEffect(()=>{
           } 
         <div className='series-container'>
     {   
-       page == 0 ? <h1>page not found</h1> :  data?.map((series , index)=>(
+       page >= 1  ?   data?.map((series , index)=>(
             <Link key={index} to={`/details?${series.imdbID}`} onClick={seriesDetailsHandle(series.imdbID)} className='cards'>
               <div key={index} className='series-card'>
                 <img src={series.Poster} alt={series.Title}/>
                  <h3>{series.Title}</h3>
             <h4>{series.Year}</h4>
             </div></Link>
-        )) 
+        )) : <h1>page not found</h1>
     }
 
 
   </div>
-     { data.length > 1  && page >= 1  ? <div className='page-container'>
+     { data.length > 1  ? <div className='page-container'>
 
    <FontAwesomeIcon onClick={handlePrev } size='2xl'  icon={faCaretLeft} style={{color: "rgb(207, 21, 21)", cursor: "pointer"}} /><p>{page}</p> <FontAwesomeIcon onClick={handleNext}  icon={faCaretRight} size="2xl" style={{color: "rgb(207, 21, 21)", cursor:"pointer"}}/>
-    </div> : <h1>page not found</h1>}
+    </div> : null}
      
     </motion.div>
   
