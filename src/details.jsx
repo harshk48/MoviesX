@@ -30,10 +30,8 @@ useEffect(() => {
       ) : (
         <div className='details-cards'>    
         <h1 className='movie-title'>{movieDetails?.Title}</h1>
-        <div key={details.imdbID} className='detail-card'>
-        
+        <div key={details.imdbID} className='detail-card'> 
 <div className='img-con'>
-
               <img src={details.Poster} alt={details.Title}  />
 </div>  
               <div className='details-info'> 

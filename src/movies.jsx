@@ -59,7 +59,7 @@ const Movies = async () => {
 const movieDetailsHandle = (id) => () => {
 const selectedMovie = data.find(movie => movie.imdbID === id);
   setMovieDetails(selectedMovie);
- navigate('/details') 
+  
 };
 const moviesToShow =
   search == null  ?  filteredData : VisibleMovies; 
@@ -80,7 +80,7 @@ const handleAddToWishlist = (index) => (e) => {
 });
 return;
 }
-navigate('/')
+
   setWishList([...wishList, selectedMovie]);
     localStorage.setItem("wishlist", JSON.stringify([...wishList, selectedMovie]));
  toast.success("added in wishlist!", {

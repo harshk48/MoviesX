@@ -99,9 +99,9 @@ const Header = () => {
                <li  className='headerlist'>
                 <Link  to={'/category'}>category</Link>
               </li>
-              <li className='headerlist'>
+              {/* <li className='headerlist'>
                 <Link  to={'/details'}>Details</Link>
-              </li>
+              </li> */}
             </ul>
            </div>
             <div className='header__right'>
