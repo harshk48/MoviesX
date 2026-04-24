@@ -11,13 +11,9 @@ const Home = () => {
  
   return (
     <div className='home-container'>
-
-    
-      
         <Movies />
         <Series/>
         <Episode/>
-   
     </div>
   )
 }

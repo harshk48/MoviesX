@@ -46,7 +46,11 @@ const handleRegister = (e) => {
  existingUsers.push(newUser);
 
   localStorage.setItem('Register', JSON.stringify(existingUsers));
-  alert("Registration successful ✅");
+  toast.success("Registration successful ✅", {
+                    position: "top-right",
+                    autoClose: 1000,
+                    hideProgressBar: true,
+                  });
 
   // 6. Clear input fields
   setUsername('');
@@ -55,7 +59,7 @@ const handleRegister = (e) => {
 
 
   return (
-    <div>
+    <div className='login'>
       <form action="" method="post" className='login-form' onSubmit={handleRegister}>
     <h1 className='login-head'>Register Your Account</h1>
       <TextField id="standard-basic" label="username" variant="standard" color='error'  value={username} onChange={(e)=>setUsername(e.target.value)} required/>

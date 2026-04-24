@@ -5,7 +5,8 @@
   padding: 0;
   box-sizing: border-box;
    scrollbar-width: none;
-   overflow-x: hidden;
+   scroll-behavior: smooth;
+   
 }
 .logo{
   color: #950000;
@@ -24,12 +25,16 @@
   flex-direction: column;
 justify-content: space-evenly;
 }
+.home-container{
+  background: linear-gradient(to left
+  , rgba(0, 0, 230, 0.374), rgba(255, 0, 0, 0.319));
+height: 100%;
+}
 .hero-con{
   display: flex;
   margin: auto;
   font-size: larger;
   font-weight: 700;
-
   flex-direction: column;
   gap: 20px;
   justify-content: left;
@@ -47,11 +52,14 @@ font-weight: 500;
 }
 
  .heading{
-   background-color: #ebebeb;
+   background: transparent;
   padding: 10px;
  color: #a00000; 
  margin: 0px auto;
  font-size: larger;
+ 
+ font-size: larger;
+ font-weight: bold;
  font-weight: 500;
 }
 .main-container .heading{
@@ -68,9 +76,11 @@ font-weight: 500;
 justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
-
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  background-color: #fff;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(to left, rgba(0, 0, 230, 0.374), rgba(255, 0, 0, 0.319));
+    position: sticky;
+  top: 0;
+  z-index: 1000;
   list-style: none;
 width: 100%;
 font-size: larger;
@@ -79,15 +89,16 @@ font-size: larger;
 .headerlist {
   text-decoration: none;
   color: #a00000;
-  font-weight: 500;
+  padding: 5px 8px;
+  border-radius: 10px;
 }
 .list-container{
   display: flex;
   justify-content: center;
 }
 .headerlist:hover {
-  
-  color: #f46a6a;
+  background-color: #a00000c9;
+  color: #fff;
 }
 .header ul {
   list-style: none;
@@ -165,9 +176,11 @@ gap: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  margin-top: 20px;
   justify-content: center;
+  gap: 20px;
+  height: 92vh;
+  background: linear-gradient(to left
+  , rgba(0, 0, 230, 0.374), rgba(255, 0, 0, 0.319));
 }
 
 .login-form{
@@ -175,14 +188,12 @@ gap: 20px;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  align-items: center;
-  gap: 12px;
+  gap: 22px;
+ margin: auto;
+  width: 50vw;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   
-  margin: auto;
- width: 80%;
-  padding: 18px;
-  margin-top: 20px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .search-form{
   display: flex;
@@ -229,19 +240,29 @@ Button:active{
   color: #ffffff;
   
 }
+ .details-info{
+  display: flex;
+flex-direction: column;
+  gap: 35px;
+  padding: 5px;
+  align-items: flex-start;
+
+
+}
 
 .movie-card .details-info{
   display: flex;
-  flex-direction: column;
+
   align-items: center;
   margin: auto;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-around;
+  gap: 20px;
 }
 .movie-card img{
   object-fit: cover;
   width: 100%;
   height: 30em;
+  border-radius: 10px;
 }
 .header-item{
   text-decoration: none;
@@ -251,25 +272,49 @@ Button:active{
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  
-  padding: 10px;
+
+  padding: 12px;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
  
 }
+
+.detail-main-con{
+  background: linear-gradient(to left
+  , rgba(0, 0, 230, 0.374), rgba(255, 0, 0, 0.319));
+ height: 100%;
+}
 .detail-card {
   display: flex;
-  flex-direction: column;
+  gap: 10px;
+  
   align-items: center;
   justify-content: center;
-  margin: auto;
-  gap: 10px;
+  flex-wrap: wrap;
   padding: 20px;
- 
-  width: auto;
+width: 100%;
   border-radius: 10px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
  
+}
+
+.img-con{
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+display: flex;
+
+}
+.img-con img{
+  width: 100%;
+  object-fit: cover;
+ 
+  background-size: contain;
+}
+  
+
+.detail-card img{
+  object-fit: cover;
+  width: 50%;
 }
 .series-card{
   padding: 10px;
@@ -278,26 +323,36 @@ Button:active{
   object-fit: cover;
  
 }
+.series-card img{
+  border-radius: 10px;
+  object-fit: cover;
+}
 
 .movie-card:hover{
   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-   transition: all 0.3s ease;
-  transform: scale(1.04);
+transition: all 1s ease;
+transform: scale(1.01);
 }
 
 .series-card:hover{
    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-   transition: all 0.3s ease;
-  transform: scale(1.04);
+transition: all 1s ease;
+transform: scale(1.01);
 }
 .Episode-card:Hover{
    box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-   transition: all 0.3s ease;
-  transform: scale(1.04);
+   transition: all 1s ease;
+transform: scale(1.01);
 }
 .Episode-card{
   padding: 8px;
+  border-radius: 10px;
 
+
+}
+.Episode-card img {
+  object-fit: cover;
+  border-radius: 10px;
 
 }
 
@@ -320,7 +375,7 @@ Button:active{
  margin: auto;
   width: 90%;
   margin-top: 10px;
-  background-color: #fefefed0;
+background: transparent;
   
 }
   
@@ -343,12 +398,20 @@ Button:active{
 .movie-container h1{
   margin: auto;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
+  gap: 10px;
+  cursor: pointer;
 
  
 }
+.details-info h1{
+  
+  font-weight: 500;
+  font-size: xx-large;
+}
+
 .card-con{
     text-decoration: none;
   color: #a00000;
@@ -379,10 +442,14 @@ Button:active{
   color: #a00000;
   padding: 5px;
   display: flex;
-  width: auto;
-  
- 
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+ margin: auto;
   gap: 10px;
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
 
 }
 .details-cards{
@@ -390,8 +457,10 @@ Button:active{
   color: #a00000;
   padding: 5px;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+ width: auto;
+margin: auto;
   gap: 20px;
 }
 .ListItem{
@@ -400,15 +469,19 @@ Button:active{
 }
 .login-head{
   font-size: xx-large;
-  color: #b6abab; 
-  letter-spacing: 8px;
+ 
+  color: #a00000;
+  letter-spacing: 6px;
   font-weight: bold;
   
 }
 .login-inputs{
   display: flex;
   flex-direction: column;
-  gap: 15px;
+
+  justify-content: space-evenly;
+  
+  gap: 25px;
   margin-top: 25px;
 }
 .Text{
@@ -430,9 +503,9 @@ input[type="text"]:focus{
 /*details-page-css*/
 .movie-title{
   font-size: xX-large;
-
-  color: #b5b5b5;
-  background-color: #ffffff;
+box-shadow: 0px 1px rgba(0, 0, 0, 0.3);
+  color: #a00000;
+  
   font-weight: bold;
 
   padding: 8px;

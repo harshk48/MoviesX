@@ -7,7 +7,7 @@ const WishList = () => {
 const { wishList , setWishList   } = useContext(AuthContext);
 const {setMovieDetails } = useContext(AuthContext)
 const storedwishlist = JSON.parse(localStorage.getItem("wishlist"));
-console.log(storedwishlist.length);
+
 
 
 const removewishlist = (imdbID) => {
@@ -17,7 +17,6 @@ const removewishlist = (imdbID) => {
     (item) => item.imdbID !== imdbID
   );
  localStorage.setItem("wishlist", JSON.stringify(updated));
-
 }
 const movieDetailsHandle = (id) => () => {
 const selectedMovie = storedwishlist.find(movie => movie.imdbID === id);
@@ -26,10 +25,9 @@ const selectedMovie = storedwishlist.find(movie => movie.imdbID === id);
 };
 
   return (
-    <div>
+    <div className='home-container'>
       <h1 className='movie-title'>WishLists</h1>
          <div className='cards'>
-
 {
      storedwishlist.length == 0  ?   <h1 >No Wishlist</h1>
      :  storedwishlist.map((movie , index) => (

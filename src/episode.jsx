@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from './context';
 import { motion } from 'framer-motion';
 import {boxVariant} from './animation'
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons"
 const Episode = () => {
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -32,7 +33,7 @@ useEffect(()=>{
       initial="hidden"
       whileInView="visible"
       transition={{ duration: 0.6 }}>
-    { data.length > 1  ? <h1 className='heading'>Episode</h1> : null}   
+    { data.length > 1  ? <h1 className='heading'>Episode <FontAwesomeIcon icon={faChevronRight} style={{color: "rgb(207, 21, 21)",}} /></h1> : null}   
     <div className='series-container'>
     {   
       data?.map((Episode , index)=>(

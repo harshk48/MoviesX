@@ -9,6 +9,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { Navigate } from 'react-router-dom'; 
 import { motion } from 'framer-motion';
 import {boxVariant} from './animation'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons"
 import { toast } from "react-toastify";
 const Movies = () => {
 const API_URL = import.meta.env.VITE_API_URL;
@@ -62,23 +64,22 @@ const selectedMovie = data.find(movie => movie.imdbID === id);
 const moviesToShow =
   search == null  ?  filteredData : VisibleMovies; 
   console.log(moviesToShow.length)
-const stored =
-    JSON.parse(localStorage.getItem("wishlist")) || [];
+const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
 
 const handleAddToWishlist = (index) => (e) => {
   e.preventDefault();
   const selectedMovie = data[index];
   console.log(selectedMovie)
  const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
-  const exists = stored.some(((index)=> index.imdbID === index)
+  const exists = stored.some(((index)=> index.imdbID === selectedMovie.imdbID)
   );
  if (exists) {
   toast.error("Already in wishlist ❌", {
   position: "top-right",
   hideProgressBar: false,
 });
-    return;
-  }
+return;
+}
   setWishList([...wishList, selectedMovie]);
     localStorage.setItem("wishlist", JSON.stringify([...wishList, selectedMovie]));
  toast.success("added in wishlist!", {
@@ -130,12 +131,12 @@ Movies();
       whileInView="visible"
       transition={{ duration: 0.6 }}>
  { moviesToShow.length == 0 ?  <CircularProgress color="error" aria-label="Loading…" />
-      :  <h1 className='heading'>Recommended Movies</h1>}
+      : 
+       <h1 className='heading'>Recommended Movies <FontAwesomeIcon icon={faChevronRight} style={{color: "rgb(207, 21, 21)",}} /></h1>}
       
       { moviesToShow.map((movie , index) => (
         <Link key={index} to={`/details`}  onClick={movieDetailsHandle(movie.imdbID)} className='cards'>
           <div key={index} className='movie-card'>
-        
             <img src={movie.Poster} alt={movie.Title} />
             <h3>{movie.Title}</h3>
             <h4>{movie.Year}</h4>

@@ -107,7 +107,7 @@ const Header = () => {
             <div className='header__right'>
               {user ? (
                 <Button variant="outlined" color="error" startIcon={<FavoriteIcon />}>
-                  <Link to='/wishList' style={{ textDecoration: 'none' , color: '#a00000'}}>wishList</Link>
+                  <Link to='/wishlist' style={{ textDecoration: 'none' , color: '#a00000'}}>wishList</Link>
                 </Button>
               ) : null}
               {user ? (

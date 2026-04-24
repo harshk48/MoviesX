@@ -22,7 +22,6 @@ const handleLogin = (e) => {
     const user = storedData.find(
       (u) => u.username === getStoredUser.email && u.password === getStoredUser.password
 );
-
             if(user)   {
               login(email);
                toast.success("Login Successful", {
@@ -48,6 +47,7 @@ const handleLogin = (e) => {
 
 
   return (
+    <>
     <div className='login'>
 
         <form action="" method="post"  className='login-form' onSubmit={handleLogin}>
@@ -63,6 +63,7 @@ const handleLogin = (e) => {
        style={{ backgroundColor: '#a00000', color: '#fff'  , border: 'none'}}>Login</Button>
         </form>
     </div>
+    </>
 
   )
 }

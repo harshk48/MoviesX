@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 import "./App.css"
 import { motion } from 'framer-motion';
 import {boxVariant} from './animation'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faChevronRight} from "@fortawesome/free-solid-svg-icons"
+import {faCaretLeft} from "@fortawesome/free-solid-svg-icons"
+import {faCaretRight} from "@fortawesome/free-solid-svg-icons"
 
 const Series = () => {
 const API_URL = import.meta.env.VITE_API_URL;
@@ -50,26 +54,26 @@ useEffect(()=>{
       whileInView="visible"
       transition={{ duration: 0.6 }}>
           {
-          data.length > 1 ?   <h1 className='heading'>Series</h1> : null  
+          data.length > 1 ?   <h1 className='heading'>Series <FontAwesomeIcon icon={faChevronRight} style={{color: "rgb(207, 21, 21)",}} /></h1> : null  
           } 
         <div className='series-container'>
     {   
-       page >= 1  ?   data?.map((series , index)=>(
+       page == 0 ? <h1>page not found</h1> :  data?.map((series , index)=>(
             <Link key={index} to={`/details?${series.imdbID}`} onClick={seriesDetailsHandle(series.imdbID)} className='cards'>
               <div key={index} className='series-card'>
                 <img src={series.Poster} alt={series.Title}/>
                  <h3>{series.Title}</h3>
             <h4>{series.Year}</h4>
             </div></Link>
-        )) : <h1>page not found</h1>
+        )) 
     }
 
 
   </div>
-     { data.length > 1  ? <div className='page-container'>
+     { data.length > 1  && page >= 1  ? <div className='page-container'>
 
-   <button className='prev' onClick={handlePrev }>prev</button><p>{page}</p><button className='next' onClick={handleNext}>next</button>
-    </div> : null}
+   <FontAwesomeIcon onClick={handlePrev } size='2xl'  icon={faCaretLeft} style={{color: "rgb(207, 21, 21)", cursor: "pointer"}} /><p>{page}</p> <FontAwesomeIcon onClick={handleNext}  icon={faCaretRight} size="2xl" style={{color: "rgb(207, 21, 21)", cursor:"pointer"}}/>
+    </div> : <h1>page not found</h1>}
      
     </motion.div>
   

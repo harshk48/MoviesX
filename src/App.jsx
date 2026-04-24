@@ -26,7 +26,7 @@ function App() {
   <Route path='/category' element={<Category/>} />
   <Route path='/details' element={<Details/>} />
   <Route path='/Login' element={<Login/>} />
- {user ?<Route path='/wishList' element={<WishList/>} /> : null} 
+ {user ?<Route path='/wishlist' element={<WishList/>} /> : null} 
   <Route path='/register' element={<Register/>} />
 </Routes>
     </div>

@@ -14,7 +14,7 @@ import TheatersIcon from '@mui/icons-material/Theaters';
 const Home = () => {
 
   return (
-    <div>
+    <div className='home-container'>
 <div className='hero-section'>
     <div className='hero-con'>
 <h1>Book Movies , Buy Movies To Watch Online </h1>
@@ -24,10 +24,10 @@ const Home = () => {
 
 </div>
 <div className='card'>
-<Card sx={{ maxWidth: 345 }}>   
+<Card sx={{ maxWidth: 345  }}  className='cards'>   
         <CardContent>
         <PublicIcon  sx={{ color: 'green' , fontSize:'40px' }}/>
-         <Typography gutterBottom variant="h5" component="div">
+         <Typography gutterBottom variant="h5" component="div" sx={{color:'green'}}>
            Works Worldwide
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -38,10 +38,10 @@ const Home = () => {
         
       </CardActions>
     </Card>
-    <Card sx={{ maxWidth: 345 }}>   
+    <Card sx={{ maxWidth: 345 }} className='cards'>   
         <CardContent>
         <OndemandVideoIcon sx={{ color: 'red' , fontSize:'40px' }}/>
-      <Typography gutterBottom variant="h5" component="div">
+      <Typography gutterBottom variant="h5" component="div" sx={{color:'red'}}>
             Device-Friendly
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -53,10 +53,10 @@ const Home = () => {
       </CardActions>
     </Card>
 
-     <Card sx={{ maxWidth: 345 }}>   
+     <Card sx={{ maxWidth: 345 }} className='cards'>   
         <CardContent>
         <TheatersIcon  sx={{ color: 'blue' , fontSize:'40px' }}/>
-    <Typography gutterBottom variant="h5" component="div">
+    <Typography gutterBottom variant="h5" component="div" sx={{color:'blue'}}>
             Thousands of Titles
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
@@ -69,9 +69,11 @@ const Home = () => {
     </Card>
 </div>
 
+{
 
 
 
+}
 
     </div>
   )
