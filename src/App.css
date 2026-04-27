@@ -1,36 +1,38 @@
-
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-   scrollbar-width: none;
-   scroll-behavior: smooth;
-   
+  scrollbar-width: none;
+  scroll-behavior: smooth;
 }
-.logo{
+
+.logo {
   color: #950000;
   font-weight: bold;
   font-size: larger;
-
-
 }
-.hero-section{
-  background-image: url('./assets/Watch-Free-Hero-2048x1152-1-1024x576.png');
+
+.hero-section {
+  background-image: url("./assets/Watch-Free-Hero-2048x1152-1-1024x576.png");
   height: 80vh;
   color: #cecece;
   display: flex;
   padding: 15px;
   opacity: 0.9;
   flex-direction: column;
-justify-content: space-evenly;
+  justify-content: space-evenly;
 }
-.home-container{
-  background: linear-gradient(to left
-  , rgba(0, 0, 230, 0.374), rgba(255, 0, 0, 0.319));
-height: 100%;
+
+.home-container {
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 230, 0.374),
+    rgba(255, 0, 0, 0.319)
+  );
+  height: 100%;
 }
-.hero-con{
+
+.hero-con {
   display: flex;
   margin: auto;
   font-size: larger;
@@ -39,58 +41,64 @@ height: 100%;
   gap: 20px;
   justify-content: left;
 }
-.explore-btn{
-text-decoration: none;  
-color: #ccc;
-border: 1px solid #950000;
-background-color: #950000;
-padding: 5px 20px;
-margin-top: 10px;
-border-radius: 8px;
-font-size: larger;
-font-weight: 500;
+
+.explore-btn {
+  text-decoration: none;
+  color: #ccc;
+  border: 1px solid #950000;
+  background-color: #950000;
+  padding: 5px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  font-size: larger;
+  font-weight: 500;
 }
 
- .heading{
-   background: transparent;
-   
+.heading {
+  background: transparent;
+
   padding: 10px;
- color: #a00000; 
- margin: 0px auto;
- font-size: larger;
- 
- font-size: larger;
- font-weight: bold;
- font-weight: 500;
+  color: #a00000;
+  margin: 0px auto;
+  font-size: larger;
+
+  font-size: larger;
+  font-weight: bold;
+  font-weight: 500;
 }
-.main-container .heading{
+
+.main-container .heading {
   background-color: #ebebeb;
   padding: 10px;
- color: #a00000;
-}
-.menu-btn{
   color: #a00000;
 }
 
-.header{
+.menu-btn {
+  color: #a00000;
+}
+
+.header {
   display: flex;
-justify-content: space-between;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(to left, rgba(0, 0, 230, 0.532), rgba(255, 0, 0, 0.586));
- 
-  list-style: none;
-width: 100%;
-font-size:large;
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 230, 0.532),
+    rgba(255, 0, 0, 0.586)
+  );
 
+  list-style: none;
+  width: 100%;
+  font-size: large;
 }
-.header-main{
-   position: sticky;
+
+.header-main {
+  position: sticky;
   top: 0;
   z-index: 1000;
 }
-
 
 .headerlist {
   text-decoration: none;
@@ -98,88 +106,90 @@ font-size:large;
   padding: 5px 8px;
   border-radius: 10px;
 }
-.list-container{
+
+.list-container {
   display: flex;
   justify-content: center;
 }
+
 .headerlist:hover {
   background-color: #a00000c9;
   color: #fff;
 }
+
 .header ul {
   list-style: none;
   display: flex;
   gap: 20px;
-  
-
 }
-.header__right{
+
+.header__right {
   display: flex;
   gap: 30px;
-  
 }
 
-
-.header ul li:hover{
+.header ul li:hover {
   text-decoration: none;
   list-style: none;
+}
 
-  
-}.header ul li a{
+.header ul li a {
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
 }
 
-.search-bar{
+.search-bar {
   display: flex;
   padding: 10px;
   margin: auto;
   justify-content: flex-start;
   margin-left: 45px;
   width: 100%;
- 
-  
 }
-.search-bar input{
+
+.search-bar input {
   padding: 10px;
   border-radius: 5px 0px 0px 5px;
-min-width: 35%;
+  min-width: 35%;
   border: 1px solid #a91e1e;
 }
 
-.search-bar input:focus{
+.search-bar input:focus {
   outline: none;
   border: 1px solid #db1e1e;
   color: #db1e1e;
 }
-.search-container{
+
+.search-container {
   width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
 }
-.search-bar button{
-    padding: 10px;
-    border-radius: 0px 5px 5px 0px;
-    border: none;
-    background-color: #a00000;
-    color: #fff;
-    cursor: pointer;
-  }
 
-.card{
+.search-bar button {
+  padding: 10px;
+  border-radius: 0px 5px 5px 0px;
+  border: none;
+  background-color: #a00000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.card {
   display: flex;
-flex-wrap: wrap;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-padding: 10px;
-gap: 20px;
+  padding: 10px;
+  gap: 20px;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.login{
+
+.login {
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -187,38 +197,43 @@ gap: 20px;
   justify-content: center;
   gap: 20px;
   height: 92vh;
-  background: linear-gradient(to left
-  , rgba(0, 0, 230, 0.374), rgba(255, 0, 0, 0.319));
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 230, 0.374),
+    rgba(255, 0, 0, 0.319)
+  );
 }
 
-.login-form{
+.login-form {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 22px;
- margin: auto;
+  margin: auto;
   width: 50vw;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  
 }
-.search-form{
+
+.search-form {
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
-input{
+
+input {
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
-input:focus{
+
+input:focus {
   outline: none;
   border: 1px solid #000;
 }
-Button{
+
+Button {
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -226,39 +241,39 @@ Button{
   color: #fff;
   cursor: pointer;
   list-style: none;
- 
 }
-Button:hover{
-opacity: 0.8;
 
- 
+Button:hover {
+  opacity: 0.8;
 }
-.register{
+
+.register {
   text-decoration: underline;
 }
-.register:hover{
+
+.register:hover {
   color: #950000;
 }
-Button:focus{
+
+Button:focus {
   outline: none;
   color: #ffffff;
 }
-Button:active{
+
+Button:active {
   background-color: #ba00004e;
   color: #ffffff;
-  
 }
- .details-info{
+
+.details-info {
   display: flex;
-flex-direction: column;
+  flex-direction: column;
   gap: 35px;
   padding: 5px;
   align-items: flex-start;
-
-
 }
 
-.movie-card .details-info{
+.movie-card .details-info {
   display: flex;
 
   align-items: center;
@@ -266,15 +281,18 @@ flex-direction: column;
   justify-content: space-around;
   gap: 20px;
 }
-.movie-card img{
+
+.movie-card img {
   object-fit: cover;
   width: 100%;
   height: 30em;
   border-radius: 10px;
 }
-.header-item{
+
+.header-item {
   text-decoration: none;
 }
+
 .movie-card {
   display: flex;
   flex-direction: column;
@@ -284,126 +302,127 @@ flex-direction: column;
   padding: 12px;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
- 
 }
 
-.detail-main-con{
-  background: linear-gradient(to left
-  , rgba(0, 0, 230, 0.374), rgba(255, 0, 0, 0.319));
- height: 100%;
+.detail-main-con {
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 230, 0.374),
+    rgba(255, 0, 0, 0.319)
+  );
+  height: 100%;
 }
+
 .detail-card {
   display: flex;
   gap: 10px;
-  
+
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   padding: 20px;
-width: 100%;
+  width: 100%;
   border-radius: 10px;
- 
 }
 
-.img-con{
-flex-wrap: wrap;
-align-items: center;
-justify-content: center;
-display: flex;
-
+.img-con {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
-.img-con img{
+
+.img-con img {
   width: 100%;
   object-fit: cover;
- 
+
   background-size: contain;
 }
-  
 
-.detail-card img{
+.detail-card img {
   object-fit: cover;
   width: 50%;
 }
-.series-card{
+
+.series-card {
   padding: 10px;
   cursor: pointer;
   color: #a00000;
   object-fit: cover;
- 
 }
-.series-card img{
+
+.series-card img {
   border-radius: 10px;
   object-fit: cover;
 }
 
-.movie-card:hover{
+.movie-card:hover {
   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-transition: all 1s ease;
-transform: scale(1.01);
+  transition: all 1s ease;
+  transform: scale(1.01);
 }
 
-.series-card:hover{
-   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-transition: all 1s ease;
-transform: scale(1.01);
+.series-card:hover {
+  box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+  transition: all 1s ease;
+  transform: scale(1.01);
 }
-.Episode-card:Hover{
-   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-   transition: all 1s ease;
-transform: scale(1.01);
+
+.Episode-card:hover {
+  box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
+  transition: all 1s ease;
+  transform: scale(1.01);
 }
-.Episode-card{
+
+.Episode-card {
   padding: 8px;
   border-radius: 10px;
-
-
 }
+
 .Episode-card img {
   object-fit: cover;
   border-radius: 10px;
-
 }
 
-.movies-container{
+.movies-container {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
-  
- 
 }
-.series-main-container{
- margin: auto;
+
+.series-main-container {
+  margin: auto;
   width: 90%;
   margin-top: 20px;
-  
 }
-.episode-main-container{
- margin: auto;
+
+.episode-main-container {
+  margin: auto;
   width: 90%;
   margin-top: 10px;
-background: transparent;
-  
+  background: transparent;
 }
-  
-.series-container{
+
+.series-container {
   display: flex;
   flex-wrap: wrap;
- align-items: center; 
- justify-content: center;
- margin: auto;
- text-align: center;
- gap: 20px;
-   margin-top: 5px;
- overflow-x: hidden;
- width: 90%;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  gap: 20px;
+  margin-top: 5px;
+  overflow-x: hidden;
+  width: 90%;
 }
-.series-container Link{
+
+.series-container Link {
   text-decoration: none;
 }
 
-.movie-container h1{
+.movie-container h1 {
   margin: auto;
   display: flex;
   justify-content: flex-start;
@@ -411,40 +430,39 @@ background: transparent;
   width: 100%;
   gap: 10px;
   cursor: pointer;
-
- 
 }
-.details-info h1{
-  
+
+.details-info h1 {
   font-weight: 500;
   font-size: xx-large;
 }
 
-.card-con{
-    text-decoration: none;
+.card-con {
+  text-decoration: none;
   color: #a00000;
   padding: 5px;
   display: flex;
   flex-direction: column;
   width: auto;
-  
+
   height: auto;
   gap: 20px;
-
 }
-.movie-container{
+
+.movie-container {
   width: 95%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-   margin: auto;
- text-align: center;
- gap: 30px;
+  margin: auto;
+  text-align: center;
+  gap: 30px;
   justify-content: space-evenly;
-   margin-top: 5px;
- overflow-x: hidden;
+  margin-top: 5px;
+  overflow-x: hidden;
 }
-.cards{
+
+.cards {
   text-decoration: none;
   color: #a00000;
   padding: 5px;
@@ -452,103 +470,110 @@ background: transparent;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
- margin: auto;
+  margin: auto;
   gap: 10px;
   cursor: pointer;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
-
 }
-.details-cards{
-   text-decoration: none;
+
+.details-cards {
+  text-decoration: none;
   color: #a00000;
   padding: 5px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
- width: auto;
-margin: auto;
+  width: auto;
+  margin: auto;
   gap: 20px;
 }
-.ListItem{
-  color: #a00000;
 
+.ListItem {
+  color: #a00000;
 }
-.login-head{
+
+.login-head {
   font-size: xx-large;
- 
+
   color: #a00000;
   letter-spacing: 6px;
   font-weight: bold;
-  
 }
-.login-inputs{
+
+.login-inputs {
   display: flex;
   flex-direction: column;
 
   justify-content: space-evenly;
-  
+
   gap: 25px;
   margin-top: 25px;
 }
-.Text{
+
+.Text {
   font-weight: 500;
   font-size: larger;
   color: #a00000;
 }
-input{
+
+input {
   padding: 10px;
   border-radius: 5px;
- font-size: medium;
+  font-size: medium;
   border: 1px solid #ccc;
 }
-input[type="text"]:focus{
+
+input[type="text"]:focus {
   outline: none;
- 
+
   border: 1px solid #000;
 }
+
 /*details-page-css*/
-.movie-title{
+.movie-title {
   font-size: xX-large;
-box-shadow: 0px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 1px rgba(0, 0, 0, 0.3);
   color: #a00000;
-  
+
   font-weight: bold;
 
   padding: 8px;
 }
-.wishlist{
+
+.wishlist {
   display: flex;
 
   align-items: center;
   gap: 20px;
 }
+
 .wishlistbtn {
-align-items: center;
-display: flex;
-justify-content: center;
-gap: 4px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
   cursor: pointer;
 }
-.wishlistbtn:hover{
 
+.wishlistbtn:hover {
   color: #da0202;
   cursor: pointer;
 }
-.load{
+
+.load {
   font-size: x-large;
   color: #a00000;
 }
-.rating{
+
+.rating {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 5px;
 }
-.page-container{
+.page-container {
   display: flex;
   gap: 20px;
   justify-content: center;
   align-items: center;
-
 }
