@@ -103,12 +103,12 @@ const Episode = () => {
             >
               <CardMedia
                 component="img"
-                height="300"
+                height="250"
                 image={episode.Poster}
                 alt={episode.Title}
               />
               <CardContent className="details-info">
-                <Typography variant="h6" noWrap>
+                <Typography variant="h6">
                   {episode.Title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

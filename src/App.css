@@ -477,7 +477,6 @@ Button:active {
 .details-cards {
   text-decoration: none;
   color: #a00000;
-  padding: 5px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
