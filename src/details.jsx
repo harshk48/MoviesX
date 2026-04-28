@@ -81,10 +81,9 @@ const Details = () => {
         </Typography>
       ) : (
         <Box
-          sx={{ p: 3 }}
-          sx={{ display: "flex", flexDirection: "column", flexWrap: "wrap" }}
+          sx={{ display: "flex", flexDirection: "column", flexWrap: "wrap" , p: 3 , m: 2 }}
         >
-          <Typography variant="h4" sx={{ color: "#a00000" }}>
+          <Typography variant="h4" sx={{ color: "#a00000" , m:2 }}>
             {movieDetails?.Title}
           </Typography>
 

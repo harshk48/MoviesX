@@ -2,6 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { AuthContext } from "./context";
 import { Link } from "react-router-dom";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Box,
   Typography,
@@ -64,7 +66,10 @@ const WishList = () => {
     <Box sx={{ p: 3 }}>
       {/* Title */}
       <Typography variant="h4" gutterBottom className="heading">
-        WishLists
+        WishLists  <FontAwesomeIcon
+              icon={faChevronRight}
+              style={{ color: "rgb(207, 21, 21)" }}
+            />
       </Typography>
 
       {/* Empty State */}
@@ -72,16 +77,16 @@ const WishList = () => {
         <Typography
           variant="h6"
           align="center"
-          sx={{ mt: 5 }}
+          sx={{ mt: 3 }}
           className="heading"
         >
           No Wishlist
         </Typography>
       ) : (
-        <Grid container spacing={3}>
+        <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap"}}>
           {storedwishlist.map((movie, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
-              <Card sx={{ maxWidth: 310, m: 2 }} className="details-info">
+              <Card sx={{ maxWidth: 310, m: 2 }} >
                 {/* Poster */}
                 <CardMedia
                   component="img"
@@ -91,7 +96,7 @@ const WishList = () => {
                 />
 
                 {/* Content */}
-                <CardContent>
+                <CardContent className="details-info">
                   <Typography variant="h6" noWrap>
                     {movie.Title}
                   </Typography>

@@ -483,6 +483,7 @@ Button:active {
   width: auto;
   margin: auto;
   gap: 20px;
+  background-color: #cecece;
 }
 
 .ListItem {
