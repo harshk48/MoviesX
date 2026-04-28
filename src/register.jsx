@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import TextField from "@mui/material/TextField";
 import { toast } from "react-toastify";
+import { Box, Typography, TextField, Button, Paper } from "@mui/material";
+import { Link } from "react-router-dom";
 import "./App.css";
 
 const Register = () => {
@@ -59,35 +60,113 @@ const Register = () => {
   };
 
   return (
-    <div className="login">
-      <form
-        action=""
-        method="post"
-        className="login-form"
-        onSubmit={handleRegister}
+    // <div className="login">
+    //   <form
+    //     action=""
+    //     method="post"
+    //     className="login-form"
+    //     onSubmit={handleRegister}
+    //   >
+    //     <h1 className="login-head">Register Your Account</h1>
+    //     <TextField
+    //       id="standard-basic"
+    //       label="username"
+    //       variant="standard"
+    //       color="error"
+    //       value={username}
+    //       onChange={(e) => setUsername(e.target.value)}
+    //       required
+    //     />
+    //     <TextField
+    //       id="standard-basic"
+    //       label="Password"
+    //       variant="standard"
+    //       color="error"
+    //       value={password}
+    //       onChange={(e) => setPassword(e.target.value)}
+    //       required
+    //     />
+    //     <button type="submit">Register</button>
+    //   </form>
+    // </div>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        bgcolor: "#f5f5f5",
+      }}
+    >
+      <Paper
+        elevation={4}
+        sx={{
+          p: 4,
+          width: 350,
+          borderRadius: 3,
+        }}
       >
-        <h1 className="login-head">Register Your Account</h1>
-        <TextField
-          id="standard-basic"
-          label="username"
-          variant="standard"
-          color="error"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <TextField
-          id="standard-basic"
-          label="Password"
-          variant="standard"
-          color="error"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Register</button>
-      </form>
-    </div>
+        <Box component="form" onSubmit={handleRegister}>
+          {/* Heading */}
+          <Typography
+            variant="h5"
+            textAlign="center"
+            gutterBottom
+            className="heading"
+          >
+            Register Your Account
+          </Typography>
+
+          {/* Inputs */}
+          <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2 }}>
+            <TextField
+              label="Username"
+              variant="standard"
+              color="error"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              fullWidth
+            />
+
+            <TextField
+              label="Password"
+              type="password"
+              variant="standard"
+              color="error"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              fullWidth
+            />
+          </Box>
+
+          {/* Login Redirect */}
+          <Box sx={{ mt: 2 }}>
+            <Typography variant="body2">
+              Already have an account?{" "}
+              <Link to="/login" style={{ color: "#1976d2" }}>
+                Login
+              </Link>
+            </Typography>
+          </Box>
+
+          {/* Button */}
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            sx={{
+              mt: 3,
+              bgcolor: "#a00000",
+              "&:hover": { bgcolor: "#800000" },
+            }}
+          >
+            Register
+          </Button>
+        </Box>
+      </Paper>
+    </Box>
   );
 };
 

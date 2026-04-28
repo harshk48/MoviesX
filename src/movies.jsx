@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "./context.jsx";
 import { useContext } from "react";
 import { AuthContext } from "./context.jsx";
@@ -12,6 +12,16 @@ import { boxVariant } from "./animation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import {
+  Card,
+  TextField,
+  CardMedia,
+  CardContent,
+  Typography,
+  Box,
+  Button,
+} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 const Movies = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -118,8 +128,9 @@ const Movies = () => {
       initial="hidden"
       whileInView="visible"
       transition={{ duration: 0.6 }}
+      className="movies-container "
     >
-      <div className="search-container">
+      {/* <div className="search-container">
         <form onSubmit={handleSearch} className="search-bar">
           <input
             type="search"
@@ -131,7 +142,25 @@ const Movies = () => {
             Search
           </button>
         </form>
-      </div>
+      </div> */}
+      <Box component="form" onSubmit={handleSearch} className="search-bar">
+        <TextField
+          type="search"
+          placeholder="Search movies..."
+          variant="outlined"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="TextField"
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          startIcon={<SearchIcon />}
+          className="search-btn"
+        >
+          Search
+        </Button>
+      </Box>
       <motion.div
         className="movie-container"
         variants={boxVariant}
@@ -156,9 +185,8 @@ const Movies = () => {
             key={index}
             to={`/details`}
             onClick={movieDetailsHandle(movie.imdbID)}
-            className="cards"
           >
-            <div key={index} className="movie-card">
+            {/* <div key={index} className="movie-card">
               <img src={movie.Poster} alt={movie.Title} />
               <h3>{movie.Title}</h3>
               <h4>{movie.Year}</h4>
@@ -175,7 +203,53 @@ const Movies = () => {
                   </>
                 ) : null}
               </div>
-            </div>
+            </div> */}
+
+            <Card
+              key={index}
+              sx={{ maxWidth: 330, m: 2 }}
+              className="details-info"
+            >
+              {/* Poster */}
+              <CardMedia
+                component="img"
+                height="250"
+                image={movie.Poster}
+                alt={movie.Title}
+              />
+
+              {/* Content */}
+              <CardContent className="details-info">
+                <Typography variant="h6" noWrap>
+                  {movie.Title}
+                </Typography>
+
+                <Typography variant="body2" color="text.secondary">
+                  {movie.Year}
+                </Typography>
+
+                {/* Wishlist Button */}
+                {user && (
+                  <Box sx={{ mt: 2 }}>
+                    <Button
+                      variant="contained"
+                      color={
+                        stored.some((item) => item.imdbID === movie.imdbID)
+                          ? "success"
+                          : "error"
+                      }
+                      startIcon={<FavoriteIcon />}
+                      fullWidth
+                      onClick={handleAddToWishlist(index)} // ✅ FIXED
+                    >
+                      {stored.some((item) => item.imdbID === movie.imdbID)
+                        ? "Added in Wishlist"
+                        : "Add to Wishlist"}
+                    </Button>
+                  </Box>
+                )}
+              </CardContent>
+            </Card>
           </Link>
         ))}
       </motion.div>

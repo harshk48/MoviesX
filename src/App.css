@@ -24,12 +24,13 @@
 }
 
 .home-container {
-  background: linear-gradient(
+  /* background: linear-gradient(
     to left,
     rgba(0, 0, 230, 0.374),
     rgba(255, 0, 0, 0.319)
-  );
-  height: 100%;
+  ); */
+  background-color: #cecece;
+  width: 100vw;
 }
 
 .hero-con {
@@ -54,17 +55,18 @@
   font-weight: 500;
 }
 
-.heading {
+/* .heading {
   background: transparent;
-
   padding: 10px;
   color: #a00000;
   margin: 0px auto;
   font-size: larger;
-
-  font-size: larger;
   font-weight: bold;
-  font-weight: 500;
+} */
+.heading {
+  color: #a00000;
+  font-size: larger;
+  margin-top: 10px;
 }
 
 .main-container .heading {
@@ -90,7 +92,7 @@
   );
 
   list-style: none;
-  width: 100%;
+
   font-size: large;
 }
 
@@ -142,27 +144,21 @@
 .search-bar {
   display: flex;
   padding: 10px;
-  margin: auto;
-  justify-content: flex-start;
-  margin-left: 45px;
-  width: 100%;
+  width: auto;
 }
 
-.search-bar input {
-  padding: 10px;
+.search-btn {
+  padding: 5px;
   border-radius: 5px 0px 0px 5px;
-  min-width: 35%;
   border: 1px solid #a91e1e;
 }
 
-.search-bar input:focus {
-  outline: none;
+.search-bar .TextField:focus {
+  outline: #a00000;
   border: 1px solid #db1e1e;
-  color: #db1e1e;
 }
 
 .search-container {
-  width: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,15 +218,16 @@
   align-items: center;
 }
 
-input {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+.TextField {
+  border: 1px solid #a00000;
+  width: 250px;
+  
 }
 
-input:focus {
-  outline: none;
-  border: 1px solid #000;
+.TextField:active {
+  outline: #a00000;
+  border: none;
+  color: #a00000;
 }
 
 Button {
@@ -268,14 +265,14 @@ Button:active {
 .details-info {
   display: flex;
   flex-direction: column;
-  gap: 35px;
-  padding: 5px;
+  color: #a00000;
+  border-radius: 14px;
+  flex-wrap: wrap;
   align-items: flex-start;
 }
 
 .movie-card .details-info {
   display: flex;
-
   align-items: center;
   margin: auto;
   justify-content: space-around;
@@ -298,7 +295,6 @@ Button:active {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-
   padding: 12px;
   border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -316,11 +312,10 @@ Button:active {
 .detail-card {
   display: flex;
   gap: 10px;
-
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 10px;
   width: 100%;
   border-radius: 10px;
 }
@@ -387,15 +382,18 @@ Button:active {
 .movies-container {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
+  width: 90%;
+  margin: auto;
 }
 
 .series-main-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #a00000;
   margin: auto;
   width: 90%;
-  margin-top: 20px;
 }
 
 .episode-main-container {
@@ -425,7 +423,7 @@ Button:active {
 .movie-container h1 {
   margin: auto;
   display: flex;
-  justify-content: flex-start;
+
   align-items: center;
   width: 100%;
   gap: 10px;
@@ -466,7 +464,7 @@ Button:active {
   text-decoration: none;
   color: #a00000;
   padding: 5px;
-  display: flex;
+
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -516,19 +514,6 @@ Button:active {
   color: #a00000;
 }
 
-input {
-  padding: 10px;
-  border-radius: 5px;
-  font-size: medium;
-  border: 1px solid #ccc;
-}
-
-input[type="text"]:focus {
-  outline: none;
-
-  border: 1px solid #000;
-}
-
 /*details-page-css*/
 .movie-title {
   font-size: xX-large;
@@ -542,9 +527,10 @@ input[type="text"]:focus {
 
 .wishlist {
   display: flex;
-
+  flex-wrap: wrap;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+  justify-content: center;
 }
 
 .wishlistbtn {
@@ -552,6 +538,7 @@ input[type="text"]:focus {
   display: flex;
   justify-content: center;
   gap: 4px;
+  color: #a00000;
   cursor: pointer;
 }
 
@@ -571,6 +558,7 @@ input[type="text"]:focus {
   gap: 8px;
   margin-top: 5px;
 }
+
 .page-container {
   display: flex;
   gap: 20px;
