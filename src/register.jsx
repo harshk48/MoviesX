@@ -60,35 +60,6 @@ const Register = () => {
   };
 
   return (
-    // <div className="login">
-    //   <form
-    //     action=""
-    //     method="post"
-    //     className="login-form"
-    //     onSubmit={handleRegister}
-    //   >
-    //     <h1 className="login-head">Register Your Account</h1>
-    //     <TextField
-    //       id="standard-basic"
-    //       label="username"
-    //       variant="standard"
-    //       color="error"
-    //       value={username}
-    //       onChange={(e) => setUsername(e.target.value)}
-    //       required
-    //     />
-    //     <TextField
-    //       id="standard-basic"
-    //       label="Password"
-    //       variant="standard"
-    //       color="error"
-    //       value={password}
-    //       onChange={(e) => setPassword(e.target.value)}
-    //       required
-    //     />
-    //     <button type="submit">Register</button>
-    //   </form>
-    // </div>
     <Box
       sx={{
         minHeight: "100vh",

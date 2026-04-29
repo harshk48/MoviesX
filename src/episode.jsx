@@ -45,31 +45,6 @@ const Episode = () => {
       whileInView="visible"
       transition={{ duration: 0.6 }}
     >
-      {/* {data.length > 1 ? (
-        <h1 className="heading">
-          Episode{" "}
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            style={{ color: "rgb(207, 21, 21)" }}
-          />
-        </h1>
-      ) : null}
-      <div className="series-container">
-        {data?.map((Episode, index) => (
-          <Link
-            key={index}
-            to={`/details?${Episode.imdbID}`}
-            onClick={movieDetailsHandle(Episode.imdbID)}
-            className="cards"
-          >
-            <div key={index} className="Episode-card">
-              <img src={Episode.Poster} alt={Episode.Title} />
-              <h3>{Episode.Title}</h3>
-              <h4>{Episode.Year}</h4>
-            </div>
-          </Link>
-        ))}
-      </div> */}
       {/* Heading */}
       {data.length > 1 && (
         <Typography

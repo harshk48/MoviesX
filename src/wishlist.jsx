@@ -27,43 +27,10 @@ const WishList = () => {
   const movieDetailsHandle = (id) => () => {
     const selectedMovie = storedwishlist.find((movie) => movie.imdbID === id);
     setMovieDetails(selectedMovie);
-    // navigate('/details')
   };
 
   return (
-    // <div className="home-container">
-    //   <h1 className="movie-title">WishLists</h1>
-    //   <div className="cards">
-    //     {storedwishlist.length == 0 ? (
-    //       <h1>No Wishlist</h1>
-    //     ) : (
-    //       storedwishlist.map((movie, index) => (
-    //         <div key={index} className="movie-card">
-    //           <img src={movie.Poster} alt={movie.Title} />
-    //           <h3>{movie.Title}</h3>
-    //           <h4>{movie.Year}</h4>
-    //           <div className="wishlist">
-    //             <button
-    //               className="btn btn-danger"
-    //               onClick={() => removewishlist(movie.imdbID)}
-    //             >
-    //               remove from wishlist
-    //             </button>
-    //             <button className="btn btn-danger">
-    //               <Link
-    //                 to={`/details`}
-    //                 onClick={movieDetailsHandle(movie.imdbID)}
-    //               >
-    //                 Details
-    //               </Link>
-    //             </button>
-    //           </div>
-    //         </div>
-    //       ))
-    //     )}
-    //   </div>
-    // </div>
-    <Box sx={{ p: 3 }}>
+    <Box sx={{ p: 2 }}>
       {/* Title */}
       <Typography variant="h4" gutterBottom className="heading">
         WishLists  <FontAwesomeIcon
@@ -83,7 +50,7 @@ const WishList = () => {
           No Wishlist
         </Typography>
       ) : (
-        <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap"}}>
+        <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap" }}>
           {storedwishlist.map((movie, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Card sx={{ maxWidth: 310, m: 2 }} >

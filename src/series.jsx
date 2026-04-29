@@ -62,53 +62,6 @@ const Series = () => {
       whileInView="visible"
       transition={{ duration: 0.6 }}
     >
-      {/* {data.length > 1 ? (
-        <h1 className="heading">
-          Series{" "}
-          <FontAwesomeIcon
-            icon={faChevronRight}
-            style={{ color: "rgb(207, 21, 21)" }}
-          />
-        </h1>
-      ) : null}
-      <div className="series-container">
-        {page >= 1 ? (
-          data?.map((series, index) => (
-            <Link
-              key={index}
-              to={`/details?${series.imdbID}`}
-              onClick={seriesDetailsHandle(series.imdbID)}
-              className="cards"
-            >
-              <div key={index} className="series-card">
-                <img src={series.Poster} alt={series.Title} />
-                <h3>{series.Title}</h3>
-                <h4>{series.Year}</h4>
-              </div>
-            </Link>
-          ))
-        ) : (
-          <h1>page not found</h1>
-        )}
-      </div>
-      {data.length > 1 ? (
-        <div className="page-container">
-          <FontAwesomeIcon
-            onClick={handlePrev}
-            size="2xl"
-            icon={faCaretLeft}
-            style={{ color: "rgb(207, 21, 21)", cursor: "pointer" }}
-          />
-          <p>{page}</p>{" "}
-          <FontAwesomeIcon
-            onClick={handleNext}
-            icon={faCaretRight}
-            size="2xl"
-            style={{ color: "rgb(207, 21, 21)", cursor: "pointer" }}
-          />
-        </div>
-      ) : null} */}
-
       {/* Heading */}
       {data.length > 1 && (
         <Typography

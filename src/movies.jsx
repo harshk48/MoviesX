@@ -130,19 +130,6 @@ const Movies = () => {
       transition={{ duration: 0.6 }}
       className="movies-container "
     >
-      {/* <div className="search-container">
-        <form onSubmit={handleSearch} className="search-bar">
-          <input
-            type="search"
-            placeholder="Search movies..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button className="search-btn" type="submit">
-            Search
-          </button>
-        </form>
-      </div> */}
       <Box component="form" onSubmit={handleSearch} className="search-bar">
         <TextField
           type="search"
@@ -186,25 +173,6 @@ const Movies = () => {
             to={`/details`}
             onClick={movieDetailsHandle(movie.imdbID)}
           >
-            {/* <div key={index} className="movie-card">
-              <img src={movie.Poster} alt={movie.Title} />
-              <h3>{movie.Title}</h3>
-              <h4>{movie.Year}</h4>
-
-              <div onClick={handleAddToWishlist(index)} className="wishlistbtn">
-                {user ? (
-                  <>
-                    <span>
-                      {stored.some((index) => index.imdbID === movie.imdbID)
-                        ? "added in wishlist"
-                        : "add to wishlist"}
-                    </span>{" "}
-                    <FavoriteIcon style={{ marginRight: 8 }} />
-                  </>
-                ) : null}
-              </div>
-            </div> */}
-
             <Card
               key={index}
               sx={{ maxWidth: 330, m: 2 }}

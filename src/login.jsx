@@ -49,53 +49,7 @@ const Login = () => {
 
   return (
     <>
-      {/* <div className="login">
-        <form
-          action=""
-          method="post"
-          className="login-form"
-          onSubmit={handleLogin}
-        >
-          <h1 className="login-head">Login</h1>
-          <div className="login-inputs">
-            <TextField
-              id="standard-basic"
-              label="email"
-              variant="standard"
-              color="error"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <TextField
-              id="standard-basic"
-              label="Password"
-              variant="standard"
-              color="error"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <span>Don't have an account?</span>
-            <Link to="/register" className="register">
-              Register
-            </Link>
-          </div>
-          <Button
-            type="submit"
-            variant="outlined"
-            style={{
-              backgroundColor: "#a00000",
-              color: "#fff",
-              border: "none",
-            }}
-          >
-            Login
-          </Button>
-        </form>
-      </div> */}
+
       <Box
         sx={{
           minHeight: "100vh",
