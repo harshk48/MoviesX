@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -8,7 +8,7 @@ import "./App.css";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+const navigate = useNavigate()
   const handleRegister = (e) => {
     e.preventDefault();
     let existingUsers = [];
@@ -39,6 +39,7 @@ const Register = () => {
 
       setUsername("");
       setPassword("");
+      
       return;
     }
 
@@ -53,6 +54,7 @@ const Register = () => {
       autoClose: 1000,
       hideProgressBar: true,
     });
+    navigate('/login')
 
     // 6. Clear input fields
     setUsername("");

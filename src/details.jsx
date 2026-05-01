@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { boxVariant } from "./animation";
 import {
   Box,
+  Button,
   Typography,
   Card,
   CardContent,
@@ -91,8 +92,13 @@ const Details = () => {
                 </Grid>
 
                 {/* Plot */}
-                <Grid item xs={12} md={6} sx={{ color: "#a00000" }}>
+                <Grid item xs={12} md={6} sx={{ color: "#a00000" , mb:2}}>
                   <Typography variant="body1">{details.Plot}</Typography>
+                     <Button variant="outlined" 
+                                      color="error"  
+                                      onClick={() => window.open(`https://www.imdb.com/title/${details.imdbID}`, "_blank")}>
+                                        Watch Trailer
+                                      </Button>
                 </Grid>
 
                 {/* Ratings */}

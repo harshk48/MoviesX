@@ -168,24 +168,24 @@ const Movies = () => {
         )}
 
         {moviesToShow.map((movie, index) => (
-          <Link
-            key={index}
-            to={`/details`}
-            onClick={movieDetailsHandle(movie.imdbID)}
-          >
+          
             <Card
               key={index}
               sx={{ maxWidth: 330, m: 2 }}
-              className="details-info"
+              className="movie-card"
             >
               {/* Poster */}
+              <Link
+            to={`/details`}
+            onClick={movieDetailsHandle(movie.imdbID)}
+          >
               <CardMedia
                 component="img"
                 height="250"
                 image={movie.Poster}
                 alt={movie.Title}
               />
-
+ </Link>
               {/* Content */}
               <CardContent className="details-info">
                 <Typography variant="h6" noWrap>
@@ -198,7 +198,12 @@ const Movies = () => {
 
                 {/* Wishlist Button */}
                 {user && (
-                  <Box sx={{ mt: 2 }}>
+                  <Box sx={{ mt: 2  , display: "flex" , gap: 1}}>
+                    <Button variant="outlined" 
+                    color="error"  
+                    onClick={() => window.open(`https://www.imdb.com/title/${movie.imdbID}`, "_blank")}>
+                      Trailer
+                    </Button>
                     <Button
                       variant="contained"
                       color={
@@ -208,7 +213,7 @@ const Movies = () => {
                       }
                       startIcon={<FavoriteIcon />}
                       fullWidth
-                      onClick={handleAddToWishlist(index)} // ✅ FIXED
+                      onClick={handleAddToWishlist(index)} 
                     >
                       {stored.some((item) => item.imdbID === movie.imdbID)
                         ? "Added in Wishlist"
@@ -218,7 +223,7 @@ const Movies = () => {
                 )}
               </CardContent>
             </Card>
-          </Link>
+         
         ))}
       </motion.div>
     </motion.div>
