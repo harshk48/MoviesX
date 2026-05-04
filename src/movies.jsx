@@ -136,6 +136,7 @@ const Movies = () => {
           placeholder="Search movies..."
           variant="outlined"
           value={search}
+          color="error"
           onChange={(e) => setSearch(e.target.value)}
           className="TextField"
         />
@@ -188,7 +189,7 @@ const Movies = () => {
  </Link>
               {/* Content */}
               <CardContent className="details-info">
-                <Typography variant="h6" noWrap>
+                <Typography variant="h6" >
                   {movie.Title}
                 </Typography>
 

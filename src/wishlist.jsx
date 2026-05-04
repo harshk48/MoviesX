@@ -91,6 +91,7 @@ const WishList = () => {
 
                     <Button
                       variant="outlined"
+                      color="error"
                       component={Link}
                       to="/details"
                       onClick={movieDetailsHandle(movie.imdbID)} // ✅ FIXED
