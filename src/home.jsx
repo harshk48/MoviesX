@@ -54,10 +54,10 @@ const Home = () => {
         whileInView="visible"
         transition={{ duration: 0.6 }}
       >
-        <Container sx={{ py: 5 }}>
+        <Container sx={{ py: 5 }} >
           <Grid container spacing={4}  sx={{ display: "flex",justifyContent:"center"}}>
             {/* Card 1 */}
-            <Grid item xs={12} sm={6} md={4}>
+            <Grid item xs={12} sm={6} md={4} >
               <Card sx={{ textAlign: "center", p: 2, height: "100%" }}>
                 <CardContent>
                   <PublicIcon sx={{ color: "green", fontSize: 50 }} />

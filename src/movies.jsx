@@ -40,13 +40,13 @@ const Movies = () => {
 
       const requests = [];
 
-      for (let i = 1; i <= totalPages; i++) {
+      // for (let i = 1; i <= totalPages; i++) {
         requests.push(
           axios(
-            `${API_URL}?s=${search == "" ? "movie" : search}&page=${i}&apikey=${API_KEY}`,
+            `${API_URL}?s=${search == "" ? "movie" : search}&apikey=${API_KEY}`,
           ),
         );
-      }
+      // }
 
       const responses = await Promise.all(requests);
 

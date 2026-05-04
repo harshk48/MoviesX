@@ -447,7 +447,7 @@ Button:focus {
 }
 
 .movie-container {
-  width: 95%;
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -456,7 +456,7 @@ Button:focus {
   gap: 30px;
   justify-content: space-evenly;
   margin-top: 5px;
-  overflow-x: hidden;
+ 
 }
 
 .cards {
