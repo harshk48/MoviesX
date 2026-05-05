@@ -52,7 +52,7 @@ const WishList = () => {
       ) : (
         <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap" }}>
           {storedwishlist.map((movie, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid  key={index}>
               <Card sx={{ maxWidth: 310, m: 2 }} >
                 {/* Poster */}
                 <CardMedia

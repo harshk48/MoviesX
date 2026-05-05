@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
+
 const Episode = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -68,12 +69,12 @@ const Episode = () => {
         sx={{ display: "flex", justifyContent: "center" }}
       >
         {data?.map((episode, index) => (
-          <Grid item xs={8} sm={2} md={3} key={index}>
+          <Grid  key={index}>
             <Card
               component={Link}
               to={`/details?${episode.imdbID}`}
               onClick={movieDetailsHandle(episode.imdbID)}
-              sx={{ maxWidth: 330, m: 2 }}
+              sx={{ maxWidth: 310, m: 2 }}
               className="details-cards"
             >
               <CardMedia

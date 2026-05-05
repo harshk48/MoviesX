@@ -36,7 +36,7 @@ const Movies = () => {
   const { setLoading } = useContext(AuthContext);
   const Movies = async () => {
     try {
-      const totalPages = 10; // 1 → 100
+      // const totalPages = 10; // 1 → 100
 
       const requests = [];
 
@@ -138,7 +138,7 @@ const Movies = () => {
           value={search}
           color="error"
           onChange={(e) => setSearch(e.target.value)}
-          className="TextField"
+          className="Textfield"
         />
         <Button
           type="submit"
@@ -172,7 +172,7 @@ const Movies = () => {
           
             <Card
               key={index}
-              sx={{ maxWidth: 330, m: 2 }}
+              sx={{ maxWidth: 310, m: 2 }}
               className="movie-card"
             >
               {/* Poster */}
@@ -189,7 +189,7 @@ const Movies = () => {
  </Link>
               {/* Content */}
               <CardContent className="details-info">
-                <Typography variant="h6" >
+                <Typography variant="h6" sx={{display:"flex" ,flexWrap:"wrap"}} >
                   {movie.Title}
                 </Typography>
 

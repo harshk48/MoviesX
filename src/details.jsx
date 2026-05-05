@@ -4,6 +4,7 @@ import StarIcon from "@mui/icons-material/Star";
 import "./App.css";
 import { motion } from "framer-motion";
 import { boxVariant } from "./animation";
+import {Chip} from "@mui/material";
 import {
   Box,
   Button,
@@ -33,99 +34,149 @@ const Details = () => {
   }, []);
 
   return (
+
     <motion.div
-      variants={boxVariant}
-      className="detail-main-con"
-      initial="hidden"
-      whileInView="visible"
-      transition={{ duration: 0.6 }}
-      className="details-cards"
+  variants={boxVariant}
+  initial="hidden"
+  whileInView="visible"
+  transition={{ duration: 0.6 }}
+  className="details-cards"
+>
+  {details.length === 0 ? (
+    <Typography variant="h6" align="center" sx={{ mt: 4 }}>
+      Please select a movie to view details
+    </Typography>
+  ) : (
+    <Box
+      sx={{
+        p: 3,
+        m: 2,
+        borderRadius: 4,
+        background: "linear-gradient(135deg, #1a1a1a, #2c2c2c)",
+        color: "#fff",
+      }}
     >
-      {details.length === 0 ? (
-        <Typography variant="h6" align="center" sx={{ mt: 4 }}>
-          Please select a movie to view details
-        </Typography>
-      ) : (
-        <Box
-          sx={{ display: "flex", flexDirection: "column", flexWrap: "wrap" , p: 3 , m: 2 }}
-        >
-          <Typography variant="h4" sx={{ color: "#a00000" , m:2 }}>
-            {movieDetails?.Title}
+      {/* Movie Title */}
+      <Typography
+        variant="h3"
+        sx={{
+          color: "#ff3d3d",
+          fontWeight: "bold",
+          mb: 3,
+          textAlign: "center",
+        }}
+      >
+        {details.Title}
+      </Typography>
+
+      <Card
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 3,
+          p: 3,
+          borderRadius: 4,
+          background: "#111",
+          boxShadow: "0 10px 30px rgba(0,0,0,0.6)",
+        }}
+      >
+        {/* Poster */}
+        <CardMedia
+          component="img"
+          image={details.Poster}
+          alt={details.Title}
+          sx={{
+            width: 280,
+            borderRadius: 3,
+            transition: "0.3s",
+            "&:hover": { transform: "scale(1.05)" },
+          }}
+        />
+
+        {/* Content */}
+        <CardContent sx={{ flex: 1 }}>
+          {/* Director */}
+          <Typography variant="h6" sx={{ mb: 1 , color: "#ff3d3d"}}>
+            🎬 Directed by{" "}
+            <span style={{fontWeight: "bold" }}>
+              {details.Director}
+            </span>
           </Typography>
 
-          <Card
+          {/* Info Row */}
+          <Box
             sx={{
               display: "flex",
-              p: 2,
+              gap: 2,
               flexWrap: "wrap",
-              justifyContent: "center",
+              mb: 2,
+              color: "#bbb",
             }}
           >
-            <CardMedia
-              component="img"
-              image={details.Poster}
-              alt={details.Title}
-              sx={{ width: 300, borderRadius: 2 }}
-            />
+            <Chip label={details.Released} color="error" />
+            <Chip label={`IMDb ${details.imdbRating}`} color="error" />
+            <Chip label={details.Genre} color="error" />
+          </Box>
 
-            <CardContent sx={{ flex: 1, alignItems: "center" }}>
-              <Grid container spacing={7}>
-                {/* Title & Director */}
-                <Grid item item xs={8} sm={2} md={3} xs={12}>
-                  <Typography variant="h5" sx={{ color: "#a00000" }}>
-                    {details.Title}
-                  </Typography>
-                  <Typography variant="subtitle1" color="text.secondary">
-                    Directed by {details.Director}
-                  </Typography>
-                </Grid>
+          {/* Plot */}
+          <Typography
+            variant="body1"
+            sx={{ lineHeight: 1.7, mb: 3, color: "#ddd" }}
+          >
+            {details.Plot}
+          </Typography>
 
-                {/* Info */}
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ display: "flex", gap: "15px", color: "grey" }}
-                >
-                  <Typography>{details.Released}</Typography>
-                  <Typography>IMDb: {details.imdbRating}</Typography>
-                  <Typography>{details.Genre}</Typography>
-                </Grid>
+          {/* Button */}
+          <Button
+            variant="contained"
+            color="error"
+            sx={{
+              borderRadius: 3,
+              px: 3,
+              py: 1,
+              fontWeight: "bold",
+              textTransform: "none",
+              boxShadow: "0 4px 15px rgba(255,0,0,0.4)",
+            }}
+            onClick={() =>
+              window.open(
+                `https://www.imdb.com/title/${details.imdbID}`,
+                "_blank"
+              )
+            }
+          >
+            🎥 Watch Trailer
+          </Button>
 
-                {/* Plot */}
-                <Grid item xs={12} md={6} sx={{ color: "#a00000" , mb:2}}>
-                  <Typography variant="body1">{details.Plot}</Typography>
-                     <Button variant="outlined" 
-                                      color="error"  
-                                      onClick={() => window.open(`https://www.imdb.com/title/${details.imdbID}`, "_blank")}>
-                                        Watch Trailer
-                                      </Button>
-                </Grid>
+          {/* Ratings */}
+          <Box sx={{ mt: 4 }}>
+            <Typography variant="h6" sx={{ mb: 1, color: "#ff3d3d" }}>
+              ⭐ Ratings
+            </Typography>
 
-                {/* Ratings */}
-                <Grid
-                  item
-                  xs={12}
-                  sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
-                >
-                  <Typography variant="h6" color="#a00000">
-                    Ratings
-                  </Typography>
-                  {details.Ratings?.map((rating, index) => (
-                    <Box
-                      key={index}
-                      sx={{ display: "flex", alignItems: "center", gap: 1 }}
-                    >
-                      <StarIcon color="error" />
-                      <Typography>{rating.Value}</Typography>
-                    </Box>
-                  ))}
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </Box>
-      )}
-    </motion.div>
+            {details.Ratings?.map((rating, index) => (
+              <Box
+                key={index}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  background: "#1f1f1f",
+                  color: "#ff3d3d",
+                  p: 1.5,
+                  borderRadius: 2,
+                  mb: 1,
+                }}
+              >
+                <Typography>{rating.Value}</Typography>
+                
+              </Box>
+            ))}
+          </Box>
+        </CardContent>
+      </Card>
+    </Box>
+  )}
+</motion.div>
   );
 };
 

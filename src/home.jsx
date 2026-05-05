@@ -59,14 +59,15 @@ const Home = () => {
             spacing={4}
             sx={{
               display: "flex",
-              justifyContent: "space-around",
+              justifyContent: "center",
               gap: 2,
               flexWrap: "wrap",
+            
             }}
           >
             {/* Card 1 */}
-            <Grid item xs={12} sm={6} md={4}>
-              <Card sx={{ textAlign: "center", p: 2, height: "100%" }}>
+            <Grid  >
+              <Card sx={{ textAlign: "center", p: 2 }}>
                 <CardContent>
                   <PublicIcon sx={{ color: "green", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "green", mt: 1 }}>
@@ -81,8 +82,8 @@ const Home = () => {
             </Grid>
 
             {/* Card 2 */}
-            <Grid item xs={12} sm={6} md={4}>
-              <Card sx={{ textAlign: "center", p: 2, height: "100%" }}>
+            <Grid >
+              <Card sx={{ textAlign: "center", p: 2 }}>
                 <CardContent>
                   <OndemandVideoIcon sx={{ color: "red", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "red", mt: 1 }}>
@@ -97,8 +98,8 @@ const Home = () => {
             </Grid>
 
             {/* Card 3 */}
-            <Grid item xs={12} sm={6} md={4}>
-              <Card sx={{ textAlign: "center", p: 2, height: "100%" }}>
+            <Grid>
+              <Card sx={{ textAlign: "center", p: 2 }}>
                 <CardContent>
                   <TheatersIcon sx={{ color: "blue", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "blue", mt: 1 }}>

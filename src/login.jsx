@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./context.jsx"; // Assuming you have a context file for authentication

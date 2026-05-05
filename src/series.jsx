@@ -47,7 +47,9 @@ const Series = () => {
     console.log(data);
   };
   const handlePrev = async () => {
-    setPage(page - 1);
+    if (page > 1) {
+      setPage(page - 1);
+    }
     setData(data);
     console.log(data);
   };
@@ -79,10 +81,7 @@ const Series = () => {
           <Grid container spacing={3}>
             {data?.map((series, index) => (
               <Grid
-                item
-                xs={8}
-                sm={2}
-                md={3}
+               
                 key={index}
                 sx={{ display: "flex", flexWrap: "wrap", m: "auto" }}
               >
@@ -90,7 +89,7 @@ const Series = () => {
                   component={Link}
                   to={`/details?${series.imdbID}`}
                   onClick={seriesDetailsHandle(series.imdbID)}
-                  sx={{ maxWidth: 330, m: 2 }}
+                  sx={{ maxWidth: 310, m: 2 }}
                   className="details-info"
                 >
                   <CardMedia
@@ -101,7 +100,7 @@ const Series = () => {
                   />
 
                   <CardContent className="details-info">
-                    <Typography variant="h6" noWrap>
+                    <Typography variant="h6" >
                       {series.Title}
                     </Typography>
 
