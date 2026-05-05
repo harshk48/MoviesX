@@ -54,13 +54,21 @@ const Home = () => {
         whileInView="visible"
         transition={{ duration: 0.6 }}
       >
-        <Container sx={{ py: 5 }} >
-          <Grid container spacing={4}  sx={{ display: "flex",justifyContent:"center"}}>
+        <Container sx={{ py: 5 }}>
+          <Grid
+            spacing={4}
+            sx={{
+              display: "flex",
+              justifyContent: "space-around",
+              gap: 2,
+              flexWrap: "wrap",
+            }}
+          >
             {/* Card 1 */}
-            <Grid item xs={12} sm={6} md={4} >
+            <Grid item xs={12} sm={6} md={4}>
               <Card sx={{ textAlign: "center", p: 2, height: "100%" }}>
                 <CardContent>
-                  <PublicIcon sx={{ color: "green", fontSize: 50 }} />
+                  <PublicIcon sx={{ color: "green", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "green", mt: 1 }}>
                     Works Worldwide
                   </Typography>
@@ -76,7 +84,7 @@ const Home = () => {
             <Grid item xs={12} sm={6} md={4}>
               <Card sx={{ textAlign: "center", p: 2, height: "100%" }}>
                 <CardContent>
-                  <OndemandVideoIcon sx={{ color: "red", fontSize: 50 }} />
+                  <OndemandVideoIcon sx={{ color: "red", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "red", mt: 1 }}>
                     Device-Friendly
                   </Typography>
@@ -92,7 +100,7 @@ const Home = () => {
             <Grid item xs={12} sm={6} md={4}>
               <Card sx={{ textAlign: "center", p: 2, height: "100%" }}>
                 <CardContent>
-                  <TheatersIcon sx={{ color: "blue", fontSize: 50 }} />
+                  <TheatersIcon sx={{ color: "blue", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "blue", mt: 1 }}>
                     Thousands of Titles
                   </Typography>
