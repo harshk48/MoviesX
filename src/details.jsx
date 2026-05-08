@@ -52,7 +52,7 @@ const Details = () => {
         p: 3,
         m: 2,
         borderRadius: 4,
-        background: "linear-gradient(135deg, #1a1a1a, #2c2c2c)",
+       
         color: "#fff",
       }}
     >

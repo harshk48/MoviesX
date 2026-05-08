@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "./context.jsx"; // Assuming you have a context file for authentication
-import { useState } from "react";
-import Alert from "@mui/material/Alert";
-import CheckIcon from "@mui/icons-material/Check";
+import { useAuth } from "./context.jsx";
+import { loginUser } from "./utils/authService";
 import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
 const Login = () => {
@@ -12,39 +10,42 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const setLocalStored = localStorage.setItem(
-    "user",
-    JSON.stringify({ email, password }),
-  );
-  const getStoredUser = JSON.parse(localStorage.getItem("user"));
-  const storedData = JSON.parse(localStorage.getItem("Register"));
-  const handleLogin = (e) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setLocalStored;
-    const user = storedData.find(
-      (u) =>
-        u.username === getStoredUser.email &&
-        u.password === getStoredUser.password,
-    );
-    if (user) {
-      login(email);
+
+    if (!email.trim() || !password.trim()) {
+      toast.error("Please enter both email and password", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+      });
+      return;
+    }
+
+    setLoading(true);
+    const result = await loginUser(email, password);
+
+    if (result.success) {
+      login(result.user.username);
+      localStorage.setItem("user", JSON.stringify(result.user));
       toast.success("Login Successful", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,
       });
-
       navigate("/");
-      getStoredUser;
     } else {
-      setEmail("");
       setPassword("");
-      toast.error("Invalid email or password!", {
+      toast.error(result.message || "Invalid email or password!", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,
       });
     }
+
+    setLoading(false);
   };
 
   return (

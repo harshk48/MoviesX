@@ -48,13 +48,12 @@ const Home = () => {
 
       {/* 🎬 FEATURE CARDS */}
       <motion.div
-        className="movie-container"
+        className="feature-cards-container"
         variants={boxVariant}
         initial="hidden"
         whileInView="visible"
         transition={{ duration: 0.6 }}
       >
-        <Container sx={{ py: 5 }}>
           <Grid
             spacing={4}
             sx={{
@@ -66,8 +65,8 @@ const Home = () => {
             }}
           >
             {/* Card 1 */}
-            <Grid  >
-              <Card sx={{ textAlign: "center", p: 2 }}>
+            <Grid >
+              <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
                 <CardContent>
                   <PublicIcon sx={{ color: "green", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "green", mt: 1 }}>
@@ -83,7 +82,7 @@ const Home = () => {
 
             {/* Card 2 */}
             <Grid >
-              <Card sx={{ textAlign: "center", p: 2 }}>
+              <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
                 <CardContent>
                   <OndemandVideoIcon sx={{ color: "red", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "red", mt: 1 }}>
@@ -99,7 +98,7 @@ const Home = () => {
 
             {/* Card 3 */}
             <Grid>
-              <Card sx={{ textAlign: "center", p: 2 }}>
+              <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
                 <CardContent>
                   <TheatersIcon sx={{ color: "blue", fontSize: 30 }} />
                   <Typography variant="h5" sx={{ color: "blue", mt: 1 }}>
@@ -113,7 +112,7 @@ const Home = () => {
               </Card>
             </Grid>
           </Grid>
-        </Container>
+      
       </motion.div>
     </>
   );

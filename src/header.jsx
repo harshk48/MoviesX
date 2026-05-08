@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import { useState } from "react";
 import { useMediaQuery } from "@mui/material";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -23,12 +23,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 const Header = () => {
   const isMobile = useMediaQuery("(max-width:600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const { user, logout } = useAuth();
-  const { login } = useAuth();
+  const { user, logout, login } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
-    return <Navigate to="/" />;
+    navigate("/");
   };
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
@@ -115,8 +115,11 @@ const Header = () => {
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      const { email } = JSON.parse(storedUser);
-      login(email);
+      const parsed = JSON.parse(storedUser);
+      const storedName = parsed.username ?? parsed.email ?? "";
+      if (storedName) {
+        login(storedName);
+      }
     }
   }, [login]);
 

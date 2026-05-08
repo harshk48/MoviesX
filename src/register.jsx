@@ -4,61 +4,54 @@ import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./App.css";
+import { exportRegisterData } from "./utils/authService";
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-const navigate = useNavigate()
-  const handleRegister = (e) => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleRegister = async (e) => {
     e.preventDefault();
-    let existingUsers = [];
-    try {
-      const storedData = localStorage.getItem("Register");
-      if (storedData) {
-        const parsed = JSON.parse(storedData);
-        // Ensure it's an array
-        existingUsers = Array.isArray(parsed) ? parsed : [];
-      }
-    } catch (error) {
-      console.error("Error parsing localStorage:", error);
-      existingUsers = [];
+    
+    // Validate inputs
+    if (!username.trim() || !password.trim()) {
+      toast.error("Please fill in all fields ❌", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+      });
+      return;
     }
-    // 1. Get existing users (IMPORTANT)
 
-    // 2. Check duplicate user
-    const alreadyExists = existingUsers.some(
-      (user) => user.username === username,
-    );
+    setLoading(true);
 
-    if (alreadyExists) {
-      toast.error("User already registered ❌", {
+    // Call the export registration function
+    const result = await exportRegisterData(username, password);
+console.log(result);
+    if (result.success) {
+      toast.success("Registration successful ✅", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,
       });
       
+      // Clear input fields
       setUsername("");
       setPassword("");
       
-      return;
+      // Redirect to login
+      navigate('/login');
+    } else {
+      toast.error(result.message || "Registration failed ❌", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+      });
     }
 
-    // 3. Create new user object
-    const newUser = { username, password };
-    // 4. Add to array
-    existingUsers.push(newUser);
-
-    localStorage.setItem("Register", JSON.stringify(existingUsers));
-    toast.success("Registration successful ✅", {
-      position: "top-right",
-      autoClose: 1000,
-      hideProgressBar: true,
-    });
-    navigate('/login')
-
-    // 6. Clear input fields
-    setUsername("");
-    setPassword("");
+    setLoading(false);
   };
 
   return (
@@ -96,6 +89,7 @@ const navigate = useNavigate()
               label="Username"
               variant="standard"
               color="error"
+              type="email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
@@ -129,13 +123,15 @@ const navigate = useNavigate()
             type="submit"
             variant="contained"
             fullWidth
+            disabled={loading}
             sx={{
               mt: 3,
               bgcolor: "#a00000",
               "&:hover": { bgcolor: "#800000" },
+              "&:disabled": { bgcolor: "#cccccc" },
             }}
           >
-            Register
+            {loading ? "Registering..." : "Register"}
           </Button>
         </Box>
       </Paper>

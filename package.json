@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "backend": "node src/backend/server.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -22,6 +23,7 @@
     "@tailwindcss/cli": "^4.2.3",
     "@tailwindcss/vite": "^4.2.3",
     "axios": "^1.15.0",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
     "framer-motion": "^12.38.0",
     "react": "^19.2.4",
