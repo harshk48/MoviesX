@@ -5,7 +5,7 @@ import { Box, Typography, TextField, Button, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./App.css";
 import { exportRegisterData } from "./utils/authService";
-
+import bg from "./assets/bg.jpg";
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -61,7 +61,9 @@ console.log(result);
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        bgcolor: "#f5f5f5",
+        backgroundImage: `url(${bg})`,
+        backgroundSize: "contain",
+        backgroundPosition: "center",
       }}
     >
       <Paper

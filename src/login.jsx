@@ -5,6 +5,7 @@ import { useAuth } from "./context.jsx";
 import { loginUser } from "./utils/authService";
 import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
+import bg from "./assets/bg.jpg";
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -57,7 +58,9 @@ const Login = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          bgcolor: "#f5f5f5",
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "contain",
+          backgroundPosition: "center",
         }}
       >
         <Paper

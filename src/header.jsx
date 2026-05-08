@@ -126,7 +126,7 @@ const Header = () => {
   return (
     <AppBar
       position="sticky"
-      sx={{ background: "transparent", bgcolor: "#000" }}
+      sx={{ background: "transparent", bgcolor: "#a00000" }}
     >
       <Toolbar>
         {/* 🔹 Logo */}
@@ -137,11 +137,14 @@ const Header = () => {
           sx={{
             textDecoration: "none",
             color: "#fff",
+            padding: "4px 8px",
             fontWeight: "bold",
             flexGrow: 1,
+            fontSize: "1.5rem",
+              display: "flex",
           }}
         >
-          MoviesX
+          Movies <h1>X</h1>
         </Typography>
 
         {/* 🔹 Mobile View */}
@@ -163,11 +166,11 @@ const Header = () => {
           <>
             {/* 🔹 Menu Links */}
             <Box sx={{ display: "flex", gap: 2 }}>
-              <Button component={Link} to="/" sx={{ color: "#fff" }}>
+              <Button component={Link} to="/" sx={{ color: "#fff" , ":hover":{backgroundColor:"#c48888"}}}> 
                 Home
               </Button>
 
-              <Button component={Link} to="/category" sx={{ color: "#fff" }}>
+              <Button component={Link} to="/category" sx={{ color: "#fff",  ":hover":{backgroundColor:"#c48888"} }}>
                 Category
               </Button>
             </Box>
@@ -178,7 +181,7 @@ const Header = () => {
               {user && (
                 <Button
                   variant="outlined"
-                  color="error"
+                  color="#fff"
                   startIcon={<FavoriteIcon />}
                   component={Link}
                   to="/wishlist"
