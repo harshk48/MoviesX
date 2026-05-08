@@ -40,7 +40,7 @@ const WishList = () => {
       </Typography>
 
       {/* Empty State */}
-      {storedwishlist.length === 0 ? (
+      {storedwishlist?.length === 0 ? (
         <Typography
           variant="h6"
           align="center"
@@ -51,7 +51,7 @@ const WishList = () => {
         </Typography>
       ) : (
         <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap" }}>
-          {storedwishlist.map((movie, index) => (
+          {storedwishlist?.map((movie, index) => (
             <Grid  key={index}>
               <Card sx={{ maxWidth: 310, m: 2 }} >
                 {/* Poster */}
