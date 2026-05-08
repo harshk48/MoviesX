@@ -66,10 +66,10 @@ const Episode = () => {
       <Grid
         container
         spacing={3}
-        sx={{ display: "flex", justifyContent: "center" }}
+        sx={{ display: "flex"  , justifyContent: "center" }}
       >
         {data?.map((episode, index) => (
-          <Grid  key={index}>
+          <Grid key={index} item >
             <Card
               component={Link}
               to={`/details?${episode.imdbID}`}

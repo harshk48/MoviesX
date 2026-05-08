@@ -140,9 +140,10 @@
 }
 
 .search-bar {
-  display: flex;
- margin: 20px 0px;
   
+
+
+ margin: 20px 0px;
   width: auto;
 }
 
@@ -153,7 +154,7 @@
   border: 1px solid #a91e1e;
 }
 
-.search-bar .TextField:focus {
+.search-bar .Textfield:focus {
   outline: #a00000;
   border: 1px solid #db1e1e;
 }
@@ -166,8 +167,6 @@
 }
 
 .search-bar button {
-  padding: 10px;
-  border-radius: 0px 5px 5px 0px;
   border: none;
   background-color: #a00000;
   color: #fff;
@@ -215,9 +214,13 @@
   justify-content: center;
   align-items: center;
 }
+.Textfield {
+  padding: 10px;
+  border-radius: 5px 0px 0px 5px;
+  border: 1px solid #a91e1e;
+}
 
-
-.TextField:active {
+.Textfield:active {
   outline: #a00000;
   border: none;
   color: #a00000;

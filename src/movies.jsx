@@ -19,8 +19,13 @@ import {
   CardContent,
   Typography,
   Box,
+  InputAdornment,
+  MenuItem,
+  Menu,
   Button,
 } from "@mui/material";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import AppsIcon from "@mui/icons-material/Apps";
 import SearchIcon from "@mui/icons-material/Search";
 const Movies = () => {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -117,6 +122,16 @@ const Movies = () => {
     Movies();
     return;
   };
+   const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+   const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+   const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
 
   useEffect(() => {
     Movies();
@@ -124,31 +139,69 @@ const Movies = () => {
 
   return (
     <motion.div
+    id="movies"
       variants={boxVariant}
       initial="hidden"
       whileInView="visible"
       transition={{ duration: 0.6 }}
       className="movies-container "
     >
-      <Box component="form" onSubmit={handleSearch} className="search-bar">
+      <Box
+      component="form" onSubmit={handleSearch} className="search-bar"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          maxWidth: { xs: "100%", sm: 600 },
+          mb: 3,
+        }}
+      >
+        {/* Search Input */}
         <TextField
-          type="search"
+           type="search"
           placeholder="Search movies..."
           variant="outlined"
           value={search}
           color="error"
           onChange={(e) => setSearch(e.target.value)}
           className="Textfield"
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              height: 52,
+              borderRadius: "8px 0px 0px 8px",
+              '& fieldset': {
+                borderRight: 'none',
+              },
+              '&.Mui-focused fieldset': {
+                borderRight: 'none',
+              },
+            },
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
         />
+
+        {/* Search Button */}
         <Button
-          type="submit"
           variant="contained"
-          startIcon={<SearchIcon />}
-          className="search-btn"
+          type="submit"
+          sx={{
+            borderRadius: "0 8px 8px 0",
+            px: 3,
+            py: 1.7,
+            height: 52,
+          }}
+          
         >
-          Search
+         <SearchIcon />
         </Button>
       </Box>
+
+
       <motion.div
         className="movie-container"
         variants={boxVariant}
