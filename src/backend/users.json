@@ -14,5 +14,20 @@
   {
     "username": "kv@Gmail.com",
     "password": "kv"
+  },
+  {
+    "username": "ashish@gmail.com",
+    "password": "ashish"
+  },
+  {
+    "username": "arpu@gmail.com",
+    "password": "arpu"
+  },
+  {
+    "username": "ruhan@gmail.com",
+    "password": "ruhan",
+    "wishlist": [
+    
+    ]
   }
 ]

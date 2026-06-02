@@ -23,7 +23,7 @@ if (!fs.existsSync(filePath)) {
 // REGISTER API - Check if user exists and register new user
 app.post("/register", (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { username, password  } = req.body;
 
     // Validate input
     if (!username || !password) {
@@ -44,7 +44,7 @@ app.post("/register", (req, res) => {
     }
 
     // Add new user
-    const newUser = { username, password };
+    const newUser = { username, password , wishlist: []};
     users.push(newUser);
 
     // Save to JSON file
@@ -84,6 +84,41 @@ app.post("/login", (req, res) => {
     console.error("Login error:", error);
     res.status(500).json({ message: "Internal server error" });
   }
+});
+
+// ADD TO WISHLIST
+// ======================
+
+app.post("/category", (req, res) => {
+
+  const { username , movie } = req.body;
+
+  const users = JSON.parse(fs.readFileSync(filePath) || "[]");
+  const user = users.find((u) => u.username === username);
+  if (user){
+    fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+    user.wishlist.push(movie);
+  } else {
+    return res.status(404).json({
+      message: "User not found",
+    });
+  }
+
+  // already exists
+  const exists = user.wishlist.some((item) => item.imdbID === movie.imdbID);
+  if (exists) {
+    return res.json({
+      message: "Already in wishlist",
+    });
+  }
+
+  res.json({
+    message: "Added to wishlist",
+    wishlist: user.wishlist,
+  });
+});
+app.get("/", (req, res) => {
+  res.send("Backend Running");
 });
 
 const PORT = 5000;

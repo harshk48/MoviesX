@@ -11,6 +11,11 @@
   font-weight: bold;
   font-size: larger;
 }
+.dark-mode{
+  background-color: #1a1a1a;
+  color: #ebebeb; 
+  
+}
 
 .hero-section {
   background-image: url("./assets/Watch-Free-Hero-2048x1152-1-1024x576.png");

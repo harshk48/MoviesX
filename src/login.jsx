@@ -29,7 +29,7 @@ const Login = () => {
     const result = await loginUser(email, password);
 
     if (result.success) {
-      login(result.user.username);
+      login(result.user);
       localStorage.setItem("user", JSON.stringify(result.user));
       toast.success("Login Successful", {
         position: "top-right",

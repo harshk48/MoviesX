@@ -70,3 +70,20 @@ export const loginUser = async (username, password) => {
     };
   }
 };
+
+
+ export const addWishlist = async (movie) => {
+
+  await fetch(
+    `${API_BASE_URL}/category`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        wishlist : movie
+      }),
+    }
+  );
+};

@@ -27,6 +27,8 @@ import {
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AppsIcon from "@mui/icons-material/Apps";
 import SearchIcon from "@mui/icons-material/Search";
+import {addWishlist } from "./utils/authService.js";
+
 const Movies = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -81,8 +83,7 @@ const Movies = () => {
 
   const handleAddToWishlist = (index) => (e) => {
     e.preventDefault();
-    const selectedMovie = data[index];
-    console.log(selectedMovie);
+    const selectedMovie = moviesToShow[index];
     const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
     const exists = stored.some(
       (index) => index.imdbID === selectedMovie.imdbID,
@@ -99,12 +100,15 @@ const Movies = () => {
     localStorage.setItem(
       "wishlist",
       JSON.stringify([...wishList, selectedMovie]),
+      addWishlist(selectedMovie)
+      
     );
     toast.success("added in wishlist!", {
       position: "top-right",
       autoClose: 1000,
       hideProgressBar: false,
     });
+
     // navigate(`/wishList`);
   };
   const handleSearch = (e) => {
@@ -122,17 +126,6 @@ const Movies = () => {
     Movies();
     return;
   };
-   const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-   const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-
-
   useEffect(() => {
     Movies();
   }, []);

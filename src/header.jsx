@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import { useState } from "react";
 import { useMediaQuery } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import List from "@mui/material/List";
@@ -16,22 +15,42 @@ import {
   IconButton,
   Drawer,
   Box,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
+import PersonIcon from '@mui/icons-material/Person';
+import Switch from '@mui/material/Switch';
 const Header = () => {
+  
   const isMobile = useMediaQuery("(max-width:600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedMode, setSelectedMode] = useState("Light");
+  const [userAnchorEl, setUserAnchorEl] = useState(null);
   const { user, logout, login } = useAuth();
   const navigate = useNavigate();
-
+  const loggeduser = localStorage.getItem("user");
   const handleLogout = () => {
     logout();
     navigate("/");
   };
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
+  };
+  const handleModeToggle = (event) => {
+    setSelectedMode(event.target.checked ? "Dark" : "Light");
+    if (event.target.checked) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  };
+  const handleUserMenuClick = (event) => {
+    setUserAnchorEl(event.currentTarget);
+  };
+  const handleUserMenuClose = () => {
+    setUserAnchorEl(null);
   };
   const drawerContent = (
     <List>
@@ -173,6 +192,11 @@ const Header = () => {
               <Button component={Link} to="/category" sx={{ color: "#fff",  ":hover":{backgroundColor:"#c48888"} }}>
                 Category
               </Button>
+
+            
+              <Menu
+              >
+              </Menu>
             </Box>
 
             {/* 🔹 Right Section */}
@@ -192,15 +216,41 @@ const Header = () => {
 
               {/* Login / Logout */}
               {user ? (
-                <Button
-                  variant="contained"
-                  color="error"
-                  component={Link}
-                  to="/"
-                  onClick={handleLogout}
-                >
-                  Logout
-                </Button>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={handleUserMenuClick}
+                    endIcon={<PersonIcon />}
+                  >
+                    {loggeduser
+                      ? JSON.parse(loggeduser).username.split("@")[0] ||
+                        JSON.parse(loggeduser).email.split("@")[0]
+                      : ""}
+                  </Button>
+                  <Menu
+                    anchorEl={userAnchorEl}
+                    open={Boolean(userAnchorEl)}
+                    onClose={handleUserMenuClose}
+                  >
+                    <MenuItem
+                      onClick={() => {
+                        handleLogout();
+                        handleUserMenuClose();
+                      }}
+                      sx={{  ":hover": { backgroundColor: "#c48888" } }}
+                    >
+                      Logout
+                    </MenuItem>
+                      <MenuItem
+                sx={{  ":hover": { backgroundColor: "#c48888" } }}
+                  
+              >
+                <Switch  onClick={handleModeToggle}/> {selectedMode}
+              </MenuItem>
+                  </Menu>
+                </div>
+
               ) : (
                 <Button
                   variant="contained"
