@@ -7,7 +7,7 @@ import { AuthContext } from "./context.jsx";
 import axios from "axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Navigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { color, motion } from "framer-motion";
 import { boxVariant } from "./animation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
@@ -35,25 +35,21 @@ const Movies = () => {
   const [data, setData] = useState([]);
   const [VisibleMovies, setVisibleMovies] = useState([]);
   const [search, setSearch] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
   const { setMovieDetails } = useContext(AuthContext);
   const { wishList, setWishList } = useContext(AuthContext);
-  const { user } = useAuth();
+  const { user, selectedMode } = useAuth();
 
   const { setLoading } = useContext(AuthContext);
-  const Movies = async () => {
+  const Movies = async (query = debouncedSearch) => {
     try {
-      // const totalPages = 10; // 1 → 100
-
       const requests = [];
 
-      // for (let i = 1; i <= totalPages; i++) {
-        requests.push(
-          axios(
-            `${API_URL}?s=${search == "" ? "movie" : search}&apikey=${API_KEY}`,
-          ),
-        );
-      // }
+      requests.push(
+        axios(
+          `${API_URL}?s=${query === "" ? "movie" : query}&apikey=${API_KEY}`,
+        ),
+      );
 
       const responses = await Promise.all(requests);
 
@@ -77,16 +73,16 @@ const Movies = () => {
     const selectedMovie = data.find((movie) => movie.imdbID === id);
     setMovieDetails(selectedMovie);
   };
-  const moviesToShow = search == null ? filteredData : VisibleMovies;
+  const moviesToShow = VisibleMovies;
   console.log(moviesToShow.length);
   const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
 
   const handleAddToWishlist = (index) => (e) => {
     e.preventDefault();
     const selectedMovie = moviesToShow[index];
-    const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const exists = stored.some(
-      (index) => index.imdbID === selectedMovie.imdbID,
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const exists = storedWishlist.some(
+      (item) => item.imdbID === selectedMovie.imdbID,
     );
     if (exists) {
       toast.error("Already in wishlist ❌", {
@@ -96,13 +92,10 @@ const Movies = () => {
       return;
     }
 
-    setWishList([...wishList, selectedMovie]);
-    localStorage.setItem(
-      "wishlist",
-      JSON.stringify([...wishList, selectedMovie]),
-      addWishlist(selectedMovie)
-      
-    );
+    const updatedWishlist = [...storedWishlist, selectedMovie];
+    setWishList(updatedWishlist);
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    addWishlist(selectedMovie);
     toast.success("added in wishlist!", {
       position: "top-right",
       autoClose: 1000,
@@ -117,7 +110,7 @@ const Movies = () => {
       movie.Title.toLowerCase().includes(search.toLowerCase()),
     );
     if (filteredMovies) {
-      setFilteredData(filteredMovies);
+      setDebouncedSearch(filteredMovies);
       setVisibleMovies([]);
     }
     // setData([ filteredMovies ]);
@@ -159,8 +152,10 @@ const Movies = () => {
           className="Textfield"
           sx={{
             '& .MuiOutlinedInput-root': {
-              height: 52,
+              height: 42,
               borderRadius: "8px 0px 0px 8px",
+              color: "red",
+            
               '& fieldset': {
                 borderRight: 'none',
               },
@@ -168,11 +163,12 @@ const Movies = () => {
                 borderRight: 'none',
               },
             },
+           
           }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon sx={{color:'red'}}/>
               </InputAdornment>
             ),
           }}
@@ -186,7 +182,7 @@ const Movies = () => {
             borderRadius: "0 8px 8px 0",
             px: 3,
             py: 1.7,
-            height: 52,
+            height: 44,
           }}
           
         >
@@ -218,7 +214,7 @@ const Movies = () => {
           
             <Card
               key={index}
-              sx={{ maxWidth: 310, m: 2 }}
+              sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff" }}
               className="movie-card"
             >
               {/* Poster */}

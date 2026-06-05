@@ -25,7 +25,7 @@ const Series = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const { setMovieDetails } = useContext(AuthContext);
+  const { setMovieDetails , selectedMode } = useContext(AuthContext);
 
   const seriesAPI = async () => {
     const response = await fetch(
@@ -78,19 +78,15 @@ const Series = () => {
 
       <Box>
         {page >= 1 ? (
-          <Grid container spacing={3}>
+          <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", mt: 2 }}>
             {data?.map((series, index) => (
-              <Grid
-               
-                key={index}
-                sx={{ display: "flex", flexWrap: "wrap", m: "auto" }}
-              >
                 <Card
+                key={index}
                   component={Link}
                   to={`/details?${series.imdbID}`}
                   onClick={seriesDetailsHandle(series.imdbID)}
-                  sx={{ maxWidth: 310, m: 2 }}
-                  className="details-info"
+                  sx={{ maxWidth: 310 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}
+                  className="series-card"
                 >
                   <CardMedia
                     component="img"
@@ -109,9 +105,9 @@ const Series = () => {
                     </Typography>
                   </CardContent>
                 </Card>
-              </Grid>
+             
             ))}
-          </Grid>
+          </Box>
         ) : (
           <Typography variant="h6" align="center" sx={{ mt: 4 }}>
             Page not found
@@ -130,9 +126,11 @@ const Series = () => {
             mt: 4,
           }}
         >
+        {page > 1 && (
           <IconButton onClick={handlePrev} color="error">
             <KeyboardArrowLeftIcon fontSize="large" />
           </IconButton>
+        )}
 
           <Typography variant="h6">{page}</Typography>
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState  } from "react";
 import {useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
@@ -29,30 +29,29 @@ const Register = () => {
 
     // Call the export registration function
     const result = await exportRegisterData(username, password);
-console.log(result);
     if (result.success) {
-      toast.success("Registration successful ✅", {
+      toast.success(result?.message || "Registration successful ✅", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,
       });
-      
-      // Clear input fields
-      setUsername("");
-      setPassword("");
-      
+
       // Redirect to login
       navigate('/login');
     } else {
-      toast.error(result.message || "Registration failed ❌", {
+      toast.error(result?.message || "User already exists ❌", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,
       });
+
+      // Clear input fields
+      setUsername("");
+      setPassword("");
     }
 
     setLoading(false);
-  };
+  }
 
   return (
     <Box

@@ -26,7 +26,7 @@ export const exportRegisterData = async (username, password) => {
 
     return {
       success: true,
-      message: data.message,
+      message: data.message || "User registered successfully",
     };
   } catch (error) {
     return {
@@ -60,7 +60,7 @@ export const loginUser = async (username, password) => {
 
     return {
       success: true,
-      message: data.message,
+      message: data.message || "User logged in successfully",
       user: data.user,
     };
   } catch (error) {

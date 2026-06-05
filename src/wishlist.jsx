@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 const WishList = () => {
   const { wishList, setWishList } = useContext(AuthContext);
-  const { setMovieDetails } = useContext(AuthContext);
+  const { setMovieDetails , selectedMode } = useContext(AuthContext);
   const storedwishlist = JSON.parse(localStorage.getItem("wishlist"));
 
   const removewishlist = (imdbID) => {
@@ -53,7 +53,7 @@ const WishList = () => {
         <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap" }}>
           {storedwishlist?.map((movie, index) => (
             <Grid  key={index}>
-              <Card sx={{ maxWidth: 310, m: 2 }} >
+              <Card sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }} >
                 {/* Poster */}
                 <CardMedia
                   component="img"
@@ -64,7 +64,7 @@ const WishList = () => {
 
                 {/* Content */}
                 <CardContent className="details-info">
-                  <Typography variant="h6" noWrap>
+                  <Typography variant="h6" >
                     {movie.Title}
                   </Typography>
 

@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 
 const Details = () => {
-  const { movieDetails } = useContext(AuthContext);
+  const { movieDetails , selectedMode } = useContext(AuthContext);
   const [details, setDetails] = useState([]);
   const API_KEY = import.meta.env.VITE_API_KEY;
   const API_URL = import.meta.env.VITE_API_URL;
@@ -52,8 +52,7 @@ const Details = () => {
         p: 3,
         m: 2,
         borderRadius: 4,
-       
-        color: "#fff",
+        color: selectedMode === "Dark" ? "#fff" : "#000",
       }}
     >
       {/* Movie Title */}
@@ -76,7 +75,8 @@ const Details = () => {
           gap: 3,
           p: 3,
           borderRadius: 4,
-          background: "#111",
+          
+          backgroundColor: selectedMode === "Dark" ? "#1f1f1f" : "#fff",
           boxShadow: "0 10px 30px rgba(0,0,0,0.6)",
         }}
       >

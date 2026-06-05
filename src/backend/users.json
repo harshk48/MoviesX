@@ -1,33 +1,22 @@
 [
   {
-    "username": "nik@gmail.com",
-    "password": "nik"
-  },
-  {
-    "username": "harsh@gmail.com",
-    "password": "harsh"
-  },
-  {
-    "username": "ysh@gmail.com",
-    "password": "ysh"
-  },
-  {
-    "username": "kv@Gmail.com",
-    "password": "kv"
-  },
-  {
-    "username": "ashish@gmail.com",
-    "password": "ashish"
-  },
-  {
-    "username": "arpu@gmail.com",
-    "password": "arpu"
-  },
-  {
     "username": "ruhan@gmail.com",
     "password": "ruhan",
-    "wishlist": [
-    
-    ]
+    "wishlist": []
+  },
+  {
+    "username": "nitish@gmail.com",
+    "password": "nitish",
+    "wishlist": []
+  },
+  {
+    "username": "anil@gmail.com",
+    "password": "anil",
+    "wishlist": []
+  },
+  {
+    "username": "rajeev@gmail.com",
+    "password": "rajeev",
+    "wishlist": []
   }
 ]

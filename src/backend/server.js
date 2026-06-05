@@ -37,24 +37,25 @@ app.post("/register", (req, res) => {
     const users = JSON.parse(data || "[]");
 
     // Check if user already exists
-    const userExists = users.find((u) => u.username === username);
+    const userExists = users.find((u) => u.username === username && u.password === password);
 
     if (userExists) {
       return res.status(400).json({ message: "User already exists" });
     }
-
+else {
     // Add new user
     const newUser = { username, password , wishlist: []};
     users.push(newUser);
 
     // Save to JSON file
     fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-
     res.status(201).json({ message: "User registered successfully" });
+}
   } catch (error) {
     console.error("Registration error:", error);
     res.status(500).json({ message: "Internal server error" });
   }
+
 });
 
 // LOGIN API - Verify user exists

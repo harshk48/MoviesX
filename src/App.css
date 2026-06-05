@@ -13,8 +13,11 @@
 }
 .dark-mode{
   background-color: #1a1a1a;
-  color: #ebebeb; 
-  
+  color: #f50202; 
+}
+.search-input{
+  color: #a00000; 
+
 }
 
 .hero-section {
@@ -145,9 +148,6 @@
 }
 
 .search-bar {
-  
-
-
  margin: 20px 0px;
   width: auto;
 }
@@ -158,10 +158,23 @@
   border-radius: 5px 0px 0px 5px;
   border: 1px solid #a91e1e;
 }
+.search-bar .Textfield{
+ outline: #a00000;
+  border: 1px solid #db1e1e;
+  color: #a00000;
+  font-weight: 500;
+
+}
 
 .search-bar .Textfield:focus {
   outline: #a00000;
   border: 1px solid #db1e1e;
+
+}
+.search-bar .Textfield:hover {
+  outline: #a00000;
+  border: 1px solid #db1e1e;
+  color: #a00000;
 }
 
 .search-container {
@@ -339,43 +352,47 @@ Button:focus {
 }
 
 .series-card {
-  padding: 10px;
   cursor: pointer;
   color: #a00000;
-  object-fit: cover;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+  margin: auto;
+
+  
+border-radius: 10px;
 }
 
 .series-card img {
-  border-radius: 10px;
   object-fit: cover;
 }
 
 .movie-card:hover {
   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-  transition: all 1s ease;
-  transform: scale(1.01);
+  transition: all 0.5s ease;
+  transform: scale(0.99);
 }
 
 .series-card:hover {
   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
   transform: scale(1.01);
 }
 
 .Episode-card:hover {
   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
   transform: scale(1.01);
 }
 
 .Episode-card {
-  padding: 8px;
   border-radius: 10px;
 }
-
 .Episode-card img {
   object-fit: cover;
-  border-radius: 10px;
 }
 
 .movies-container {

@@ -26,7 +26,6 @@ const Header = () => {
   
   const isMobile = useMediaQuery("(max-width:600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [selectedMode, setSelectedMode] = useState("Light");
   const [userAnchorEl, setUserAnchorEl] = useState(null);
   const { user, logout, login } = useAuth();
   const navigate = useNavigate();
@@ -35,11 +34,14 @@ const Header = () => {
     logout();
     navigate("/");
   };
+  const { selectedMode, setSelectedMode } = useAuth();
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
   };
   const handleModeToggle = (event) => {
-    setSelectedMode(event.target.checked ? "Dark" : "Light");
+    const mode = event.target.checked ? "Dark" : "Light";
+    setSelectedMode(mode);
+    localStorage.setItem("themeMode", mode);
     if (event.target.checked) {
       document.body.classList.add("dark-mode");
     } else {
@@ -139,6 +141,14 @@ const Header = () => {
       if (storedName) {
         login(storedName);
       }
+    }
+    const storedMode = localStorage.getItem("themeMode");
+    if (storedMode === "Dark") {
+      setSelectedMode("Dark");
+      document.body.classList.add("dark-mode");
+    } else if (storedMode === "Light") {
+      setSelectedMode("Light");
+      document.body.classList.remove("dark-mode");
     }
   }, [login]);
 
@@ -242,13 +252,16 @@ const Header = () => {
                     >
                       Logout
                     </MenuItem>
-                      <MenuItem
-                sx={{  ":hover": { backgroundColor: "#c48888" } }}
-                  
-              >
-                <Switch  onClick={handleModeToggle}/> {selectedMode}
-              </MenuItem>
+                      <MenuItem sx={{  ":hover": { backgroundColor: "#c48888" } }}>
+                        <Switch
+                          checked={selectedMode === "Dark"}
+                          onChange={handleModeToggle}
+                        />
+                        {selectedMode}
+                      </MenuItem>
                   </Menu>
+
+
                 </div>
 
               ) : (

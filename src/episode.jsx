@@ -18,7 +18,7 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 const Episode = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const API_KEY = import.meta.env.VITE_API_KEY;
-  const { setMovieDetails } = useContext(AuthContext);
+  const { setMovieDetails ,selectedMode } = useContext(AuthContext);
   const [data, setData] = useState([]);
 
   const episodeAPI = async () => {
@@ -63,19 +63,20 @@ const Episode = () => {
       )}
 
       {/* Episodes Grid */}
-      <Grid
-        container
-        spacing={3}
-        sx={{ display: "flex"  , justifyContent: "center" }}
-      >
+      <Box sx={{
+        display: "flex",
+        justifyContent: "center",
+        flexWrap: "wrap",
+      }}>
         {data?.map((episode, index) => (
-          <Grid key={index} item >
+          
             <Card
+            key={index}
               component={Link}
               to={`/details?${episode.imdbID}`}
               onClick={movieDetailsHandle(episode.imdbID)}
-              sx={{ maxWidth: 310, m: 2 }}
-              className="details-cards"
+              sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}
+              className="Episode-card"
             >
               <CardMedia
                 component="img"
@@ -92,9 +93,9 @@ const Episode = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
+       
         ))}
-      </Grid>
+      </Box>
     </motion.div>
   );
 };

@@ -10,6 +10,7 @@ const ContextProvider = ({ children }) => {
   const [movieDetails, setMovieDetails] = useState([]);
   const [wishList, setWishList] = useState([]);
   const [loading, setLoading] = useState(true);
+   const [selectedMode, setSelectedMode] = useState("Light");
   const login = (email) => {
     setUser(email);
   };
@@ -29,6 +30,8 @@ const ContextProvider = ({ children }) => {
         setMovieDetails,
         wishList,
         setWishList,
+          selectedMode,
+        setSelectedMode,
         setLoading,
         loading,
       }}
