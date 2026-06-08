@@ -78,14 +78,14 @@ const Series = () => {
 
       <Box>
         {page >= 1 ? (
-          <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", mt: 2 }}>
+          <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", mt: 2 , gap: 2 }}>
             {data?.map((series, index) => (
                 <Card
                 key={index}
                   component={Link}
                   to={`/details?${series.imdbID}`}
                   onClick={seriesDetailsHandle(series.imdbID)}
-                  sx={{ maxWidth: 310 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}
+                  sx={{ maxWidth: 280 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}
                   className="series-card"
                 >
                   <CardMedia

@@ -42,15 +42,14 @@ app.post("/register", (req, res) => {
     if (userExists) {
       return res.status(400).json({ message: "User already exists" });
     }
-else {
+
     // Add new user
     const newUser = { username, password , wishlist: []};
-    users.push(newUser);
-
-    // Save to JSON file
-    fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-    res.status(201).json({ message: "User registered successfully" });
-}
+   const appenduser =  users.push(newUser);
+   if (newUser && appenduser) {
+      fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+       return res.status(201).json({ message: "User registered successfully" });
+   }
   } catch (error) {
     console.error("Registration error:", error);
     res.status(500).json({ message: "Internal server error" });

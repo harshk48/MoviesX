@@ -75,7 +75,7 @@ const Episode = () => {
               component={Link}
               to={`/details?${episode.imdbID}`}
               onClick={movieDetailsHandle(episode.imdbID)}
-              sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}
+              sx={{ maxWidth: 280, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}
               className="Episode-card"
             >
               <CardMedia

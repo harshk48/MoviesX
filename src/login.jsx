@@ -6,6 +6,8 @@ import { loginUser } from "./utils/authService";
 import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
 import bg from "./assets/bg.jpg";
+import { MdLogin } from "react-icons/md";
+
 const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -77,9 +79,10 @@ const Login = () => {
               variant="h4"
               textAlign="center"
               gutterBottom
-              className="heading"
+              className="heading "
+              sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 1 }}
             >
-              Login
+              Login <MdLogin />
             </Typography>
 
             {/* Inputs */}
@@ -130,7 +133,7 @@ const Login = () => {
                 "&:hover": { bgcolor: "#800000" },
               }}
             >
-              Login
+               Login
             </Button>
           </Box>
         </Paper>

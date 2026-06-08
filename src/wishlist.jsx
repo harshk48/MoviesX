@@ -53,7 +53,7 @@ const WishList = () => {
         <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap" }}>
           {storedwishlist?.map((movie, index) => (
             <Grid  key={index}>
-              <Card sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }} >
+              <Card sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}  className="movie-card">
                 {/* Poster */}
                 <CardMedia
                   component="img"

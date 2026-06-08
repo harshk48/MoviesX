@@ -29,8 +29,8 @@ const Register = () => {
 
     // Call the export registration function
     const result = await exportRegisterData(username, password);
-    if (result.success) {
-      toast.success(result?.message || "Registration successful ✅", {
+    if (result.success) { 
+      toast.success(result.message || "Registration successful ✅", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,
@@ -39,7 +39,7 @@ const Register = () => {
       // Redirect to login
       navigate('/login');
     } else {
-      toast.error(result?.message || "User already exists ❌", {
+      toast.error(result.message || "User already exists ❌", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,

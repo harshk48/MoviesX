@@ -35,21 +35,32 @@ const Movies = () => {
   const [data, setData] = useState([]);
   const [VisibleMovies, setVisibleMovies] = useState([]);
   const [search, setSearch] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState(search);
+  const [filteredData, setFilteredData] = useState([]);
   const { setMovieDetails } = useContext(AuthContext);
   const { wishList, setWishList } = useContext(AuthContext);
   const { user, selectedMode } = useAuth();
 
   const { setLoading } = useContext(AuthContext);
-  const Movies = async (query = debouncedSearch) => {
+  // initialize wishlist from localStorage on mount so it persists across reloads
+  useEffect(() => {
+    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    if (storedWishlist.length > 0) {
+      setWishList(storedWishlist);
+    }
+  }, []);
+  const Movies = async () => {
     try {
+      // const totalPages = 10; // 1 → 100
+
       const requests = [];
 
-      requests.push(
-        axios(
-          `${API_URL}?s=${query === "" ? "movie" : query}&apikey=${API_KEY}`,
-        ),
-      );
+      // for (let i = 1; i <= totalPages; i++) {
+        requests.push(
+          axios(
+            `${API_URL}?s=${search == "" ? "movie" : search}&apikey=${API_KEY}`,
+          ),
+        );
+      // }
 
       const responses = await Promise.all(requests);
 
@@ -73,16 +84,16 @@ const Movies = () => {
     const selectedMovie = data.find((movie) => movie.imdbID === id);
     setMovieDetails(selectedMovie);
   };
-  const moviesToShow = VisibleMovies;
+  const moviesToShow = search == null ? filteredData : VisibleMovies;
   console.log(moviesToShow.length);
   const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
 
   const handleAddToWishlist = (index) => (e) => {
     e.preventDefault();
     const selectedMovie = moviesToShow[index];
-    const storedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const exists = storedWishlist.some(
-      (item) => item.imdbID === selectedMovie.imdbID,
+    const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const exists = stored.some(
+      (index) => index.imdbID === selectedMovie.imdbID,
     );
     if (exists) {
       toast.error("Already in wishlist ❌", {
@@ -92,9 +103,10 @@ const Movies = () => {
       return;
     }
 
-    const updatedWishlist = [...storedWishlist, selectedMovie];
-    setWishList(updatedWishlist);
-    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    const updated = [...wishList, selectedMovie];
+    setWishList(updated);
+    localStorage.setItem("wishlist", JSON.stringify(updated));
+    // optional: persist to backend or other service
     addWishlist(selectedMovie);
     toast.success("added in wishlist!", {
       position: "top-right",
@@ -110,7 +122,7 @@ const Movies = () => {
       movie.Title.toLowerCase().includes(search.toLowerCase()),
     );
     if (filteredMovies) {
-      setDebouncedSearch(filteredMovies);
+      setFilteredData(filteredMovies);
       setVisibleMovies([]);
     }
     // setData([ filteredMovies ]);
@@ -214,7 +226,7 @@ const Movies = () => {
           
             <Card
               key={index}
-              sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff" }}
+              sx={{ maxWidth: 280, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff" }}
               className="movie-card"
             >
               {/* Poster */}

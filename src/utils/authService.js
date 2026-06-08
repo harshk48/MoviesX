@@ -60,7 +60,7 @@ export const loginUser = async (username, password) => {
 
     return {
       success: true,
-      message: data.message || "User logged in successfully",
+      message: data.message || "Login successful",
       user: data.user,
     };
   } catch (error) {

@@ -361,7 +361,6 @@ Button:focus {
   display: flex;
   gap: 10px;
   margin: auto;
-
   
 border-radius: 10px;
 }
@@ -374,6 +373,7 @@ border-radius: 10px;
   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
   transition: all 0.5s ease;
   transform: scale(0.99);
+  cursor: pointer;
 }
 
 .series-card:hover {

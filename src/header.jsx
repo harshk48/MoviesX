@@ -85,13 +85,15 @@ const Header = () => {
         onClick={() => setDrawerOpen(false)}
       >
         <ListItemText
-          primary="category"
+          primary="Category"
           style={{ textDecoration: "none", color: "#a00000" }}
         />
       </ListItem>
+      
       <Divider />
       {user ? (
         <>
+
           <ListItem
             button
             component={Link}
@@ -104,18 +106,44 @@ const Header = () => {
               style={{ textDecoration: "none", color: "#a00000" }}
             />
           </ListItem>
-          <ListItem
-            button
-            onClick={() => {
-              handleLogout();
-              setDrawerOpen(false);
-            }}
-          >
-            <ListItemText
-              primary="Logout"
-              style={{ textDecoration: "none", color: "#a00000" }}
-            />
-          </ListItem>
+ <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={handleUserMenuClick}
+                    endIcon={<PersonIcon />}
+                  >
+                    {loggeduser
+                      ? JSON.parse(loggeduser).username.split("@")[0] ||
+                        JSON.parse(loggeduser).email.split("@")[0]
+                      : ""}
+                  </Button>
+                  <Menu
+                    anchorEl={userAnchorEl}
+                    open={Boolean(userAnchorEl)}
+                    onClose={handleUserMenuClose}
+                  >
+                    <MenuItem
+                      onClick={() => {
+                        handleLogout();
+                        handleUserMenuClose();
+                      }}
+                      sx={{  ":hover": { backgroundColor: "#c48888" } }}
+                    >
+                      Logout
+                    </MenuItem>
+                      <MenuItem sx={{  ":hover": { backgroundColor: "#c48888" } }}>
+                        <Switch
+                          checked={selectedMode === "Dark"}
+                          onChange={handleModeToggle}
+                        />
+                        {selectedMode}
+                      </MenuItem>
+                  </Menu>
+
+
+                </div>
+
         </>
       ) : (
         <ListItem
@@ -194,7 +222,7 @@ const Header = () => {
         ) : (
           <>
             {/* 🔹 Menu Links */}
-            <Box sx={{ display: "flex", gap: 2 }}>
+            <Box sx={{ display: "flex", gap: 2 }}> 
               <Button component={Link} to="/" sx={{ color: "#fff" , ":hover":{backgroundColor:"#c48888"}}}> 
                 Home
               </Button>
