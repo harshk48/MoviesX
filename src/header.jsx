@@ -20,10 +20,9 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import PersonIcon from '@mui/icons-material/Person';
-import Switch from '@mui/material/Switch';
+import PersonIcon from "@mui/icons-material/Person";
+import Switch from "@mui/material/Switch";
 const Header = () => {
-  
   const isMobile = useMediaQuery("(max-width:600px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [userAnchorEl, setUserAnchorEl] = useState(null);
@@ -89,11 +88,10 @@ const Header = () => {
           style={{ textDecoration: "none", color: "#a00000" }}
         />
       </ListItem>
-      
+
       <Divider />
       {user ? (
         <>
-
           <ListItem
             button
             component={Link}
@@ -106,44 +104,41 @@ const Header = () => {
               style={{ textDecoration: "none", color: "#a00000" }}
             />
           </ListItem>
- <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    onClick={handleUserMenuClick}
-                    endIcon={<PersonIcon />}
-                  >
-                    {loggeduser
-                      ? JSON.parse(loggeduser).username.split("@")[0] ||
-                        JSON.parse(loggeduser).email.split("@")[0]
-                      : ""}
-                  </Button>
-                  <Menu
-                    anchorEl={userAnchorEl}
-                    open={Boolean(userAnchorEl)}
-                    onClose={handleUserMenuClose}
-                  >
-                    <MenuItem
-                      onClick={() => {
-                        handleLogout();
-                        handleUserMenuClose();
-                      }}
-                      sx={{  ":hover": { backgroundColor: "#c48888" } }}
-                    >
-                      Logout
-                    </MenuItem>
-                      <MenuItem sx={{  ":hover": { backgroundColor: "#c48888" } }}>
-                        <Switch
-                          checked={selectedMode === "Dark"}
-                          onChange={handleModeToggle}
-                        />
-                        {selectedMode}
-                      </MenuItem>
-                  </Menu>
-
-
-                </div>
-
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={handleUserMenuClick}
+              endIcon={<PersonIcon />}
+            >
+              {loggeduser
+                ? JSON.parse(loggeduser).username.split("@")[0] ||
+                  JSON.parse(loggeduser).email.split("@")[0]
+                : ""}
+            </Button>
+            <Menu
+              anchorEl={userAnchorEl}
+              open={Boolean(userAnchorEl)}
+              onClose={handleUserMenuClose}
+            >
+              <MenuItem
+                onClick={() => {
+                  handleLogout();
+                  handleUserMenuClose();
+                }}
+                sx={{ ":hover": { backgroundColor: "#c48888" } }}
+              >
+                Logout
+              </MenuItem>
+              <MenuItem sx={{ ":hover": { backgroundColor: "#c48888" } }}>
+                <Switch
+                  checked={selectedMode === "Dark"}
+                  onChange={handleModeToggle}
+                />
+                {selectedMode}
+              </MenuItem>
+            </Menu>
+          </div>
         </>
       ) : (
         <ListItem
@@ -198,7 +193,7 @@ const Header = () => {
             fontWeight: "bold",
             flexGrow: 1,
             fontSize: "1.5rem",
-              display: "flex",
+            display: "flex",
           }}
         >
           Movies <h1>X</h1>
@@ -222,19 +217,24 @@ const Header = () => {
         ) : (
           <>
             {/* 🔹 Menu Links */}
-            <Box sx={{ display: "flex", gap: 2 }}> 
-              <Button component={Link} to="/" sx={{ color: "#fff" , ":hover":{backgroundColor:"#c48888"}}}> 
+            <Box sx={{ display: "flex", gap: 2 }}>
+              <Button
+                component={Link}
+                to="/"
+                sx={{ color: "#fff", ":hover": { backgroundColor: "#c48888" } }}
+              >
                 Home
               </Button>
 
-              <Button component={Link} to="/category" sx={{ color: "#fff",  ":hover":{backgroundColor:"#c48888"} }}>
+              <Button
+                component={Link}
+                to="/category"
+                sx={{ color: "#fff", ":hover": { backgroundColor: "#c48888" } }}
+              >
                 Category
               </Button>
 
-            
-              <Menu
-              >
-              </Menu>
+              <Menu></Menu>
             </Box>
 
             {/* 🔹 Right Section */}
@@ -254,7 +254,9 @@ const Header = () => {
 
               {/* Login / Logout */}
               {user ? (
-                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <div
+                  style={{ display: "flex", alignItems: "center", gap: "8px" }}
+                >
                   <Button
                     variant="contained"
                     color="error"
@@ -276,22 +278,19 @@ const Header = () => {
                         handleLogout();
                         handleUserMenuClose();
                       }}
-                      sx={{  ":hover": { backgroundColor: "#c48888" } }}
+                      sx={{ ":hover": { backgroundColor: "#c48888" } }}
                     >
                       Logout
                     </MenuItem>
-                      <MenuItem sx={{  ":hover": { backgroundColor: "#c48888" } }}>
-                        <Switch
-                          checked={selectedMode === "Dark"}
-                          onChange={handleModeToggle}
-                        />
-                        {selectedMode}
-                      </MenuItem>
+                    <MenuItem sx={{ ":hover": { backgroundColor: "#c48888" } }}>
+                      <Switch
+                        checked={selectedMode === "Dark"}
+                        onChange={handleModeToggle}
+                      />
+                      {selectedMode}
+                    </MenuItem>
                   </Menu>
-
-
                 </div>
-
               ) : (
                 <Button
                   variant="contained"

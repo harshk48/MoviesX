@@ -70,7 +70,6 @@ export const loginUser = async (username, password) => {
   }
 };
 
-
 export const addtoWishlist = async (movie) => {
   try {
     const response = await fetch(`${API_BASE_URL}/category`, {
@@ -79,7 +78,7 @@ export const addtoWishlist = async (movie) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-       movie,
+        movie,
         username: JSON.parse(localStorage.getItem("user"))?.username || "guest",
       }),
     });
@@ -103,7 +102,6 @@ export const addtoWishlist = async (movie) => {
   }
 };
 
-
 export const removeWishlist = async (movie) => {
   try {
     const response = await fetch(`${API_BASE_URL}/wishList`, {
@@ -112,8 +110,7 @@ export const removeWishlist = async (movie) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username:
-          JSON.parse(localStorage.getItem("user"))?.username || "guest",
+        username: JSON.parse(localStorage.getItem("user"))?.username || "guest",
         movie,
       }),
     });
@@ -132,7 +129,8 @@ export const removeWishlist = async (movie) => {
   } catch (error) {
     return {
       success: false,
-      message: error.message || "An error occurred while removing from wishlist",
+      message:
+        error.message || "An error occurred while removing from wishlist",
       wishlist: [],
     };
   }

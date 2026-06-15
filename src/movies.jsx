@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useState, useRef, useContext } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+  useContext,
+} from "react";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
 import { useAuth } from "./context.jsx";
@@ -25,17 +31,36 @@ import { motion } from "framer-motion";
 
 // Skeleton card — mirrors the real card's layout exactly
 const MovieSkeletonCard = () => (
-  <Card sx={{ maxWidth: 280, m: 2, backgroundColor: "#c7c7c7"}} className="movie-card">
+  <Card
+    sx={{ maxWidth: 280, m: 2, backgroundColor: "#c7c7c7" }}
+    className="movie-card"
+  >
     {/* Poster placeholder */}
     <Skeleton variant="rectangular" height={250} animation="wave" />
 
     <CardContent>
       {/* Title placeholder */}
-      <Skeleton variant="text" sx={{ fontSize: "1.25rem", mb: 0.5 }} animation="wave" />
-      <Skeleton variant="text" width="40%" sx={{ fontSize: "0.875rem", mb: 2 }} animation="wave" />
+      <Skeleton
+        variant="text"
+        sx={{ fontSize: "1.25rem", mb: 0.5 }}
+        animation="wave"
+      />
+      <Skeleton
+        variant="text"
+        width="40%"
+        sx={{ fontSize: "0.875rem", mb: 2 }}
+        animation="wave"
+      />
 
       {/* Button placeholders */}
-      <Box sx={{ display: "flex", gap: 1 , flexWrap:"wrap" ,  maxWidth: { xs: "100%", sm: 600 },}} >
+      <Box
+        sx={{
+          display: "flex",
+          gap: 1,
+          flexWrap: "wrap",
+          maxWidth: { xs: "100%", sm: 600 },
+        }}
+      >
         <Skeleton variant="rounded" width={100} height={36} animation="wave" />
         <Skeleton variant="rounded" width={100} height={36} animation="wave" />
       </Box>
@@ -65,7 +90,7 @@ const MoviesComponent = () => {
         const mergedArray = Array.isArray(response.data.Search)
           ? response.data.Search.filter(
               (movie, index, arr) =>
-                index === arr.findIndex((item) => item.imdbID === movie.imdbID)
+                index === arr.findIndex((item) => item.imdbID === movie.imdbID),
             )
           : [];
 
@@ -79,7 +104,7 @@ const MoviesComponent = () => {
         setLoading(false);
       }
     },
-    [API_URL, API_KEY]
+    [API_URL, API_KEY],
   );
 
   const movieDetailsHandle = (id) => () => {
@@ -93,7 +118,9 @@ const MoviesComponent = () => {
     e.preventDefault();
     const selectedMovie = moviesToShow[index];
 
-    const exists = wishList.some((movie) => movie.imdbID === selectedMovie.imdbID);
+    const exists = wishList.some(
+      (movie) => movie.imdbID === selectedMovie.imdbID,
+    );
 
     if (exists) {
       toast.error("Already in wishlist ❌");
@@ -201,13 +228,13 @@ const MoviesComponent = () => {
         whileInView="visible"
         transition={{ duration: 0.6 }}
       >
-         <h1 className="heading">
-              Recommended Movies{" "}
-              <FontAwesomeIcon
-                icon={faChevronRight}
-                style={{ color: "rgb(207, 21, 21)" }}
-              />
-            </h1>
+        <h1 className="heading">
+          Recommended Movies{" "}
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            style={{ color: "rgb(207, 21, 21)" }}
+          />
+        </h1>
         {loading ? (
           // 10 skeleton cards matching real card dimensions
           Array.from({ length: 10 }).map((_, i) => (
@@ -219,8 +246,6 @@ const MoviesComponent = () => {
           </Typography>
         ) : (
           <>
-        
-
             {moviesToShow.map((movie, index) => (
               <Card
                 key={movie.imdbID}
@@ -231,7 +256,10 @@ const MoviesComponent = () => {
                 }}
                 className="movie-card"
               >
-                <Link to={`/details`} onClick={movieDetailsHandle(movie.imdbID)}>
+                <Link
+                  to={`/details`}
+                  onClick={movieDetailsHandle(movie.imdbID)}
+                >
                   <CardMedia
                     component="img"
                     height="250"
@@ -241,7 +269,10 @@ const MoviesComponent = () => {
                 </Link>
 
                 <CardContent className="details-info">
-                  <Typography variant="h6" sx={{ display: "flex", flexWrap: "wrap" }}>
+                  <Typography
+                    variant="h6"
+                    sx={{ display: "flex", flexWrap: "wrap" }}
+                  >
                     {movie.Title}
                   </Typography>
 
@@ -258,7 +289,7 @@ const MoviesComponent = () => {
                         onClick={() =>
                           window.open(
                             `https://www.imdb.com/title/${movie.imdbID}`,
-                            "_blank"
+                            "_blank",
                           )
                         }
                       >

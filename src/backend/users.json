@@ -139,11 +139,11 @@
     "password": "harsh",
     "wishlist": [
       {
-        "Title": "F1: The Movie",
-        "Year": "2025",
-        "imdbID": "tt16311594",
+        "Title": "The Simpsons Movie",
+        "Year": "2007",
+        "imdbID": "tt0462538",
         "Type": "movie",
-        "Poster": "https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMzIxN2IzOGItOTcyZi00MTkzLWE4ZjktZTdlOWFiYWE4NzlmXkEyXkFqcGc@._V1_SX300.jpg"
       }
     ]
   },

@@ -13,42 +13,38 @@ import {
   CardContent,
   Button,
 } from "@mui/material";
-import {removeWishlist} from "./utils/authService.js";
+import { removeWishlist } from "./utils/authService.js";
 const WishList = () => {
-  const { wishList, setWishList  } = useContext(AuthContext);
-  const { setMovieDetails , selectedMode } = useContext(AuthContext);
+  const { wishList, setWishList } = useContext(AuthContext);
+  const { setMovieDetails, selectedMode } = useContext(AuthContext);
   // const storedwishlist = JSON.parse(localStorage.getItem("wishlist"));
 
-const deletewishlist = async (movie) => {
-  try {
-    const result = await removeWishlist(movie);
+  const deletewishlist = async (movie) => {
+    try {
+      const result = await removeWishlist(movie);
 
-    if (!result?.success) {
-      console.error(result?.message || "Error removing movie");
-      return;
+      if (!result?.success) {
+        console.error(result?.message || "Error removing movie");
+        return;
+      }
+      setWishList((prev) => {
+        const updatedWishlist =
+          result.wishlist?.length >= 0
+            ? result.wishlist
+            : prev.filter((item) => item.imdbID !== movie.imdbID);
+
+        // localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+        return updatedWishlist;
+      });
+    } catch (error) {
+      console.error("Error removing movie:", error);
     }
-    setWishList((prev) => {
-      const updatedWishlist =
-        result.wishlist?.length >= 0
-          ? result.wishlist
-          : prev.filter((item) => item.imdbID !== movie.imdbID);
+  };
+  useEffect(() => {}, []);
 
-      // localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
-      return updatedWishlist;
-    });
-  } catch (error) {
-    console.error("Error removing movie:", error);
-  }
-}
- useEffect(()=>{
-
-}, [])
-
-
-
-    // const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
-    // const updated = stored.filter((item) => item.imdbID !== imdbID);
-    // localStorage.setItem("wishlist", JSON.stringify(updated));
+  // const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
+  // const updated = stored.filter((item) => item.imdbID !== imdbID);
+  // localStorage.setItem("wishlist", JSON.stringify(updated));
   const movieDetailsHandle = (id) => () => {
     const selectedMovie = wishList.find((movie) => movie.imdbID === id);
     setMovieDetails(selectedMovie);
@@ -58,10 +54,11 @@ const deletewishlist = async (movie) => {
     <Box sx={{ p: 2 }}>
       {/* Title */}
       <Typography variant="h4" gutterBottom className="heading">
-        WishLists  <FontAwesomeIcon
-              icon={faChevronRight}
-              style={{ color: "rgb(207, 21, 21)" }}
-            />
+        WishLists{" "}
+        <FontAwesomeIcon
+          icon={faChevronRight}
+          style={{ color: "rgb(207, 21, 21)" }}
+        />
       </Typography>
 
       {/* Empty State */}
@@ -75,10 +72,21 @@ const deletewishlist = async (movie) => {
           No Wishlist
         </Typography>
       ) : (
-        <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap" }}>
+        <Grid
+          container
+          spacing={3}
+          sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}
+        >
           {wishList?.map((movie, index) => (
-            <Grid  key={index}>
-              <Card sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}  className="movie-card">
+            <Grid key={index}>
+              <Card
+                sx={{
+                  maxWidth: 310,
+                  m: 2,
+                  backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff",
+                }}
+                className="movie-card"
+              >
                 {/* Poster */}
                 <CardMedia
                   component="img"
@@ -89,9 +97,7 @@ const deletewishlist = async (movie) => {
 
                 {/* Content */}
                 <CardContent className="details-info">
-                  <Typography variant="h6" >
-                    {movie.Title}
-                  </Typography>
+                  <Typography variant="h6">{movie.Title}</Typography>
 
                   <Typography variant="body2" color="text.secondary">
                     {movie.Year}
@@ -124,7 +130,7 @@ const deletewishlist = async (movie) => {
                       color="error"
                       component={Link}
                       to="/details"
-                      onClick={movieDetailsHandle(movie.imdbID)} 
+                      onClick={movieDetailsHandle(movie.imdbID)}
                     >
                       Details
                     </Button>

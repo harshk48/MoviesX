@@ -14,11 +14,10 @@ import {
 } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-
 const Episode = () => {
   const API_URL = import.meta.env.VITE_API_URL;
   const API_KEY = import.meta.env.VITE_API_KEY;
-  const { setMovieDetails ,selectedMode } = useContext(AuthContext);
+  const { setMovieDetails, selectedMode } = useContext(AuthContext);
   const [data, setData] = useState([]);
 
   const episodeAPI = async () => {
@@ -63,37 +62,39 @@ const Episode = () => {
       )}
 
       {/* Episodes Grid */}
-      <Box sx={{
-        display: "flex",
-        justifyContent: "center",
-        flexWrap: "wrap",
-      }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          flexWrap: "wrap",
+        }}
+      >
         {data?.map((episode, index) => (
-          
-            <Card
+          <Card
             key={index}
-              component={Link}
-              to={`/details?${episode.imdbID}`}
-              onClick={movieDetailsHandle(episode.imdbID)}
-              sx={{ maxWidth: 280, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}
-              className="Episode-card"
-            >
-              <CardMedia
-                component="img"
-                height="250"
-                image={episode.Poster}
-                alt={episode.Title}
-              />
-              <CardContent className="details-info">
-                <Typography variant="h6">
-                  {episode.Title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {episode.Year}
-                </Typography>
-              </CardContent>
-            </Card>
-       
+            component={Link}
+            to={`/details?${episode.imdbID}`}
+            onClick={movieDetailsHandle(episode.imdbID)}
+            sx={{
+              maxWidth: 280,
+              m: 2,
+              backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff",
+            }}
+            className="Episode-card"
+          >
+            <CardMedia
+              component="img"
+              height="250"
+              image={episode.Poster}
+              alt={episode.Title}
+            />
+            <CardContent className="details-info">
+              <Typography variant="h6">{episode.Title}</Typography>
+              <Typography variant="body2" color="text.secondary">
+                {episode.Year}
+              </Typography>
+            </CardContent>
+          </Card>
         ))}
       </Box>
     </motion.div>

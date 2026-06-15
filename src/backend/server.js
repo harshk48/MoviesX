@@ -26,7 +26,9 @@ app.post("/register", (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
-      return res.status(400).json({ message: "Username and password are required" });
+      return res
+        .status(400)
+        .json({ message: "Username and password are required" });
     }
 
     const data = fs.readFileSync(filePath, "utf8");
@@ -63,14 +65,17 @@ app.post("/login", (req, res) => {
     const users = JSON.parse(data || "[]");
 
     const user = users.find(
-      (u) => u.username === username && u.password === password
+      (u) => u.username === username && u.password === password,
     );
 
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    res.json({ message: "Login successful", user: { username: user.username } });
+    res.json({
+      message: "Login successful",
+      user: { username: user.username },
+    });
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ message: "Internal server error" });
@@ -81,13 +86,12 @@ app.post("/login", (req, res) => {
 // ======================
 
 app.post("/category", (req, res) => {
-
-  const { username , movie } = req.body;
+  const { username, movie } = req.body;
 
   const users = JSON.parse(fs.readFileSync(filePath) || "[]");
   const user = users.find((u) => u.username === username);
-  if (user) { 
-      user.wishlist.push(movie);
+  if (user) {
+    user.wishlist.push(movie);
     fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
   } else {
     return res.status(404).json({
@@ -104,13 +108,9 @@ app.post("/category", (req, res) => {
 app.delete("/wishList", (req, res) => {
   const { username, movie } = req.body;
 
-  const users = JSON.parse(
-    fs.readFileSync(filePath, "utf8") || "[]"
-  );
+  const users = JSON.parse(fs.readFileSync(filePath, "utf8") || "[]");
 
-  const user = users.find(
-    (u) => u.username === username
-  );
+  const user = users.find((u) => u.username === username);
 
   if (!user) {
     return res.status(404).json({
@@ -119,14 +119,9 @@ app.delete("/wishList", (req, res) => {
   }
 
   // Remove movie from user's wishlist
-  user.wishlist = user.wishlist.filter(
-    (m) => m.imdbID !== movie.imdbID
-  );
+  user.wishlist = user.wishlist.filter((m) => m.imdbID !== movie.imdbID);
 
-  fs.writeFileSync(
-    filePath,
-    JSON.stringify(users, null, 2)
-  );
+  fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
 
   res.json({
     message: "Removed from wishlist",
@@ -135,14 +130,9 @@ app.delete("/wishList", (req, res) => {
 });
 // GET USER WISHLIST
 app.get("/wishlist", (req, res) => {
+  const users = JSON.parse(fs.readFileSync(filePath, "utf8") || "[]");
 
-  const users = JSON.parse(
-    fs.readFileSync(filePath, "utf8") || "[]"
-  );
-
-  const user = users.find(
-    (u) => u.username === req.params.username
-  );
+  const user = users.find((u) => u.username === req.params.username);
 
   if (!user) {
     return res.status(404).json({
@@ -152,8 +142,6 @@ app.get("/wishlist", (req, res) => {
 
   res.json(user.wishlist);
 });
-
-
 
 app.get("/", (req, res) => {
   res.send("Backend Running");

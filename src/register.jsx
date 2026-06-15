@@ -47,7 +47,7 @@ const Register = () => {
         setPassword("");
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
       toast.error("Something went wrong ❌", {
         position: "top-right",
         autoClose: 1000,

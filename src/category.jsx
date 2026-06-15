@@ -6,16 +6,22 @@ import { AuthContext } from "./context.jsx";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-const MemoMovies  = memo(Movies);
-const MemoSeries  = memo(Series);
+const MemoMovies = memo(Movies);
+const MemoSeries = memo(Series);
 const MemoEpisode = memo(Episode);
 
 const Category = () => {
-  const { selectedMode, selectedGenre, setSelectedGenre } = useContext(AuthContext);
+  const { selectedMode, selectedGenre, setSelectedGenre } =
+    useContext(AuthContext);
 
   const genres = [
-    "Action", "Drama", "Sport", "Comedy",
-    "Adventure", "Sci-Fi", "Thriller",
+    "Action",
+    "Drama",
+    "Sport",
+    "Comedy",
+    "Adventure",
+    "Sci-Fi",
+    "Thriller",
   ];
 
   return (

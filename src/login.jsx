@@ -53,7 +53,6 @@ const Login = () => {
 
   return (
     <>
-
       <Box
         sx={{
           minHeight: "100vh",
@@ -80,7 +79,12 @@ const Login = () => {
               textAlign="center"
               gutterBottom
               className="heading "
-              sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 1 }}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 1,
+              }}
             >
               Login <MdLogin />
             </Typography>
@@ -133,7 +137,7 @@ const Login = () => {
                 "&:hover": { bgcolor: "#800000" },
               }}
             >
-               Login
+              Login
             </Button>
           </Box>
         </Paper>

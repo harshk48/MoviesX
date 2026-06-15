@@ -25,7 +25,7 @@ const Series = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const { setMovieDetails , selectedMode } = useContext(AuthContext);
+  const { setMovieDetails, selectedMode } = useContext(AuthContext);
 
   const seriesAPI = async () => {
     const response = await fetch(
@@ -78,34 +78,42 @@ const Series = () => {
 
       <Box>
         {page >= 1 ? (
-          <Box sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", mt: 2 , gap: 2 }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              mt: 2,
+              gap: 2,
+            }}
+          >
             {data?.map((series, index) => (
-                <Card
+              <Card
                 key={index}
-                  component={Link}
-                  to={`/details?${series.imdbID}`}
-                  onClick={seriesDetailsHandle(series.imdbID)}
-                  sx={{ maxWidth: 280 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}
-                  className="series-card"
-                >
-                  <CardMedia
-                    component="img"
-                    height="250"
-                    image={series.Poster}
-                    alt={series.Title}
-                  />
+                component={Link}
+                to={`/details?${series.imdbID}`}
+                onClick={seriesDetailsHandle(series.imdbID)}
+                sx={{
+                  maxWidth: 280,
+                  backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff",
+                }}
+                className="series-card"
+              >
+                <CardMedia
+                  component="img"
+                  height="250"
+                  image={series.Poster}
+                  alt={series.Title}
+                />
 
-                  <CardContent className="details-info">
-                    <Typography variant="h6" >
-                      {series.Title}
-                    </Typography>
+                <CardContent className="details-info">
+                  <Typography variant="h6">{series.Title}</Typography>
 
-                    <Typography variant="body2" color="text.secondary">
-                      {series.Year}
-                    </Typography>
-                  </CardContent>
-                </Card>
-             
+                  <Typography variant="body2" color="text.secondary">
+                    {series.Year}
+                  </Typography>
+                </CardContent>
+              </Card>
             ))}
           </Box>
         ) : (
@@ -126,11 +134,11 @@ const Series = () => {
             mt: 4,
           }}
         >
-        {page > 1 && (
-          <IconButton onClick={handlePrev} color="error">
-            <KeyboardArrowLeftIcon fontSize="large" />
-          </IconButton>
-        )}
+          {page > 1 && (
+            <IconButton onClick={handlePrev} color="error">
+              <KeyboardArrowLeftIcon fontSize="large" />
+            </IconButton>
+          )}
 
           <Typography variant="h6">{page}</Typography>
 

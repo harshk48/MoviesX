@@ -54,65 +54,63 @@ const Home = () => {
         whileInView="visible"
         transition={{ duration: 0.6 }}
       >
-          <Grid
-            spacing={4}
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 2,
-              flexWrap: "wrap",
-            
-            }}
-          >
-            {/* Card 1 */}
-            <Grid >
-              <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
-                <CardContent>
-                  <PublicIcon sx={{ color: "green", fontSize: 30 }} />
-                  <Typography variant="h5" sx={{ color: "green", mt: 1 }}>
-                    Works Worldwide
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    No other free streaming service delivers more content to and
-                    from more countries worldwide.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-
-            {/* Card 2 */}
-            <Grid >
-              <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
-                <CardContent>
-                  <OndemandVideoIcon sx={{ color: "red", fontSize: 30 }} />
-                  <Typography variant="h5" sx={{ color: "red", mt: 1 }}>
-                    Device-Friendly
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Stream the good stuff from your favorite devices including
-                    Apple, Android, Smart TVs and more.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-
-            {/* Card 3 */}
-            <Grid>
-              <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
-                <CardContent>
-                  <TheatersIcon sx={{ color: "blue", fontSize: 30 }} />
-                  <Typography variant="h5" sx={{ color: "blue", mt: 1 }}>
-                    Thousands of Titles
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Choose from movies, shows, sports and music documentaries,
-                    AMC series, Live TV and more.
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
+        <Grid
+          spacing={4}
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 2,
+            flexWrap: "wrap",
+          }}
+        >
+          {/* Card 1 */}
+          <Grid>
+            <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
+              <CardContent>
+                <PublicIcon sx={{ color: "green", fontSize: 30 }} />
+                <Typography variant="h5" sx={{ color: "green", mt: 1 }}>
+                  Works Worldwide
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  No other free streaming service delivers more content to and
+                  from more countries worldwide.
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
-      
+
+          {/* Card 2 */}
+          <Grid>
+            <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
+              <CardContent>
+                <OndemandVideoIcon sx={{ color: "red", fontSize: 30 }} />
+                <Typography variant="h5" sx={{ color: "red", mt: 1 }}>
+                  Device-Friendly
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Stream the good stuff from your favorite devices including
+                  Apple, Android, Smart TVs and more.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+
+          {/* Card 3 */}
+          <Grid>
+            <Card sx={{ textAlign: "center", p: 2, maxWidth: 350 }}>
+              <CardContent>
+                <TheatersIcon sx={{ color: "blue", fontSize: 30 }} />
+                <Typography variant="h5" sx={{ color: "blue", mt: 1 }}>
+                  Thousands of Titles
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Choose from movies, shows, sports and music documentaries, AMC
+                  series, Live TV and more.
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Grid>
       </motion.div>
     </>
   );
