@@ -368,7 +368,15 @@ border-radius: 10px;
 .series-card img {
   object-fit: cover;
 }
-
+.filters{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  
+}
 .movie-card:hover {
   box-shadow: rgba(149, 157, 165, 0.4) 0px 8px 24px;
   transition: all 0.5s ease;

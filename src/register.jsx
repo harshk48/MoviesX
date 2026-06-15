@@ -1,11 +1,12 @@
-import React, { useState  } from "react";
-import {useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./App.css";
 import { exportRegisterData } from "./utils/authService";
 import bg from "./assets/bg.jpg";
+
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,8 +15,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    
-    // Validate inputs
+
     if (!username.trim() || !password.trim()) {
       toast.error("Please fill in all fields ❌", {
         position: "top-right",
@@ -27,31 +27,36 @@ const Register = () => {
 
     setLoading(true);
 
-    // Call the export registration function
-    const result = await exportRegisterData(username, password);
-    if (result.success) { 
-      toast.success(result.message || "Registration successful ✅", {
+    try {
+      const result = await exportRegisterData(username, password);
+
+      if (result.success) {
+        toast.success(result.message || "Registration successful ✅", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+        });
+        navigate("/login");
+      } else {
+        toast.error(result.message || "User already exists ❌", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+        });
+        setUsername("");
+        setPassword("");
+      }
+    } catch (err) {
+      console.log(err)
+      toast.error("Something went wrong ❌", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,
       });
-
-      // Redirect to login
-      navigate('/login');
-    } else {
-      toast.error(result.message || "User already exists ❌", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: true,
-      });
-
-      // Clear input fields
-      setUsername("");
-      setPassword("");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
-  }
+  };
 
   return (
     <Box
@@ -65,16 +70,8 @@ const Register = () => {
         backgroundPosition: "center",
       }}
     >
-      <Paper
-        elevation={4}
-        sx={{
-          p: 4,
-          width: 350,
-          borderRadius: 3,
-        }}
-      >
+      <Paper elevation={4} sx={{ p: 4, width: 350, borderRadius: 3 }}>
         <Box component="form" onSubmit={handleRegister}>
-          {/* Heading */}
           <Typography
             variant="h5"
             textAlign="center"
@@ -84,7 +81,6 @@ const Register = () => {
             Register Your Account
           </Typography>
 
-          {/* Inputs */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2, mt: 2 }}>
             <TextField
               label="Username"
@@ -109,7 +105,6 @@ const Register = () => {
             />
           </Box>
 
-          {/* Login Redirect */}
           <Box sx={{ mt: 2 }}>
             <Typography variant="body2">
               Already have an account?{" "}
@@ -119,7 +114,6 @@ const Register = () => {
             </Typography>
           </Box>
 
-          {/* Button */}
           <Button
             type="submit"
             variant="contained"

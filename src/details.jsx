@@ -160,8 +160,8 @@ const Details = () => {
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
-                  background: "#1f1f1f",
-                  color: "#ff3d3d",
+                  background: selectedMode === "Dark" ? "#1f1f1f" : "#a00000",
+                  color: selectedMode === "Dark" ? "#ff3d3d" : "#fff",
                   p: 1.5,
                   borderRadius: 2,
                   mb: 1,

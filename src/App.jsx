@@ -8,11 +8,12 @@ import Details from "./details.jsx";
 import WishList from "./wishlist.jsx";
 import Register from "./register.jsx";
 import Home from "./home.jsx";
+import Filters from "./filters.jsx"
 import { AuthContext } from "./context.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
-  const { user } = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
 
   return (
     <>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           {user ? <Route path="/wishlist" element={<WishList />} /> : <Route path="/wishlist" element={<Login />} />}
           <Route path="/register" element={<Register />} />
+          <Route path={"/filters"} element={<Filters />} />
         </Routes>
       </div>
     </>

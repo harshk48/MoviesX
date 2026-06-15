@@ -75,26 +75,6 @@
     "wishlist": []
   },
   {
-    "username": "juli@gmail.com",
-    "password": "juli",
-    "wishlist": []
-  },
-  {
-    "username": "jamun@gmail.com",
-    "password": "jamun",
-    "wishlist": []
-  },
-  {
-    "username": "hanki@gmail.com",
-    "password": "hanki",
-    "wishlist": []
-  },
-  {
-    "username": "janki@gmail.com",
-    "password": "janki",
-    "wishlist": []
-  },
-  {
     "username": "yu@gmail.com",
     "password": "yu",
     "wishlist": []
@@ -122,6 +102,59 @@
   {
     "username": "jass@gmail.com",
     "password": "jass",
+    "wishlist": []
+  },
+  {
+    "username": "nono@gmail.com",
+    "password": "nono",
+    "wishlist": []
+  },
+  {
+    "username": "raj@gmail.com",
+    "password": "raj",
+    "wishlist": []
+  },
+  {
+    "username": "why@gmail.com",
+    "password": "why",
+    "wishlist": []
+  },
+  {
+    "username": "do@gmail.com",
+    "password": "do",
+    "wishlist": []
+  },
+  {
+    "username": "ti@Gmail.com",
+    "password": "ti",
+    "wishlist": []
+  },
+  {
+    "username": "f@gmail.com",
+    "password": "f",
+    "wishlist": []
+  },
+  {
+    "username": "harsh@gmail.com",
+    "password": "harsh",
+    "wishlist": [
+      {
+        "Title": "F1: The Movie",
+        "Year": "2025",
+        "imdbID": "tt16311594",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+      }
+    ]
+  },
+  {
+    "username": "yashu@gmail.com",
+    "password": "yashu",
+    "wishlist": []
+  },
+  {
+    "username": "kaju@gmail.com",
+    "password": "kahji",
     "wishlist": []
   }
 ]

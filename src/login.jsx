@@ -33,7 +33,7 @@ const Login = () => {
     if (result.success) {
       login(result.user);
       localStorage.setItem("user", JSON.stringify(result.user));
-      toast.success("Login Successful", {
+      toast.success(result.message || "Login Successful", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,

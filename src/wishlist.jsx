@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { AuthContext } from "./context";
 import { Link } from "react-router-dom";
@@ -13,19 +13,44 @@ import {
   CardContent,
   Button,
 } from "@mui/material";
+import {removeWishlist} from "./utils/authService.js";
 const WishList = () => {
-  const { wishList, setWishList } = useContext(AuthContext);
+  const { wishList, setWishList  } = useContext(AuthContext);
   const { setMovieDetails , selectedMode } = useContext(AuthContext);
-  const storedwishlist = JSON.parse(localStorage.getItem("wishlist"));
+  // const storedwishlist = JSON.parse(localStorage.getItem("wishlist"));
 
-  const removewishlist = (imdbID) => {
-    setWishList(wishList.filter((item) => item.imdbID !== imdbID));
-    const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
-    const updated = stored.filter((item) => item.imdbID !== imdbID);
-    localStorage.setItem("wishlist", JSON.stringify(updated));
-  };
+const deletewishlist = async (movie) => {
+  try {
+    const result = await removeWishlist(movie);
+
+    if (!result?.success) {
+      console.error(result?.message || "Error removing movie");
+      return;
+    }
+    setWishList((prev) => {
+      const updatedWishlist =
+        result.wishlist?.length >= 0
+          ? result.wishlist
+          : prev.filter((item) => item.imdbID !== movie.imdbID);
+
+      // localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+      return updatedWishlist;
+    });
+  } catch (error) {
+    console.error("Error removing movie:", error);
+  }
+}
+ useEffect(()=>{
+
+}, [])
+
+
+
+    // const stored = JSON.parse(localStorage.getItem("wishlist")) || [];
+    // const updated = stored.filter((item) => item.imdbID !== imdbID);
+    // localStorage.setItem("wishlist", JSON.stringify(updated));
   const movieDetailsHandle = (id) => () => {
-    const selectedMovie = storedwishlist.find((movie) => movie.imdbID === id);
+    const selectedMovie = wishList.find((movie) => movie.imdbID === id);
     setMovieDetails(selectedMovie);
   };
 
@@ -40,7 +65,7 @@ const WishList = () => {
       </Typography>
 
       {/* Empty State */}
-      {storedwishlist?.length === 0 ? (
+      {wishList?.length === 0 ? (
         <Typography
           variant="h6"
           align="center"
@@ -51,7 +76,7 @@ const WishList = () => {
         </Typography>
       ) : (
         <Grid container spacing={3} sx={{  display:"flex" , justifyContent:"center" , flexWrap:"wrap" }}>
-          {storedwishlist?.map((movie, index) => (
+          {wishList?.map((movie, index) => (
             <Grid  key={index}>
               <Card sx={{ maxWidth: 310, m: 2 , backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff"  }}  className="movie-card">
                 {/* Poster */}
@@ -82,19 +107,24 @@ const WishList = () => {
                     }}
                   >
                     <Button
+                      type="button"
                       variant="contained"
                       color="error"
-                      onClick={() => removewishlist(movie.imdbID)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        deletewishlist(movie);
+                      }}
                     >
                       Remove from Wishlist
                     </Button>
 
                     <Button
+                      type="button"
                       variant="outlined"
                       color="error"
                       component={Link}
                       to="/details"
-                      onClick={movieDetailsHandle(movie.imdbID)} // ✅ FIXED
+                      onClick={movieDetailsHandle(movie.imdbID)} 
                     >
                       Details
                     </Button>
