@@ -39,18 +39,17 @@ app.post("/register", (req, res) => {
     if (userExists) {
       return res.status(400).json({ message: "User already exists" });
     }
-
     const newUser = { username, password, wishlist: [] };
     users.push(newUser);
     fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-
-    return res.status(201).json({ message: "User registered successfully" });
+    return res.status(200).json({ message: "User registered successfully" });
   } catch (error) {
     console.error("Registration error:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
-// LOGIN API - Verify user exists
+
+// LOGIN API - Verify user exists and return wishlist
 app.post("/login", (req, res) => {
   try {
     const { username, password } = req.body;
@@ -74,7 +73,7 @@ app.post("/login", (req, res) => {
 
     res.json({
       message: "Login successful",
-      user: { username: user.username },
+      user: { username: user.username, wishlist: user.wishlist || [] },
     });
   } catch (error) {
     console.error("Login error:", error);
@@ -83,64 +82,79 @@ app.post("/login", (req, res) => {
 });
 
 // ADD TO WISHLIST
-// ======================
-
 app.post("/category", (req, res) => {
-  const { username, movie } = req.body;
+  try {
+    const { username, movie } = req.body;
 
-  const users = JSON.parse(fs.readFileSync(filePath) || "[]");
-  const user = users.find((u) => u.username === username);
-  if (user) {
+    const users = JSON.parse(fs.readFileSync(filePath, "utf8") || "[]");
+    const user = users.find((u) => u.username === username);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
     user.wishlist.push(movie);
     fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-  } else {
-    return res.status(404).json({
-      message: "User not found",
-    });
-  }
 
-  res.json({
-    message: "Added to wishlist",
-    wishlist: user.wishlist,
-  });
+    res.json({
+      message: "Added to wishlist",
+      wishlist: user.wishlist,
+    });
+  } catch (error) {
+    console.error("Add to wishlist error:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 });
+
 // REMOVE FROM WISHLIST
 app.delete("/wishList", (req, res) => {
-  const { username, movie } = req.body;
+  try {
+    const { username, movie } = req.body;
 
-  const users = JSON.parse(fs.readFileSync(filePath, "utf8") || "[]");
+    const users = JSON.parse(fs.readFileSync(filePath, "utf8") || "[]");
+    const user = users.find((u) => u.username === username);
 
-  const user = users.find((u) => u.username === username);
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
 
-  if (!user) {
-    return res.status(404).json({
-      message: "User not found",
+    // Remove movie from user's wishlist
+    user.wishlist = user.wishlist.filter((m) => m.imdbID !== movie.imdbID);
+
+    fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
+
+    res.json({
+      message: "Removed from wishlist",
+      wishlist: user.wishlist,
     });
+  } catch (error) {
+    console.error("Remove from wishlist error:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
-
-  // Remove movie from user's wishlist
-  user.wishlist = user.wishlist.filter((m) => m.imdbID !== movie.imdbID);
-
-  fs.writeFileSync(filePath, JSON.stringify(users, null, 2));
-
-  res.json({
-    message: "Removed from wishlist",
-    wishlist: user.wishlist,
-  });
 });
-// GET USER WISHLIST
-app.get("/wishlist", (req, res) => {
-  const users = JSON.parse(fs.readFileSync(filePath, "utf8") || "[]");
 
-  const user = users.find((u) => u.username === req.params.username);
+// GET USER WISHLIST (by username param)
+app.get("/wishlist/:username", (req, res) => {
+  try {
+    const users = JSON.parse(fs.readFileSync(filePath, "utf8") || "[]");
 
-  if (!user) {
-    return res.status(404).json({
-      message: "User not found",
-    });
+    const user = users.find((u) => u.username === req.params.username);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    res.json({ wishlist: user.wishlist || [] });
+  } catch (error) {
+    console.error("Get wishlist error:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
-
-  res.json(user.wishlist);
 });
 
 app.get("/", (req, res) => {

@@ -20,14 +20,12 @@ export const exportRegisterData = async (username, password) => {
 
     const data = await response.json();
 
-    if (!response.ok) {
-      throw new Error(data.message || "Registration failed");
-    }
-
-    return {
+    if (response.ok) {
+      return {
       success: true,
       message: data.message || "User registered successfully",
     };
+    }
   } catch (error) {
     return {
       success: false,
@@ -133,5 +131,15 @@ export const removeWishlist = async (movie) => {
         error.message || "An error occurred while removing from wishlist",
       wishlist: [],
     };
+  }
+};
+export const fetchWishlist = async (username) => {
+  try {
+    const res = await fetch(`http://localhost:5000/wishlist/${username}`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching wishlist:", error);
+    return { wishlist: [] };
   }
 };

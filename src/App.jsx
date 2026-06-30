@@ -1,35 +1,56 @@
-import React, { useContext } from "react";
+import React, { useContext, lazy, Suspense } from "react";
 import "./App.css";
-import Header from "../src/header.jsx";
 import { Route, Routes } from "react-router-dom";
-import Login from "./login.jsx";
-import Category from "./category.jsx";
-import Details from "./details.jsx";
-import WishList from "./wishlist.jsx";
-import Register from "./register.jsx";
-import Home from "./home.jsx";
-import Filters from "./filters.jsx"
 import { AuthContext } from "./context.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import Header from "./header.jsx";
+
+const Home = lazy(() => import("./home.jsx"));
+const Login = lazy(() => import("./login.jsx"));
+const Category = lazy(() => import("./category.jsx"));
+const Details = lazy(() => import("./details.jsx"));
+const WishList = lazy(() => import("./wishlist.jsx"));
+const Register = lazy(() => import("./register.jsx"));
+const Filters = lazy(() => import("./filters.jsx"));
+
+const Loader = () => (
+  <Box
+    sx={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "80vh",
+    }}
+  >
+    <CircularProgress />
+  </Box>
+);
+
 function App() {
-  const { user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <>
-      <div>
-        <Header />
-        <ToastContainer />
+      <Header />
+      <ToastContainer />
+
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/category" element={<Category />} />
           <Route path="/details" element={<Details />} />
-          <Route path="/Login" element={<Login />} />
-          {user ? <Route path="/wishlist" element={<WishList />} /> : <Route path="/wishlist" element={<Login />} />}
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/wishlist"
+            element={user ? <WishList /> : <Login />}
+          />
           <Route path="/register" element={<Register />} />
-          <Route path={"/filters"} element={<Filters />} />
+          <Route path="/filters" element={<Filters />} />
         </Routes>
-      </div>
+      </Suspense>
     </>
   );
 }

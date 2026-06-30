@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import "./App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./context.jsx";
-import { loginUser } from "./utils/authService";
+import { loginUser, fetchWishlist } from "./utils/authService";
 import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button, Paper } from "@mui/material";
 import bg from "./assets/bg.jpg";
 import { MdLogin } from "react-icons/md";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, setWishList } = useAuth();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +33,11 @@ const Login = () => {
     if (result.success) {
       login(result.user);
       localStorage.setItem("user", JSON.stringify(result.user));
+
+      // Fetch wishlist for this user and store it in context
+      const wishlistResult = await fetchWishlist(result.user.username);
+      setWishList(wishlistResult.wishlist || []);
+
       toast.success(result.message || "Login Successful", {
         position: "top-right",
         autoClose: 1000,

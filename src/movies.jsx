@@ -132,7 +132,7 @@ const MoviesComponent = () => {
 
     const result = await addtoWishlist(selectedMovie);
 
-    if (result.success) {
+    if (result.success ) {
       toast.success("Added to wishlist ✅");
     } else {
       toast.error("Failed to add to wishlist ❌");

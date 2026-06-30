@@ -94,7 +94,8 @@ const Series = () => {
                 to={`/details?${series.imdbID}`}
                 onClick={seriesDetailsHandle(series.imdbID)}
                 sx={{
-                  maxWidth: 280,
+                   maxWidth: 280,
+                  m: 2,
                   backgroundColor: selectedMode === "Dark" ? "#2c2c2c" : "#fff",
                 }}
                 className="series-card"

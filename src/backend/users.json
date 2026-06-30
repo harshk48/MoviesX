@@ -144,13 +144,63 @@
         "imdbID": "tt0462538",
         "Type": "movie",
         "Poster": "https://m.media-amazon.com/images/M/MV5BMzIxN2IzOGItOTcyZi00MTkzLWE4ZjktZTdlOWFiYWE4NzlmXkEyXkFqcGc@._V1_SX300.jpg"
+      },
+      {
+        "Title": "F1: The Movie",
+        "Year": "2025",
+        "imdbID": "tt16311594",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+      },
+      {
+        "Title": "Scary Movie",
+        "Year": "2000",
+        "imdbID": "tt0175142",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BZGRmMGRhOWMtOTk3Ni00OTRjLTkyYTAtYzA1M2IzMGE3NGRkXkEyXkFqcGc@._V1_SX300.jpg"
+      },
+      {
+        "Title": "The Lego Movie",
+        "Year": "2014",
+        "imdbID": "tt1490017",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTg4MDk1ODExN15BMl5BanBnXkFtZTgwNzIyNjg3MDE@._V1_SX300.jpg"
+      },
+      {
+        "Title": "The Lego Batman Movie",
+        "Year": "2017",
+        "imdbID": "tt4116284",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTcyNTEyOTY0M15BMl5BanBnXkFtZTgwOTAyNzU3MDI@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Sci Fi Science: Physics of the Impossible",
+        "Year": "2008–",
+        "imdbID": "tt1358355",
+        "Type": "series",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTYwNjQ3NDUwMV5BMl5BanBnXkFtZTgwOTI2MzcwMzE@._V1_QL75_UY562_CR185,0,380,562_.jpg"
       }
     ]
   },
   {
     "username": "yashu@gmail.com",
     "password": "yashu",
-    "wishlist": []
+    "wishlist": [
+      {
+        "Title": "F1: The Movie",
+        "Year": "2025",
+        "imdbID": "tt16311594",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+      },
+      {
+        "Title": "Scary Movie",
+        "Year": "2000",
+        "imdbID": "tt0175142",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BZGRmMGRhOWMtOTk3Ni00OTRjLTkyYTAtYzA1M2IzMGE3NGRkXkEyXkFqcGc@._V1_SX300.jpg"
+      }
+    ]
   },
   {
     "username": "kaju@gmail.com",
