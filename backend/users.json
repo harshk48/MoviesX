@@ -1,0 +1,251 @@
+[
+  {
+    "username": "ruhan@gmail.com",
+    "password": "ruhan",
+    "wishlist": []
+  },
+  {
+    "username": "nitish@gmail.com",
+    "password": "nitish",
+    "wishlist": []
+  },
+  {
+    "username": "anil@gmail.com",
+    "password": "anil",
+    "wishlist": []
+  },
+  {
+    "username": "rajeev@gmail.com",
+    "password": "rajeev",
+    "wishlist": []
+  },
+  {
+    "username": "nake@gmail.com",
+    "password": "nak",
+    "wishlist": []
+  },
+  {
+    "username": "kajal@gmail.com",
+    "password": "kajal",
+    "wishlist": []
+  },
+  {
+    "username": "ijja@gmail.com",
+    "password": "maokja",
+    "wishlist": []
+  },
+  {
+    "username": "kajali@gmail.com",
+    "password": "jakkal",
+    "wishlist": []
+  },
+  {
+    "username": "jan@gmail.com",
+    "password": "jan",
+    "wishlist": []
+  },
+  {
+    "username": "kji@gmail.com",
+    "password": "kji",
+    "wishlist": []
+  },
+  {
+    "username": "kalali@gmail.com",
+    "password": "khalai",
+    "wishlist": []
+  },
+  {
+    "username": "khalo@gmail.com",
+    "password": "khalo",
+    "wishlist": []
+  },
+  {
+    "username": "jol@gmail.com",
+    "password": "jol",
+    "wishlist": []
+  },
+  {
+    "username": "opop@gmail.com",
+    "password": "opo",
+    "wishlist": []
+  },
+  {
+    "username": "jakli@gmail.com",
+    "password": "jakli",
+    "wishlist": []
+  },
+  {
+    "username": "yu@gmail.com",
+    "password": "yu",
+    "wishlist": []
+  },
+  {
+    "username": "jik@gmail.com",
+    "password": "jik",
+    "wishlist": []
+  },
+  {
+    "username": "hands@gmail.com",
+    "password": "hands",
+    "wishlist": []
+  },
+  {
+    "username": "batmaan@gmail.com",
+    "password": "batman",
+    "wishlist": []
+  },
+  {
+    "username": "bhat@gmail.com",
+    "password": "bhat",
+    "wishlist": []
+  },
+  {
+    "username": "jass@gmail.com",
+    "password": "jass",
+    "wishlist": []
+  },
+  {
+    "username": "nono@gmail.com",
+    "password": "nono",
+    "wishlist": []
+  },
+  {
+    "username": "raj@gmail.com",
+    "password": "raj",
+    "wishlist": []
+  },
+  {
+    "username": "why@gmail.com",
+    "password": "why",
+    "wishlist": []
+  },
+  {
+    "username": "do@gmail.com",
+    "password": "do",
+    "wishlist": []
+  },
+  {
+    "username": "ti@Gmail.com",
+    "password": "ti",
+    "wishlist": []
+  },
+  {
+    "username": "f@gmail.com",
+    "password": "f",
+    "wishlist": []
+  },
+  {
+    "username": "harsh@gmail.com",
+    "password": "harsh",
+    "wishlist": [
+      {
+        "Title": "The Simpsons Movie",
+        "Year": "2007",
+        "imdbID": "tt0462538",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMzIxN2IzOGItOTcyZi00MTkzLWE4ZjktZTdlOWFiYWE4NzlmXkEyXkFqcGc@._V1_SX300.jpg"
+      },
+      {
+        "Title": "F1: The Movie",
+        "Year": "2025",
+        "imdbID": "tt16311594",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+      },
+      {
+        "Title": "Scary Movie",
+        "Year": "2000",
+        "imdbID": "tt0175142",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BZGRmMGRhOWMtOTk3Ni00OTRjLTkyYTAtYzA1M2IzMGE3NGRkXkEyXkFqcGc@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Sci Fi Science: Physics of the Impossible",
+        "Year": "2008–",
+        "imdbID": "tt1358355",
+        "Type": "series",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTYwNjQ3NDUwMV5BMl5BanBnXkFtZTgwOTI2MzcwMzE@._V1_QL75_UY562_CR185,0,380,562_.jpg"
+      },
+      {
+        "Title": "Last Action Hero",
+        "Year": "1993",
+        "imdbID": "tt0107362",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BZGU2NWQyY2ItY2JiZS00ZDJhLWI0NDQtNjMyNWU3MDA1NTgzXkEyXkFqcGc@._V1_SX300.jpg"
+      },
+      {
+        "Title": "Back in Action",
+        "Year": "2025",
+        "imdbID": "tt21191806",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMWQ4YWYxYTAtZTlhNC00Nzc3LWE3OWUtZjY5MThlNWNiYTBiXkEyXkFqcGc@._V1_SX300.jpg"
+      },
+      {
+        "Title": "ECW on Sci-Fi",
+        "Year": "2006–2010",
+        "imdbID": "tt0810614",
+        "Type": "series",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BODA4ZTJjYjEtZDZhNS00NGUyLWI2OTEtNGZlZGI4ZGRhMGUxXkEyXkFqcGc@._V1_SX300.jpg"
+      },
+      {
+        "Title": "The Sci-Fi Boys",
+        "Year": "2006",
+        "imdbID": "tt0800191",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTI5OTQyMjYwM15BMl5BanBnXkFtZTcwOTM0MDMzMQ@@._V1_SX300.jpg"
+      },
+      {
+        "Title": "The Lego Movie",
+        "Year": "2014",
+        "imdbID": "tt1490017",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BMTg4MDk1ODExN15BMl5BanBnXkFtZTgwNzIyNjg3MDE@._V1_SX300.jpg"
+      }
+    ]
+  },
+  {
+    "username": "yashu@gmail.com",
+    "password": "yashu",
+    "wishlist": [
+      {
+        "Title": "F1: The Movie",
+        "Year": "2025",
+        "imdbID": "tt16311594",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BNGI0MDI4NjEtOWU3ZS00ODQyLWFhYTgtNGYxM2ZkM2Q2YjE3XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+      },
+      {
+        "Title": "Scary Movie",
+        "Year": "2000",
+        "imdbID": "tt0175142",
+        "Type": "movie",
+        "Poster": "https://m.media-amazon.com/images/M/MV5BZGRmMGRhOWMtOTk3Ni00OTRjLTkyYTAtYzA1M2IzMGE3NGRkXkEyXkFqcGc@._V1_SX300.jpg"
+      }
+    ]
+  },
+  {
+    "username": "kaju@gmail.com",
+    "password": "kahji",
+    "wishlist": []
+  },
+  {
+    "username": "uiui@gmail.com",
+    "password": "uiui",
+    "wishlist": []
+  },
+  {
+    "username": "hjjiuj@gmail.com",
+    "password": "hijk",
+    "wishlist": []
+  },
+  {
+    "username": "hujm@gmail.com",
+    "password": "nsnjn",
+    "wishlist": []
+  },
+  {
+    "username": "hatu@gmail.com",
+    "password": "hatu",
+    "wishlist": []
+  }
+]
