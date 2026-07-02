@@ -28,26 +28,28 @@ const Register = () => {
 
     try {
       const result = await exportRegisterData(username, password);
-      console.log(result);
+console.log(result);
       if (result.success) {
+       
         toast.success(result.message || "Registration successful ✅", {
           position: "top-right",
           autoClose: 1000,
           hideProgressBar: true,
         });
         navigate("/login");
+      } else {
+        toast.error(result.message || "User already exists ❌", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+        });
+        setUsername("");
+        setPassword("");
       }
     } catch (err) {
       console.log(err);
-      toast.error("User already exists ❌", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: true,
-      });
     } finally {
       setLoading(false);
-      setUsername("");
-      setPassword("");
     }
   };
 

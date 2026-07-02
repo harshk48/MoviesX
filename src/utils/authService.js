@@ -22,10 +22,15 @@ export const exportRegisterData = async (username, password) => {
 
     if (response.ok) {
       return {
-      success: true,
-      message: data.message || "User registered successfully",
-    };
+        success: true,
+        message: data.message || "User registered successfully",
+      };
     }
+
+    return {
+      success: false,
+      message: data.message || "User already exists",
+    };
   } catch (error) {
     return {
       success: false,
@@ -135,7 +140,7 @@ export const removeWishlist = async (movie) => {
 };
 export const fetchWishlist = async (username) => {
   try {
-    const res = await fetch(`http://localhost:5000/wishlist/${username}`);
+    const res = await fetch(`${API_BASE_URL}/wishlist/${username}`);
     const data = await res.json();
     return data;
   } catch (error) {
