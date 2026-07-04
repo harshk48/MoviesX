@@ -123,7 +123,11 @@ const MoviesComponent = () => {
     );
 
     if (exists) {
-      toast.error("Already in wishlist ❌");
+      toast.error("Already in wishlist", {
+        position: "top-right",
+        hideProgressBar: false,
+        autoClose: 1000,
+      });
       return;
     }
 
@@ -133,9 +137,18 @@ const MoviesComponent = () => {
     const result = await addtoWishlist(selectedMovie);
 
     if (result.success ) {
-      toast.success("Added to wishlist ✅");
+     toast.success(result.message || "Added to wishlist", {
+            position: "top-right",
+            hideProgressBar: false,
+            autoClose: 1000,
+          });
+
     } else {
-      toast.error("Failed to add to wishlist ❌");
+      toast.error(result.message || "Failed to add to wishlist", {
+        position: "top-right",
+        hideProgressBar: false,
+        autoClose: 1000,
+      });
     }
   };
 
